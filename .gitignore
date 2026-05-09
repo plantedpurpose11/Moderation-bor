@@ -1,6 +1,8 @@
-
-settings.json
-config.json
-thanks.json
-quotes.json
 node_modules
+.env
+
+# Bot config with secrets (use config.example.json as template)
+botconfig/config.json
+botconfig/settings.json
+botconfig/thanks.json
+botconfig/quotes.json

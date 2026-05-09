@@ -2,11 +2,11 @@
    "token": "",
    "prefix": "!",
    "ownerIDS": [
-      "281403338275291136"
+      "YOUR_DISCORD_USER_ID"
    ],
-   "fnbr": "c2838e00ed0e79724166cbaa4e1b540b180aa8976f18f381ada54d50b24b64da6e01e7703d6bdabd704366e66659c31fa2025eeaab46c2ccecd64010c8f2baa2",
-   "fortnitetracker": "d54f8936-5737-42ee-a362-143ad2d78169",
-   "memer_api": "BocPQoK08R2",
+   "fnbr": "",
+   "fortnitetracker": "",
+   "memer_api": "",
    "status": {
       "text": "Watching {guildcount} Servers, with {membercount} Members | Invite Me!",
       "text2": "{prefix}help",
@@ -23,8 +23,8 @@
       ]
    },
    "spotify": {
-      "clientSecret": "053469ffeb3844079fab734ebf3090c2",
-      "clientID": "bf5ee2a72bae40ffadc71a47280e5ff9"
+      "clientSecret": "",
+      "clientID": ""
    },
    "settings": {
       "COMMENT": "time_delay 0 === insta leave",
@@ -42,7 +42,7 @@
       "lyrics_finder": true,
       "ksoft_api": {
          "use_this_instead": true,
-         "api_key": "AIzaSyAAg3GHxipuyDz7KsCAv434yoFT56TR9LQ"
+         "api_key": ""
       }
    }
 }
