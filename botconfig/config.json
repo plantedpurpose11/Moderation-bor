@@ -16,10 +16,10 @@
    "clientsettings": {
       "nodes": [
          {
-            "host": "lavalink-2026-production-689e.up.railway.app",
-            "port": 443,
+            "host": "lavalink-2026.railway.internal",
+            "port": 8080,
             "password": "lavap2wbot",
-            "secure": true
+            "secure": false
          }
       ]
    },
