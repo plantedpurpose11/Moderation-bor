@@ -11,14 +11,14 @@ module.exports = client => {
     client.Jobdailyfact = new CronJob('30 0 0 * * *', function() {
         //get all guilds which are setupped
         var guilds = client.settings.filter(v => v.dailyfact && v.dailyfact != "no").keyArray();
-        //Loop through all guilds and send a random auto-generated-nsfw setup
+        //Loop through all guilds and send daily facts
         for(const guildid of guilds){
             dailyfact(guildid)
         } 
     }, null, true, 'Europe/Berlin');
     client.Jobdailyfact.start();
 
-    //function for sending automatic nsfw
+    //function for sending daily facts
     async function dailyfact(guildid){
         try{
             //get the Guild

@@ -8,14 +8,14 @@ module.exports = client => {
     client.Jobautobackup = new CronJob('0 0 */2 * *', function() {
         //get all guilds which are setupped
         var guilds = client.settings.filter(v => v.autobackup).keyArray();
-        //Loop through all guilds and send a random auto-generated-nsfw setup
+        //Loop through all guilds and run auto backups
         for(const guildid of guilds){
             autobackup(guildid)
         } 
     }, null, true, 'Europe/Berlin');
     client.Jobautobackup.start();
 
-    //function for sending automatic nsfw
+    //function for running automatic backup
     async function autobackup(guildid){
         try{
             //get the Guild

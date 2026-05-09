@@ -90,8 +90,6 @@ module.exports = {
             return message.reply({ embeds: [embeds[15]] })
           if (cat == "😳 Anime-Emotions")
             return message.reply({ embeds: [embeds[16]] })
-          if (cat == "🔞 NSFW")
-            return message.reply({ embeds: [embeds[17]] })
           if (category.toLowerCase().includes("custom")) {
             const cmd = client.commands.get(items[0].split("`").join("").toLowerCase()) || client.commands.get(client.aliases.get(items[0].split("`").join("").toLowerCase()));
             try {
@@ -344,7 +342,7 @@ but you can also do \`${prefix}setup-SYSTEM\` e.g. \`${prefix}setup-welcome\``)
             }
             if (b?.isSelectMenu()) {
               //b?.reply(`***Going to the ${b?.customId.replace("button_cat_", "")} Page***, *please wait 2 Seconds for the next Input*`, true)
-              //information, music, admin, settings, voice, minigames, nsfw
+              //information, music, admin, settings, voice, minigames
               let index = 0;
               let vembeds = []
               let theembeds = [OverviewEmbed, ...allotherembeds_eachcategory()];
@@ -368,8 +366,7 @@ but you can also do \`${prefix}setup-SYSTEM\` e.g. \`${prefix}setup-welcome\``)
                   case "fun": index = 15; break;
                   case "minigames": index = 16; break;
                   case "anime-emotions": index = 17; break;
-                  case "nsfw": index = 18; break;
-                  case "customcommand": index = 19; break;
+                  case "customcommand": index = 18; break;
                 }
                 vembeds.push(theembeds[index])
               }
@@ -553,25 +550,16 @@ but you can also do \`${prefix}setup-SYSTEM\` e.g. \`${prefix}setup-welcome\``)
           .addField("😳 **Anime-Self-Emotions**", `> ${client.commands.filter((cmd) => cmd.category === "😳 Anime-Emotions" && cmd.type === "self").sort((a, b) => a.name.localeCompare(b?.name)).map((cmd) => `\`${cmd.name}\``).join("︲")}`)
         if (!filterdisabled || settings.ANIME || settings.showdisabled) embeds.push(embed16)
 
-        //NSFW COMMANDS
-        var embed17 = new MessageEmbed()
-          .setTitle(`[\`${client.commands.filter((cmd) => cmd.category === "🔞 NSFW").size}\`] 🔞 NSFW Commands 🔞 | ${settings.NSFW ? "<:yes:1168770575116800042> ENABLED" : "<:NO:1169479454918180937> DISABLED"}`)
-          .setDescription(`> *${client.commands.filter((cmd) => cmd.category === "🔞 NSFW").sort((a, b) => a.name.localeCompare(b?.name)).map((cmd) => `\`${cmd.name}\``).join("︲")}*`)
-          .addField("\u200b", "__**Sub-Categorized Commands:**__")
-          .addField("😳 **Animated (Hentai, Neko, SFW, ...)**", `> ${client.commands.filter((cmd) => cmd.category === "🔞 NSFW" && cmd.type === "anime").sort((a, b) => a.name.localeCompare(b?.name)).map((cmd) => `\`${cmd.name}\``).join("︲")}`)
-          .addField("🔞 **Reallife (Porn, Erotik, etc.)**", `> ${client.commands.filter((cmd) => cmd.category === "🔞 NSFW" && cmd.type === "real").sort((a, b) => a.name.localeCompare(b?.name)).map((cmd) => `\`${cmd.name}\``).join("︲")}`)
-        if (!filterdisabled || settings.NSFW || settings.showdisabled) embeds.push(embed17)
-
         //CUSTOM COMMANDS EMBED
-        var embed18 = new MessageEmbed()
+        var embed17 = new MessageEmbed()
           .setTitle(eval(client.la[ls]["cmds"]["info"]["help"]["variable23"]))
         let cuc = client.customcommands.get(message.guild.id, "commands");
         if (cuc.length < 1) cuc = ["NO CUSTOM COMMANDS DEFINED YET, do it with: `!setup-customcommands`"]
         else cuc = cuc.map(cmd => `\`${cmd.name}\``)
         const items = cuc
-        embed18.setTitle(eval(client.la[ls]["cmds"]["info"]["help"]["variable24"]))
-        embed18.setDescription(">>> " + items.join("︲"))
-        embeds.push(embed18)
+        embed17.setTitle(eval(client.la[ls]["cmds"]["info"]["help"]["variable24"]))
+        embed17.setDescription(">>> " + items.join("︲"))
+        embeds.push(embed17)
 
         return embeds.map((embed, index) => {
           return embed

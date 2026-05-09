@@ -26,7 +26,7 @@ module.exports = client => {
     client.Jobautomeme = new CronJob('30 * * * * *', function() {
         //get all guilds which are setupped
         var guilds = client.settings.filter(v => v.automeme && v.automeme != "no").keyArray();
-        //Loop through all guilds and send a random auto-generated-nsfw setup
+        //Loop through all guilds and send auto memes
         for(const guildid of guilds){
             automeme(guildid)
         }
@@ -34,7 +34,7 @@ module.exports = client => {
     
     client.Jobautomeme.start();
 
-    //function for sending automatic nsfw
+    //function for sending automatic memes
     async function automeme(guildid){
         try{
             //get the Guild
