@@ -16,9 +16,10 @@
    "clientsettings": {
       "nodes": [
          {
-            "host": "0.0.0.0",
-            "port": 2333,
-            "password": "youshallnotpass"
+            "host": "lavalink-2026-production-689e.up.railway.app",
+            "port": 443,
+            "password": "lavap2wbot",
+            "secure": true
          }
       ]
    },
