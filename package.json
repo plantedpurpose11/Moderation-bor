@@ -88,5 +88,8 @@
   "homepage": "https://bestgamershk.rf.gd",
   "devDependencies": {
     "eslint": "^8.52.0"
+  },
+  "overrides": {
+    "better-sqlite3": "^9.3.0"
   }
 }
