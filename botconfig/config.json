@@ -17,7 +17,7 @@
       "nodes": [
          {
             "host": "lavalink-2026.railway.internal",
-            "port": 8080,
+            "port": 2333,
             "password": "lavap2wbot",
             "secure": false
          }
