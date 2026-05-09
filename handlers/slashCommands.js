@@ -20,11 +20,6 @@ const dirSetup = [
         "CmdDescription": "Administrate the Server!"
     },
     {
-        "Folder": "NSFW",
-        "CmdName": "nsfw",
-        "CmdDescription": "NSFW Content, NSFW CHANNELS only!"
-    },
-    {
         "Folder": "Fun",
         "CmdName": "fun",
         "CmdDescription": "Fun related Commands!"

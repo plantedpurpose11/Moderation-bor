@@ -55,7 +55,7 @@ module.exports = async (client, interaction) => {
         }
       }
       if (command) {
-        if (!command.category?.toLowerCase().includes("nsfw") && botchannel.toString() !== "") {
+        if (botchannel.toString() !== "") {
           if (!botchannel.includes(channelId) && !member.permissions.has("ADMINISTRATOR")) {
             for(const channelId of botchannel){
               let channel = guild.channels.cache.get(channelId);

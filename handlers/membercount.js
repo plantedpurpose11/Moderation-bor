@@ -20,7 +20,7 @@ module.exports = function (client, options) {
     }).keyArray();
     var logguilds = guilds;
     console.log(JSON.stringify(logguilds.map(guild => `${guild}`)).italic.yellow + " MEMBERCOUNTER ALL GUILDS")
-    //Loop through all guilds and send a random auto-generated-nsfw setup
+    //Loop through all guilds and update member counts
     for(const guildid of guilds){
         memberCount(guildid)
         await delay(1000);
@@ -43,7 +43,7 @@ module.exports = function (client, options) {
     }).keyArray();
     var logguilds = guilds;
     console.log(JSON.stringify(logguilds.map(guild => `${guild}`)).italic.yellow + " MEMBERCOUNTER ALL GUILDS")
-    //Loop through all guilds and send a random auto-generated-nsfw setup
+    //Loop through all guilds and update member counts
     for(const guildid of guilds){
         memberCount(guildid)
         await delay(1000);

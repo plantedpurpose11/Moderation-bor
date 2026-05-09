@@ -16,14 +16,14 @@ module.exports = client => {
                 msg.days.includes(currentDay)
                 && Number(msg.minute) == Number(currentMinute) && Number(msg.hour) == Number(currentHour)).length > 0 
             ).keyArray();
-        //Loop through all guilds and send a random auto-generated-nsfw setup
+        //Loop through all guilds and send timed messages
         for(const guildid of guilds){
             timedmessage(guildid)
         } 
     }, null, true, 'Europe/Berlin');
     client.JobTimesMessages.start();
 
-    //function for sending automatic nsfw
+    //function for sending timed messages
     async function timedmessage(guildid){
         try{
             //get all guilds which are setupped

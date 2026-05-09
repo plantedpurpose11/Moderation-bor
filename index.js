@@ -112,7 +112,7 @@ function requirehandlers() {
 
     "jointocreate", "reactionrole", "ranking", "timedmessages",
 
-    "membercount", "autoembed", "suggest", "validcode", "dailyfact", "autonsfw",
+    "membercount", "autoembed", "suggest", "validcode", "dailyfact",
     "aichat", "mute", "automeme", "counter"].forEach(handler => {
       try { require(`./handlers/${handler}`)(client); } catch (e) { console.log(e.stack ? String(e.stack).grey : String(e).grey) }
     });

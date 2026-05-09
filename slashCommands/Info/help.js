@@ -28,7 +28,6 @@ module.exports = {
       ["💸 Economy", "💸 Economy"], 
       ["📈 Ranking", "📈 Ranking"], 
       ["🔊 Soundboard", "🔊 Soundboard"], 
-      ["🔞 NSFW", "🔞 NSFW"], 
       ["🔰 Info", "🔰 Info"], 
       ["🕹️ Fun", "🕹️ Fun"], 
       ["🚫 Administration", "🚫 Administration"], 

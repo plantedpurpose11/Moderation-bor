@@ -100,7 +100,6 @@ ${clientapp.description ? clientapp.description : "❌ NO DESCRIPTION YET!"}
       client.Jobyoutube.stop()
       client.Jobtwitterfeed.stop()
       client.Jobtiktok.stop()
-      client.Jobautonsfw.stop()
       client.Jobroster.stop()
       client.Jobroster2.stop()
       client.Jobroster3.stop()
