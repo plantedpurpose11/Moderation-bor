@@ -82,9 +82,10 @@ var {
       try {
         switch (data.op) {
           case "voiceUpdate":
-            await this.restCall(base, "PATCH", {
-              voice: { token: data.event.token, endpoint: data.event.endpoint, sessionId: data.sessionId }
-            });
+            var player = this.manager.players.get(guildId);
+            var voiceBody = { voice: { token: data.event.token, endpoint: data.event.endpoint, sessionId: data.sessionId } };
+            if (player && player.voiceChannel) voiceBody.voice.channelId = player.voiceChannel;
+            await this.restCall(base, "PATCH", voiceBody);
             break;
           case "play":
             var playBody = { track: { encoded: data.track } };
