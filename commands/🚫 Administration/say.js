@@ -11,8 +11,8 @@ module.exports = {
   category: "🚫 Administration",
   aliases: [""],
   cooldown: 2,
-  usage: "say <TEXT>",
-  description: "Resends your Text",
+  usage: "say [#channel] <TEXT>",
+  description: "Resends your Text, optionally in a mentioned channel",
   type: "server",
   run: async (client, message, args, cmduser, text, prefix) => {
     
@@ -51,7 +51,15 @@ module.exports = {
           .setDescription(eval(client.la[ls]["cmds"]["administration"]["say"]["variable4"]))
         ]});
       message.delete().catch(e => console.log("Couldn't delete msg, this is a catch to prevent crash"))
-      message.channel.send({content : text});
+      var targetChannel = message.mentions.channels.first();
+      var sendText = text;
+      if (targetChannel) {
+        sendText = text.replace(targetChannel.toString(), "").trim();
+        if (!sendText) return message.reply({embeds: [new MessageEmbed().setColor(es.wrongcolor).setFooter(client.getFooter(es)).setTitle("Please provide text to send")]});
+      } else {
+        targetChannel = message.channel;
+      }
+      targetChannel.send({content: sendText});
 
       client.stats.push(message.guild.id+message.author.id, new Date().getTime(), "says"); 
 
