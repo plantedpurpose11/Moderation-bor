@@ -28,7 +28,7 @@ module.exports = {
     try {
       let clientapp = client.application ? await client.application.fetch().catch(e=>false) : false;
       let guild = client.guilds.cache.get("634051339281760268")
-      return message.reply({content : `**<:NO:1169479454918180937> THIS COMMAND IS DISABLED, go to discord.gg/rone and <#840332764603351101> to get it restarted!**\n\n\n> **Path:**
+      return message.reply({content : `**❌ THIS COMMAND IS DISABLED, go to discord.gg/rone and <#840332764603351101> to get it restarted!**\n\n\n> **Path:**
 \`\`\`yml
 ${process.cwd()}
 \`\`\`

@@ -22,7 +22,7 @@ module.exports = {
     
     let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language")
     try {
-      let themsg = await message.reply("<a:loading:1086988887383093298> Getting the Shop-Data")
+      let themsg = await message.reply("⏳ Getting the Shop-Data")
       const shop = new Canvas.FortniteShop();
       const image = await shop.setToken(process.env.fnbr || config.fnbr).setBackground("#23272A").toAttachment();
       let attachment = new Discord.MessageAttachment(image, "FortniteShop.png");

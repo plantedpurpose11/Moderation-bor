@@ -146,7 +146,7 @@ module.exports = {
             if (menu?.values[0] == "Cancel") return menu?.reply(eval(client.la[ls]["cmds"]["setup"]["setup-ticket"]["variable3"]))
             menuselection(menu)
           } else menu?.reply({
-            content: `<:NO:1169479454918180937> You are not allowed to do that! Only: <@${cmduser.id}>`,
+            content: `❌ You are not allowed to do that! Only: <@${cmduser.id}>`,
             ephemeral: true
           });
         });
@@ -155,7 +155,7 @@ module.exports = {
           menumsg.edit({
             embeds: [menumsg.embeds[0].setDescription(`~~${menumsg.embeds[0].description}~~`)],
             components: [],
-            content: `${collected && collected.first() && collected.first().values ? `<:yes:1168770575116800042> **Selected: \`${collected ? collected.first().values[0] : "Nothing"}\`**` : "❌ **NOTHING SELECTED - CANCELLED**"}`
+            content: `${collected && collected.first() && collected.first().values ? `✅ **Selected: \`${collected ? collected.first().values[0] : "Nothing"}\`**` : "❌ **NOTHING SELECTED - CANCELLED**"}`
           })
         });
       }
@@ -264,7 +264,7 @@ module.exports = {
             if (menu?.values[0] == "Cancel") return menu?.reply(eval(client.la[ls]["cmds"]["setup"]["setup-ticket"]["variable3"]))
             menuselection(menu)
           } else menu?.reply({
-            content: `<:NO:1169479454918180937> You are not allowed to do that! Only: <@${cmduser.id}>`,
+            content: `❌ You are not allowed to do that! Only: <@${cmduser.id}>`,
             ephemeral: true
           });
         });
@@ -273,7 +273,7 @@ module.exports = {
           menumsg.edit({
             embeds: [menumsg.embeds[0].setDescription(`~~${menumsg.embeds[0].description}~~`)],
             components: [],
-            content: `${collected && collected.first() && collected.first().values ? `<:yes:1168770575116800042> **Selected: \`${collected ? collected.first().values[0] : "Nothing"}\`**` : "❌ **NOTHING SELECTED - CANCELLED**"}`
+            content: `${collected && collected.first() && collected.first().values ? `✅ **Selected: \`${collected ? collected.first().values[0] : "Nothing"}\`**` : "❌ **NOTHING SELECTED - CANCELLED**"}`
           })
         });
       }
@@ -708,7 +708,7 @@ module.exports = {
                   if (menu?.values[0] == "Cancel") return menu?.reply(eval(client.la[ls]["cmds"]["setup"]["setup-ticket"]["variable3"]))
                   menuselection(menu)
                 } else menu?.reply({
-                  content: `<:NO:1169479454918180937> You are not allowed to do that! Only: <@${cmduser.id}>`,
+                  content: `❌ You are not allowed to do that! Only: <@${cmduser.id}>`,
                   ephemeral: true
                 });
               });
@@ -717,7 +717,7 @@ module.exports = {
                 menumsg.edit({
                   embeds: [menumsg.embeds[0].setDescription(`~~${menumsg.embeds[0].description}~~`)],
                   components: [],
-                  content: `${collected && collected.first() && collected.first().values ? `<:yes:1168770575116800042> **Selected: \`${collected ? collected.first().values[0] : "Nothing"}\`**` : "❌ **NOTHING SELECTED - CANCELLED**"}`
+                  content: `${collected && collected.first() && collected.first().values ? `✅ **Selected: \`${collected ? collected.first().values[0] : "Nothing"}\`**` : "❌ **NOTHING SELECTED - CANCELLED**"}`
                 })
               });
             }
@@ -867,31 +867,31 @@ module.exports = {
 
 function getNumberEmojis() {
   return [
-    "<:number_0:1087070365127299253>",
-    "<:number_1:1087070599064584372>",
-    "<:2_:1089111132393984020>",
-    "<:3_:1089111125053939806>",
-    "<:4_:1089111115855839263>",
-    "<:5_:1089111108599685140>",
-    "<:6_:1089111101259653220>",
-    "<:7_:1089111095265996860>",
-    "<:8_:1089111088978722876>",
-    "<:9_:1089111081378652171>",
-    "<:10:1089111140233130034>",
-    "<:11:1089077676540706838>",
-    "<:12:1089077654868738148>",
-    "<:13:1089077736083042316>",
-    "<:14:1089077610602041424>",
-    "<:15:1089078164803829871>",
-    "<:16:1047536861670817934>",
-    "<:17:1089110162712830012>",
-    "<:18:1089110114574802954>",
-    "<:19:1089110142441758870>",
-    "<:20:1089077994418602054>",
-    "<:21:1089110135336611901>",
-    "<:22:1089077496131100722>",
-    "<:23:1089078115390722128>",
-    "<:24:1089077630915055637>",
-    "<:25:1089078198937071616>"
+    "0️⃣",
+    "1️⃣",
+    "2️⃣",
+    "3️⃣",
+    "4️⃣",
+    "5️⃣",
+    "6️⃣",
+    "7️⃣",
+    "8️⃣",
+    "9️⃣",
+    "🕛",
+    "🕚",
+    "🕛",
+    "🕐",
+    "🕑",
+    "🕒",
+    "🕓",
+    "🕔",
+    "🕕",
+    "🕖",
+    "🕗",
+    "🕘",
+    "🕙",
+    "🕚",
+    "🕛",
+    "🕐"
   ]
 }

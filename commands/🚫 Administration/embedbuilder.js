@@ -119,7 +119,7 @@ let buttonEvent = async (interaction) => {
     if (interaction?.user.id === message.member.id) {
       embedEditing(interaction);
     } else {
-      await interaction?.reply({content : `<:NO:1169479454918180937> You are not allowed to do that! Only: <@${message.author.id}>`, ephemeral : true}); //ephemeral message
+      await interaction?.reply({content : `❌ You are not allowed to do that! Only: <@${message.author.id}>`, ephemeral : true}); //ephemeral message
     }
   }
 }
@@ -142,7 +142,7 @@ let embedEditing = async(button) => {
         '(\\?[;&a-z\\d%_.~+=-]*)?'+
         '(\\#[-a-z\\d_]*)?$','i');
 
-        button?.message.edit({content : `<a:loading:1086988887383093298> **Please send me Your Input now!**`,
+        button?.message.edit({content : `⏳ **Please send me Your Input now!**`,
             components: [new MessageActionRow().addComponents([new MessageButton().setLabel("Cancel").setStyle('DANGER').setCustomId(`buildEmbed_cancel`)])]
         })
 

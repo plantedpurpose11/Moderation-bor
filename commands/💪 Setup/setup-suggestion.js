@@ -122,7 +122,7 @@ module.exports = {
             let SetupNumber = menu?.values[0].split(" ")[0]
             handle_the_picks(menu?.values[0], SetupNumber, menuoptiondata)
           } else menu?.reply({
-            content: `<:NO:1169479454918180937> You are not allowed to do that! Only: <@${cmduser.id}>`,
+            content: `❌ You are not allowed to do that! Only: <@${cmduser.id}>`,
             ephemeral: true
           });
         });
@@ -131,7 +131,7 @@ module.exports = {
           menumsg.edit({
             embeds: [menumsg.embeds[0].setDescription(`~~${menumsg.embeds[0].description}~~`)],
             components: [],
-            content: `${collected && collected.first() && collected.first().values ? `<:yes:1168770575116800042> **Selected: \`${collected ? collected.first().values[0] : "Nothing"}\`**` : "❌ **NOTHING SELECTED - CANCELLED**" }`
+            content: `${collected && collected.first() && collected.first().values ? `✅ **Selected: \`${collected ? collected.first().values[0] : "Nothing"}\`**` : "❌ **NOTHING SELECTED - CANCELLED**" }`
           })
         });
       }
@@ -139,12 +139,12 @@ module.exports = {
       client.settings.ensure(message.guild.id, {
         suggest: {
           channel: "",
-          approvemsg: `<:yes:1168770575116800042> Accepted Idea! Expect this soon.`,
-          denymsg: `<:NO:1169479454918180937> Thank you for the feedback, but we are not interested in this idea at this time.`,
+          approvemsg: `✅ Accepted Idea! Expect this soon.`,
+          denymsg: `❌ Thank you for the feedback, but we are not interested in this idea at this time.`,
           maybemsg: `💡 We are thinking about this idea!`,
           duplicatemsg: `💢 This is a duplicated Suggestion`,
           soonmsg: `👌 Expect this Feature Soon!`,
-          statustext: `<a:loading:1086988887383093298> Waiting for Community Feedback, please vote!`,
+          statustext: `⏳ Waiting for Community Feedback, please vote!`,
           footertext: `Want to suggest / Feedback something? Simply type in this channel!`,
           approveemoji: `1026761151570264125`,
           denyemoji: `833101993668771842`,

@@ -77,7 +77,7 @@ module.exports = (client, preindex) => {
         if (client.setups.has(ticketchannel.id) && client.setups.has(ticketchannel.id, "ticketdata")) {
           let data = client.setups.get(ticketchannel.id, "ticketdata");
           if (data.state != "closed") {
-            return interaction?.reply({ content: `<:NO:1169479454918180937> **You already have an Ticket!** <#${ticketchannel.id}>`, ephemeral: true });
+            return interaction?.reply({ content: `❌ **You already have an Ticket!** <#${ticketchannel.id}>`, ephemeral: true });
           }
         }
       } catch {
@@ -195,7 +195,7 @@ module.exports = (client, preindex) => {
     /**
      * CREATE THE CHANNEL
      */
-    await interaction?.reply({ content: `<a:loading:1086988887383093298> **Creating your Ticket...** (Usually takes 0-2 Seconds)`, ephemeral: true });
+    await interaction?.reply({ content: `⏳ **Creating your Ticket...** (Usually takes 0-2 Seconds)`, ephemeral: true });
     guild.channels.create(channelname.substring(0, 31), optionsData).then(async ch => {
       let es = client.settings.get(guild.id, "embed")
       client.setups.push("TICKETS", user.id, ticketspath);
@@ -269,7 +269,7 @@ module.exports = (client, preindex) => {
           })
         }
       }
-      await interaction?.editReply({ content: `<a:yes:1168770575620128809> **Your Ticket is created!** <#${ch.id}>`, ephemeral: true });
+      await interaction?.editReply({ content: `✅ **Your Ticket is created!** <#${ch.id}>`, ephemeral: true });
     }).catch(e => {
       interaction?.editReply({ content: ":x: **Something went wrong!**", ephemeral: true })
       console.error(e)

@@ -29,9 +29,9 @@ module.exports = {
           enabled: false,
           message: "",
           log: false,
-          stopBoost: "<a:Server_Boosts:867777823468027924> {member} **stopped Boosting us..** <:Cat_Sad:867722685949804565>",
-          startBoost: "<a:Server_Boosts:867777823468027924> {member} **has boosted us!** <a:Light_Saber_Dancce:867721861462229013>",
-          againBoost: "<a:Server_Boosts:867777823468027924> {member} **has boosted us again!** <:Tada_WON:867724032207224833>",
+          stopBoost: "🚀 {member} **stopped Boosting us..** 😿",
+          startBoost: "🚀 {member} **has boosted us!** ⚔️",
+          againBoost: "🚀 {member} **has boosted us again!** 🎉",
         }
       })
 
