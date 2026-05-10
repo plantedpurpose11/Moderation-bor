@@ -22,7 +22,6 @@ module.exports = {
     
     let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language")
     try {
-      return message.reply({content : eval(client.la[ls]["cmds"]["administration"]["dm"]["variable1"])})
       if (!message.member.permissions.has([Permissions.FLAGS.ADMINISTRATOR]))
         return message.reply({embeds  :[new MessageEmbed()
           .setColor(es.wrongcolor)
