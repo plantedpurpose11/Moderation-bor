@@ -1,6 +1,6 @@
 
 var {
-    Manager
+    Manager, Node
   } = require("erela.js"),
   
     Spotify = require("erela.js-spotify"),
@@ -9,6 +9,16 @@ var {
     config = require(`${process.cwd()}/botconfig/config.json`),
     clientID = process.env.clientID || config.spotify.clientID,
     clientSecret = process.env.clientSecret || config.spotify.clientSecret;
+
+  // Patch Node to handle the "ready" op sent by newer Lavalink versions
+  var _origMessage = Node.prototype.message;
+  Node.prototype.message = function(d) {
+    if (Array.isArray(d)) d = Buffer.concat(d);
+    else if (d instanceof ArrayBuffer) d = Buffer.from(d);
+    var payload = JSON.parse(d.toString());
+    if (payload.op === "ready") return;
+    return _origMessage.call(this, d);
+  };
   module.exports = (client) => {
       if (!clientID || !clientSecret || clientID.length < 5 || clientSecret.length < 5) {
         client.manager = new Manager({
