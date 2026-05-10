@@ -195,7 +195,7 @@ async function playtop(client, message, args, type, slashCommand) {
       .addField("Position in queue", `${player.queue.length - res.tracks.length + 1 === 0 ? "NOW" : player.queue.length - res.tracks.length + 1}`, true)
       .addField("Enqueued", `\`${res.tracks.length}\``, true)
     //if bot allowed to send embed, do it otherwise pure txt msg
-    if (message.guild.me.permissionsIn(message.channel).has("EMBED_LINKS")){
+    if (message.guild.members.me.permissionsIn(message.channel).has("EMBED_LINKS")){
       if(slashCommand)
         return slashCommand.reply({ephemeral: true, embeds: [playlistembed]}).catch(() => {});
       message.reply({embeds: [playlistembed]}).catch(() => {});

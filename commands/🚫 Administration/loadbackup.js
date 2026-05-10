@@ -21,7 +21,7 @@ module.exports = {
         if(!server.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
             return message.reply(`❌ **I am missing the ADMINISTRATOR Permission in ${server.name}!**`)
         }
-        if(!message.guild.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
+        if(!message.guild.members.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
             return message.reply(`❌ **I am missing the ADMINISTRATOR Permission in ${server.name}!**`)
         }
         let owner = await server.fetchOwner().catch(e=>{

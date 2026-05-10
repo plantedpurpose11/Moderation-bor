@@ -1679,7 +1679,7 @@ module.exports = {
               let themessage = String(welcome.secondmsg);
               if (!themessage || themessage.length == 0) themessage = ":wave: {user} **Welcome to our Server!** :v:";
               themessage = themessage.replace("{user}", `${member.user}`).replace("{username}", `${member.user.username}`).replace("{usertag}", `${member.user.tag}`)
-              if (message.channel.permissionsFor(message.channel.guild.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)) {
+              if (message.channel.permissionsFor(message.channel.guild.members.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)) {
                 message.channel.send({ content: `**CHANNEL 2 MESSAGE in ${welcome.secondchannel != "nochannel" ? `<#${welcome.secondchannel}>` : ` \`NO CHANNEL - SETUPPED\``}:**\n\n${themessage}`.substring(0, 2000) }).catch(() => { });
               }
             }
@@ -1716,8 +1716,8 @@ module.exports = {
                 .addField(eval(client.la[ls]["handlers"]["welcomejs"]["welcome"]["variablex_8"]), eval(client.la[ls]["handlers"]["welcomejs"]["welcome"]["variable8"]))
 
               //send the welcome embed to there
-              if (channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)) {
-                if (channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.EMBED_LINKS)) {
+              if (channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)) {
+                if (channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.EMBED_LINKS)) {
                   channel.send({
                     content: `**CHANNEL WELCOME in ${welcome.channel != "nochannel" ? `<#${welcome.channel}>` : ` \`NO CHANNEL - SETUPPED\``}:**\n\n<@${member.user.id}>`,
                     embeds: [welcomeembed]
@@ -1784,8 +1784,8 @@ module.exports = {
                 .setImage(client.settings.get(member.guild.id, "welcome.custom"))
               if (client.settings.get(member.guild.id, "welcome.invite")) welcomeembed.addField("\u200b", `${invitemessage}`)
               //send the welcome embed to there
-              if (channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)) {
-                if (channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.EMBED_LINKS)) {
+              if (channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)) {
+                if (channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.EMBED_LINKS)) {
                   channel.send({
                     content: `**CHANNEL WELCOME in ${welcome.channel != "nochannel" ? `<#${welcome.channel}>` : ` \`NO CHANNEL - SETUPPED\``}:**\n\n<@${member.user.id}>`,
                     embeds: [welcomeembed]
@@ -2026,14 +2026,14 @@ module.exports = {
                   //get it as a discord attachment
                   const attachment = new Discord.MessageAttachment(await canvas.toBuffer(), `welcome-image.png`);
                   //send the welcome embed to there
-                  if (channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)) {
-                    if (channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.EMBED_LINKS) && channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.ATTACH_FILES)) {
+                  if (channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)) {
+                    if (channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.EMBED_LINKS) && channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.ATTACH_FILES)) {
                       channel.send({
                         content: `**CHANNEL WELCOME in ${welcome.channel != "nochannel" ? `<#${welcome.channel}>` : ` \`NO CHANNEL - SETUPPED\``}:**\n\n<@${member.user.id}>`,
                         embeds: [welcomeembed.setImage(`attachment://welcome-image.png`)],
                         files: [attachment]
                       }).catch(() => { });
-                    } else if (channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.ATTACH_FILES)) {
+                    } else if (channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.ATTACH_FILES)) {
                       channel.send({
                         content: `**CHANNEL WELCOME in ${welcome.channel != "nochannel" ? `<#${welcome.channel}>` : ` \`NO CHANNEL - SETUPPED\``}:**\n\n<@${member.user.id}>\n${welcomeembed.description}`.substring(0, 2000),
                         files: [attachment]

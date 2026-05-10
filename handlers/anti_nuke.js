@@ -256,7 +256,7 @@ module.exports = client => {
             let data = client.Anti_Nuke_System.get(member.guild.id)
             if (!data.all.enabled || !data.antibot.enabled) return;
             if (member.user.bot) {
-                if(!member.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !member.guild.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
+                if(!member.guild.members.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !member.guild.members.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
                     try {
                         let ch = member.guild.channels.cache.get(data.all.logger);
                         if (ch) {
@@ -349,7 +349,7 @@ module.exports = client => {
                         }
                         return;
                     }
-                    if (AddedMember.roles.cache.size > 0 && AddedMember.guild.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.me.roles.highest.rawPosition) {
+                    if (AddedMember.roles.cache.size > 0 && AddedMember.guild.members.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.members.me.roles.highest.rawPosition) {
                         if (data.all.showwhitelistlog && data.all.logger && data.all.logger.length > 5) {
                             try {
                                 let ch = member.guild.channels.cache.get(data.all.logger);
@@ -811,7 +811,7 @@ module.exports = client => {
             antinuke_databasing(member.guild.id);
             let data = client.Anti_Nuke_System.get(member.guild.id)
             if (!data.all.enabled || !data.antideleteuser.enabled) return;
-            if(!member.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !member.guild.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
+            if(!member.guild.members.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !member.guild.members.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
                 try {
                     let ch = member.guild.channels.cache.get(data.all.logger);
                     if (ch) {
@@ -908,7 +908,7 @@ module.exports = client => {
                     return;
                 }
                 //if his highest role is above mine, he is whitelisted
-                if (AddedMember.roles.cache.size > 0 && AddedMember.guild.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.me.roles.highest.rawPosition) {
+                if (AddedMember.roles.cache.size > 0 && AddedMember.guild.members.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.members.me.roles.highest.rawPosition) {
                     if (data.all.showwhitelistlog && data.all.logger && data.all.logger.length > 5) {
                         try {
                             let ch = member.guild.channels.cache.get(data.all.logger);
@@ -1207,7 +1207,7 @@ module.exports = client => {
             antinuke_databasing(member.guild.id);
             let data = client.Anti_Nuke_System.get(member.guild.id)
             if (!data.all.enabled || !data.antideleteuser.enabled) return;
-            if(!member.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !member.guild.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
+            if(!member.guild.members.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !member.guild.members.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
                 try {
                     let ch = member.guild.channels.cache.get(data.all.logger);
                     if (ch) {
@@ -1305,7 +1305,7 @@ module.exports = client => {
                     return;
                 }
                 //if his highest role is above mine, he is whitelisted
-                if (AddedMember.roles.cache.size > 0 && AddedMember.guild.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.me.roles.highest.rawPosition) {
+                if (AddedMember.roles.cache.size > 0 && AddedMember.guild.members.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.members.me.roles.highest.rawPosition) {
                     if (data.all.showwhitelistlog && data.all.logger && data.all.logger.length > 5) {
                         try {
                             let ch = member.guild.channels.cache.get(data.all.logger);
@@ -1606,7 +1606,7 @@ module.exports = client => {
                 let therole = channel.guild.roles.cache.get(data.all.quarantine);
                 if (therole && therole.id) {
                     try {
-                        if(channel.permissionsFor(channel.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                        if(channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                             channel.permissionOverwrites.edit(therole.id, {
                             VIEW_CHANNEL: false,
                             SEND_MESSAGES: false,
@@ -1636,7 +1636,7 @@ module.exports = client => {
             antinuke_databasing(channel.guild.id);
             let data = client.Anti_Nuke_System.get(channel.guild.id)
             if (!data.all.enabled || !data.antichannelcreate.enabled) return;
-            if(!channel.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !channel.guild.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
+            if(!channel.guild.members.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !channel.guild.members.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
                 try {
                     let ch = member.guild.channels.cache.get(data.all.logger);
                     if (ch) {
@@ -1733,7 +1733,7 @@ module.exports = client => {
                     return;
                 }
                 //if his highest role is above mine, he is whitelisted
-                if (AddedMember.roles.cache.size > 0 && AddedMember.guild.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.me.roles.highest.rawPosition) {
+                if (AddedMember.roles.cache.size > 0 && AddedMember.guild.members.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.members.me.roles.highest.rawPosition) {
                     if (data.all.showwhitelistlog && data.all.logger && data.all.logger.length > 5) {
                         try {
                             let ch = channel.guild.channels.cache.get(data.all.logger);
@@ -2099,7 +2099,7 @@ module.exports = client => {
             antinuke_databasing(channel.guild.id);
             let data = client.Anti_Nuke_System.get(channel.guild.id)
             if (!data.all.enabled || !data.antichanneldelete.enabled) return
-            if(!channel.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !channel.guild.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
+            if(!channel.guild.members.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !channel.guild.members.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
                 try {
                     let ch = member.guild.channels.cache.get(data.all.logger);
                     if (ch) {
@@ -2196,7 +2196,7 @@ module.exports = client => {
                     return;
                 }
                 //if his highest role is above mine, he is whitelisted
-                if (AddedMember.roles.cache.size > 0 && AddedMember.guild.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.me.roles.highest.rawPosition) {
+                if (AddedMember.roles.cache.size > 0 && AddedMember.guild.members.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.members.me.roles.highest.rawPosition) {
                     if (data.all.showwhitelistlog && data.all.logger && data.all.logger.length > 5) {
                         try {
                             let ch = channel.guild.channels.cache.get(data.all.logger);
@@ -2485,7 +2485,7 @@ module.exports = client => {
             antinuke_databasing(role.guild.id);
             let data = client.Anti_Nuke_System.get(role.guild.id)
             if (!data.all.enabled || !data.anticreaterole.enabled) return;
-            if(!role.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !role.guild.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
+            if(!role.guild.members.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !role.guild.members.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
                 try {
                     let ch = member.guild.channels.cache.get(data.all.logger);
                     if (ch) {
@@ -2582,7 +2582,7 @@ module.exports = client => {
                     return;
                 }
                 //if his highest role is above mine, he is whitelisted
-                if (AddedMember.roles.cache.size > 0 && AddedMember.guild.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.me.roles.highest.rawPosition) {
+                if (AddedMember.roles.cache.size > 0 && AddedMember.guild.members.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.members.me.roles.highest.rawPosition) {
                     if (data.all.showwhitelistlog && data.all.logger && data.all.logger.length > 5) {
                         try {
                             let ch = role.guild.channels.cache.get(data.all.logger);
@@ -2945,7 +2945,7 @@ module.exports = client => {
             antinuke_databasing(role.guild.id);
             let data = client.Anti_Nuke_System.get(role.guild.id)
             if (!data.all.enabled || !data.antideleterole.enabled) return
-            if(!role.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !role.guild.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
+            if(!role.guild.members.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD) && !role.guild.members.me.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)){
                 try {
                     let ch = member.guild.channels.cache.get(data.all.logger);
                     if (ch) {
@@ -3042,7 +3042,7 @@ module.exports = client => {
                     return;
                 }
                 //if his highest role is above mine, he is whitelisted
-                if (AddedMember.roles.cache.size > 0 && AddedMember.guild.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.me.roles.highest.rawPosition) {
+                if (AddedMember.roles.cache.size > 0 && AddedMember.guild.members.me.roles.cache.size > 0 && AddedMember.roles.highest.rawPosition >= AddedMember.guild.members.me.roles.highest.rawPosition) {
                     if (data.all.showwhitelistlog && data.all.logger && data.all.logger.length > 5) {
                         try {
                             let ch = role.guild.channels.cache.get(data.all.logger);

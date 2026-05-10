@@ -23,7 +23,7 @@
     
      let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language")
      try {
-      if(!message.guild.me.permissions.has([Permissions.FLAGS.MANAGE_ROLES]))      
+      if(!message.guild.members.me.permissions.has([Permissions.FLAGS.MANAGE_ROLES]))      
       return message.reply({embeds : [new MessageEmbed()
         .setColor(es.wrongcolor).setFooter(client.getFooter(es))
         .setTitle(eval(client.la[ls]["cmds"]["administration"]["addroletoeveryone"]["variable1"]))

@@ -239,8 +239,8 @@ module.exports = (client, preindex) => {
         allbuttons.push(new MessageActionRow().addComponents([new MessageButton().setStyle('SECONDARY').setCustomId('ticket_claim').setLabel("Claim the Ticket").setEmoji("✅")]))
       }
       let ticketroles = ticket.adminroles.map(r => `<@&${r}>`);
-      if (ch.permissionsFor(ch.guild.me).has(Permissions.FLAGS.SEND_MESSAGES)) {
-        if (ch.permissionsFor(ch.guild.me).has(Permissions.FLAGS.EMBED_LINKS)) {
+      if (ch.permissionsFor(ch.guild.members.me).has(Permissions.FLAGS.SEND_MESSAGES)) {
+        if (ch.permissionsFor(ch.guild.members.me).has(Permissions.FLAGS.EMBED_LINKS)) {
           await ch.send({
             content: `<@${user.id}> ${ticketroles.length > 0 ? "| " + ticketroles.join(" / ") : ""}`,
             embeds: ticketembeds,
@@ -248,7 +248,7 @@ module.exports = (client, preindex) => {
           }).catch((O) => {
             console.log(String(O).grey)
           }).then(msg => {
-            if (msg.channel.permissionsFor(msg.guild.me).has(Permissions.FLAGS.MANAGE_MESSAGES)) {
+            if (msg.channel.permissionsFor(msg.guild.members.me).has(Permissions.FLAGS.MANAGE_MESSAGES)) {
               msg.pin().catch((O) => {
                 console.log(String(O).grey)
               })
@@ -261,7 +261,7 @@ module.exports = (client, preindex) => {
           }).catch((O) => {
             console.log(String(O).grey)
           }).then(msg => {
-            if (msg.channel.permissionsFor(msg.guild.me).has(Permissions.FLAGS.MANAGE_MESSAGES)) {
+            if (msg.channel.permissionsFor(msg.guild.members.me).has(Permissions.FLAGS.MANAGE_MESSAGES)) {
               msg.pin().catch((O) => {
                 console.log(String(O).grey)
               })

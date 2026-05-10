@@ -66,7 +66,7 @@ module.exports = function (client) {
             let randommemberid = members[Math.floor(Math.random() * members.length)];
             //set the new owner + perms
             client.jointocreatemap.set(`owner_${vc.guild.id}_${vc.id}`, randommemberid);
-            if(vc.permissionsFor(vc.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+            if(vc.permissionsFor(vc.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
               vc.permissionOverwrites.edit(randommemberid, {
                 CONNECT: true,
                 VIEW_CHANNEL: true,
@@ -122,7 +122,7 @@ module.exports = function (client) {
             let randommemberid = members[Math.floor(Math.random() * members.length)];
             //set the new owner + perms
             client.jointocreatemap.set(`owner_${vc.guild.id}_${vc.id}`, randommemberid);
-            if(vc.permissionsFor(vc.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+            if(vc.permissionsFor(vc.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
               vc.permissionOverwrites.edit(randommemberid, {
                 CONNECT: true,
                 VIEW_CHANNEL: true,

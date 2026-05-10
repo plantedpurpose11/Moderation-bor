@@ -20,7 +20,7 @@ module.exports = {
     
     let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language")
     try {
-      if(!message.guild.me.permissions.has("MANAGE_ROLES"))      
+      if(!message.guild.members.me.permissions.has("MANAGE_ROLES"))      
       return message.reply({embeds :[new MessageEmbed()
         .setColor(es.wrongcolor).setFooter(client.getFooter(es))
         .setTitle(eval(client.la[ls]["cmds"]["administration"]["unmute"]["variable1"]))
@@ -81,7 +81,7 @@ module.exports = {
           .setTitle(eval(client.la[ls]["cmds"]["administration"]["unmute"]["variable7"]))
         ]});
       }
-      if (mutedrole.position > message.guild.me.roles.highest.position) {
+      if (mutedrole.position > message.guild.members.me.roles.highest.position) {
         return message.reply({embeds: [new MessageEmbed()
           .setColor(es.wrongcolor)
           .setFooter(client.getFooter(es))

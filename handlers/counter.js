@@ -17,7 +17,7 @@ module.exports = function (client, options) {
           count = 0
         };
         if (!message.author.bot && message.author.id === counterauthor) {
-          if(message.channel.permissionsFor(message.channel.guild.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
+          if(message.channel.permissionsFor(message.channel.guild.members.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
             message.delete().catch(() => {})
           } else {
             message.reply(":x: **I am missing the MANAGE_MESSAGES Permission!**").then(m => {
@@ -28,7 +28,7 @@ module.exports = function (client, options) {
           return;
         }
         if (!message.author.bot && isNaN(message.content)) {
-          if(message.channel.permissionsFor(message.channel.guild.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
+          if(message.channel.permissionsFor(message.channel.guild.members.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
             message.delete().catch(() => {})
           } else {
             message.reply(":x: **I am missing the MANAGE_MESSAGES Permission!**").then(m => {
@@ -39,7 +39,7 @@ module.exports = function (client, options) {
           return;
         }
         if (!message.author.bot && parseInt(message.content) !== count + 1) {
-          if(message.channel.permissionsFor(message.channel.guild.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
+          if(message.channel.permissionsFor(message.channel.guild.members.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
             message.delete().catch(() => {})
           } else {
             message.reply(":x: **I am missing the MANAGE_MESSAGES Permission!**").then(m => {

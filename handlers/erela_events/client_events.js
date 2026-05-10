@@ -48,9 +48,9 @@ var {
           /* */ }
       })      
       client.on("voiceStateUpdate", async (oS, nS) => {
-        if (nS.channelId && nS.channel.type == "GUILD_STAGE_VOICE" && nS.guild.me.voice.suppress) {
+        if (nS.channelId && nS.channel.type == "GUILD_STAGE_VOICE" && nS.guild.members.me.voice.suppress) {
             try {
-                await nS.guild.me.voice.setSuppressed(false);
+                await nS.guild.members.me.voice.setSuppressed(false);
             } catch (e) {
                 console.log(e.stack ? String(e.stack).grey : String(e).grey)
             }
@@ -67,7 +67,7 @@ var {
               (!oS.selfMute && nS.selfMute) || (oS.selfMute && !nS.selfMute) ||
               (!oS.selfVideo && nS.selfVideo) || (oS.selfVideo && !nS.selfVideo)) return; //not the right voicestate
             //if player exist, but not connected or channel got empty (for no bots)
-            if (player && (!oS.guild.me.voice.channel || oS.channel.members.filter(m => !m.user.bot).size < 1)){
+            if (player && (!oS.guild.members.me.voice.channel || oS.channel.members.filter(m => !m.user.bot).size < 1)){
               try{ player.destroy(); } catch(e){ }
             }
           }

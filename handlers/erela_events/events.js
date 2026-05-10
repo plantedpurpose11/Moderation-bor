@@ -40,7 +40,7 @@ module.exports = (client) => {
       
       if(player.textChannel && player.guild){
         let Queuechannel = client.channels.cache.get(player.textChannel);
-        if(Queuechannel && Queuechannel.permissionsFor(Queuechannel.guild.me).has(Permissions.FLAGS.SEND_MESSAGES)){
+        if(Queuechannel && Queuechannel.permissionsFor(Queuechannel.guild.members.me).has(Permissions.FLAGS.SEND_MESSAGES)){
           Queuechannel.messages.fetch(player.get("currentmsg")).then(currentSongPlayMsg => {
             if(currentSongPlayMsg && currentSongPlayMsg.embeds && currentSongPlayMsg.embeds[0]){
               var embed = currentSongPlayMsg.embeds[0];
@@ -115,7 +115,7 @@ module.exports = (client) => {
             }
           }
           let channel = client.channels.cache.get(player.textChannel);
-          if(channel && channel.permissionsFor(channel.guild.me).has(Permissions.FLAGS.SEND_MESSAGES)){
+          if(channel && channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.SEND_MESSAGES)){
             channel.messages.fetch(player.get("currentmsg")).then(currentSongPlayMsg => {
               if(currentSongPlayMsg && currentSongPlayMsg.embeds && currentSongPlayMsg.embeds[0]){
                 var embed = currentSongPlayMsg.embeds[0];
@@ -141,7 +141,7 @@ module.exports = (client) => {
         let playdata = generateQueueEmbed(client, player, track)
         //Send message with buttons
         let channel = client.channels.cache.get(player.textChannel);
-        if(channel && channel.permissionsFor(channel.guild.me).has(Permissions.FLAGS.SEND_MESSAGES)){
+        if(channel && channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.SEND_MESSAGES)){
           let swapmsg = await channel.send(playdata).then(msg => {
             player.set("currentmsg", msg.id);
             return msg;
@@ -383,7 +383,7 @@ module.exports = (client) => {
       await player.stop();
       if(player.textChannel){
         let channel = client.channels.cache.get(player.textChannel);
-        if(channel && channel.permissionsFor(channel.guild.me).has(Permissions.FLAGS.SEND_MESSAGES)){
+        if(channel && channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.SEND_MESSAGES)){
           channel.messages.fetch(player.get("currentmsg")).then(currentSongPlayMsg => {
             if(currentSongPlayMsg && currentSongPlayMsg.embeds && currentSongPlayMsg.embeds[0]){
               var embed = currentSongPlayMsg.embeds[0];
@@ -415,7 +415,7 @@ module.exports = (client) => {
       await player.stop();
       if(player.textChannel){
         let channel = client.channels.cache.get(player.textChannel);
-        if(channel && channel.permissionsFor(channel.guild.me).has(Permissions.FLAGS.SEND_MESSAGES)){
+        if(channel && channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.SEND_MESSAGES)){
           channel.messages.fetch(player.get("currentmsg")).then(currentSongPlayMsg => {
             if(currentSongPlayMsg && currentSongPlayMsg.embeds && currentSongPlayMsg.embeds[0]){
               var embed = currentSongPlayMsg.embeds[0];

@@ -419,7 +419,7 @@ module.exports = {
                       var Role = message.mentions.roles.filter(ch=>ch.guild.id==message.guild.id).first() || message.guild.roles.cache.get(message.content.trim().split(" ")[1]);
                       if(!Voicechannel || !Role) return message.reply(":x: **Check the example in the Embed, wrong input type!**")
                       
-                      if (message.guild.me.roles.highest.rawPosition <= Role.rawPosition)
+                      if (message.guild.members.me.roles.highest.rawPosition <= Role.rawPosition)
                         return message.reply({embeds: [new MessageEmbed()
                           .setColor(es.wrongcolor)
                           .setFooter(client.getFooter(es))

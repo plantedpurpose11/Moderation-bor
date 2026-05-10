@@ -132,7 +132,7 @@ module.exports = {
                     }
                   } 
 
-                  if(msg.channel.permissionsFor(msg.channel.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                  if(msg.channel.permissionsFor(msg.channel.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                       await msg.channel.permissionOverwrites.edit(data.user, {
                           SEND_MESSAGES: false,
                           VIEW_CHANNEL: false,

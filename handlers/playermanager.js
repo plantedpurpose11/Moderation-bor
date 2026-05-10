@@ -23,7 +23,7 @@ module.exports = async (client, message, args, type, slashCommand = false, extra
   let {
     channel
   } = message.member.voice;
-  let botchannel = message.guild.me.voice.channel;
+  let botchannel = message.guild.members.me.voice.channel;
   const permissions = channel.permissionsFor(client.user);
 
   if (!permissions.has("CONNECT")){

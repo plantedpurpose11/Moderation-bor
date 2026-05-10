@@ -1555,7 +1555,7 @@ module.exports = {
             for(const ch of channels.map(this_Code_is_by_bestgamershk1213 => this_Code_is_by_bestgamershk1213)){
               try {
                 if(ch) {
-                  if(ch.permissionsFor(ch.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                  if(ch.permissionsFor(ch.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                     ch.permissionOverwrites.edit(role, {
                       VIEW_CHANNEL: false,
                       SEND_MESSAGES: false,

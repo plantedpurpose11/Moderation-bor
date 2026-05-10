@@ -21,7 +21,7 @@ module.exports = {
     
     let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language")
     try {
-      if (!message.guild.me.permissions.has([Permissions.FLAGS.MANAGE_ROLES]))
+      if (!message.guild.members.me.permissions.has([Permissions.FLAGS.MANAGE_ROLES]))
         return message.reply({embeds :[new MessageEmbed()
           .setColor(es.wrongcolor).setFooter(client.getFooter(es))
           .setTitle(eval(client.la[ls]["cmds"]["administration"]["mute"]["variable1"]))
@@ -136,7 +136,7 @@ module.exports = {
 
       } else {
         let allguildroles = [...message.guild.roles.cache.values()];
-        if (mutedRole.position > message.guild.me.roles.highest.position)
+        if (mutedRole.position > message.guild.members.me.roles.highest.position)
           return message.reply({embeds :[new MessageEmbed()
             .setColor(es.wrongcolor)
             .setFooter(client.getFooter(es))
@@ -188,7 +188,7 @@ module.exports = {
                 (c.permissionOverwrites.cache.has(mutedRole.id) && !c.permissionOverwrites.cache.get(mutedRole.id).deny.toArray().includes("ADD_REACTIONS"))
             ).forEach(async (ch) => {
               try {
-                if(ch.permissionsFor(ch.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                if(ch.permissionsFor(ch.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                   await ch.permissionOverwrites.edit(mutedRole, {
                     SEND_MESSAGES: false,
                     ADD_REACTIONS: false,
@@ -275,7 +275,7 @@ module.exports = {
                 (c.permissionOverwrites.cache.has(mutedRole.id) && !c.permissionOverwrites.cache.get(mutedRole.id).deny.toArray().includes("ADD_REACTIONS"))
             ).forEach(async (ch) => {
               try {
-                if(ch.permissionsFor(ch.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                if(ch.permissionsFor(ch.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                   await ch.permissionOverwrites.edit(mutedRole, {
                     SEND_MESSAGES: false,
                     ADD_REACTIONS: false,

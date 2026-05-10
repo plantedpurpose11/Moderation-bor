@@ -42,11 +42,11 @@ module.exports = async (client, message) => {
     //now define the right prefix either ping or not ping
     const [, matchedPrefix] = message.content.match(prefixRegex);
     //CHECK PERMISSIONS
-    if(!message.guild.me.permissions.has(Discord.Permissions.FLAGS.USE_EXTERNAL_EMOJIS))
+    if(!message.guild.members.me.permissions.has(Discord.Permissions.FLAGS.USE_EXTERNAL_EMOJIS))
       return message.reply(`:x: **I am missing the Permission to USE EXTERNAL EMOJIS**`).catch(()=>{})
-    if(!message.guild.me.permissions.has(Discord.Permissions.FLAGS.EMBED_LINKS))
+    if(!message.guild.members.me.permissions.has(Discord.Permissions.FLAGS.EMBED_LINKS))
       return message.reply(`❌ **I am missing the Permission to EMBED LINKS (Sending Embeds)**`).catch(()=>{})
-    if(!message.guild.me.permissions.has(Discord.Permissions.FLAGS.ADD_REACTIONS))
+    if(!message.guild.members.me.permissions.has(Discord.Permissions.FLAGS.ADD_REACTIONS))
       return message.reply(`❌ **I am missing the Permission to ADD REACTIONS**`).catch(()=>{})
 
 
@@ -190,7 +190,7 @@ module.exports = async (client, message) => {
         
         if(player && player.node && !player.node.connected) player.node.connect();
         
-        if(message.guild.me.voice.channel && player) {
+        if(message.guild.members.me.voice.channel && player) {
           //destroy the player if there is no one
           if(!player.queue) await player.destroy();
           await delay(350);
@@ -204,7 +204,7 @@ module.exports = async (client, message) => {
             if(command.parameters.type == "music"){
               //get the channel instance
               const { channel } = message.member.voice;
-              const mechannel = message.guild.me.voice.channel;
+              const mechannel = message.guild.members.me.voice.channel;
               //if not in a voice Channel return error
               if (!channel) {
                 not_allowed = true;
@@ -215,7 +215,7 @@ module.exports = async (client, message) => {
               }
               //If there is no player, then kick the bot out of the channel, if connected to
               if(!player && mechannel) {
-                await message.guild.me.voice.disconnect().catch(e=>{});
+                await message.guild.members.me.voice.disconnect().catch(e=>{});
                 await delay(350);
               }
               if(player && player.queue && player.queue.current && command.parameters.check_dj){

@@ -615,7 +615,7 @@ module.exports = client => {
                 .then((channel) => {
                   setTimeout(()=>{
                     try{
-                      if(channel.permissionsFor(channel.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                      if(channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                         channel.permissionOverwrites.edit(usert.id, {
                           VIEW_CHANNEL: true,
                           SEND_MESSAGES: true

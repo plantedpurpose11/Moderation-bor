@@ -116,7 +116,7 @@ module.exports = async (client, interaction) => {
   
     if(player && player.node && !player.node.connected) player.node.connect();
     
-    if(guild.me.voice.channel && player) {
+    if(guild.members.me.voice.channel && player) {
       //destroy the player if there is no one
       if(!player.queue) await player.destroy();
       await delay(350);
@@ -130,7 +130,7 @@ module.exports = async (client, interaction) => {
       if(command.parameters.type == "music"){
         //get the channel instance
         const { channel } = member.voice;
-        const mechannel = guild.me.voice.channel;
+        const mechannel = guild.members.me.voice.channel;
         //if not in a voice Channel return error
         if (!channel) {
           not_allowed = true;
@@ -141,7 +141,7 @@ module.exports = async (client, interaction) => {
         }
         //If there is no player, then kick the bot out of the channel, if connected to
         if(!player && mechannel) {
-          await guild.me.voice.disconnect().catch(e=>{});
+          await guild.members.me.voice.disconnect().catch(e=>{});
           await delay(350);
         }
         if(player && player.queue && player.queue.current && command.parameters.check_dj){

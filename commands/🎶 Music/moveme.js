@@ -35,7 +35,7 @@ const { handlemsg } = require(`${process.cwd()}/handlers/functions`);
     }
     try {
       let channel = message.member.voice.channel;
-      let botchannel = message.guild.me.voice.channel;
+      let botchannel = message.guild.members.me.voice.channel;
       if (!botchannel)
         return message.reply({embeds :[new MessageEmbed()
           .setColor(es.wrongcolor)
