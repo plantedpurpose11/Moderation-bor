@@ -20,7 +20,7 @@ module.exports = {
     let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language")
     var timeouterror;
     try{
-      let NumberEmojiIds = getNumberEmojis().map(emoji => emoji?.replace(">", "").split(":")[2])
+      let NumberEmojiIds = getNumberEmojis()
       first_layer()
       async function first_layer(){
         

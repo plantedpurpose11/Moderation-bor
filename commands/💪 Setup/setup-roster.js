@@ -47,7 +47,7 @@ module.exports = {
       }
       client.roster.ensure(message.guild.id, obj);
 
-      let NumberEmojiIds = getNumberEmojis().map(emoji => emoji?.replace(">", "").split(":")[2])
+      let NumberEmojiIds = getNumberEmojis()
       first_layer()
       var thedb = client.roster;
       async function first_layer(){

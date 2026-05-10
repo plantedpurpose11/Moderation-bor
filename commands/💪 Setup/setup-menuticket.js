@@ -30,7 +30,7 @@ module.exports = {
       var theDB = client.menuticket;
       var pre;
 
-      let NumberEmojiIds = getNumberEmojis().map(emoji => emoji?.replace(">", "").split(":")[2])
+      let NumberEmojiIds = getNumberEmojis()
       let NumberEmojis = getNumberEmojis();
       first_layer()
       async function first_layer() {

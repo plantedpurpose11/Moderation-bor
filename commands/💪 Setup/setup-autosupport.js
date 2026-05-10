@@ -30,8 +30,8 @@ module.exports = {
       let theDB = client.autosupport;
       let pre;
       
-      let NumberEmojiIds = getNumberEmojis().map(emoji => emoji?.replace(">", "").split(":")[2])
-      let NumberEmojis = getNumberEmojis().map(emoji => emoji?.replace(">", "").split(":")[2])
+      let NumberEmojiIds = getNumberEmojis()
+      let NumberEmojis = getNumberEmojis()
       first_layer()
       async function first_layer() {
         
