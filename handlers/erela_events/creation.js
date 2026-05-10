@@ -10,7 +10,7 @@ var {
     clientID = process.env.clientID || config.spotify.clientID,
     clientSecret = process.env.clientSecret || config.spotify.clientSecret;
 
-  // Patch Node to handle the "ready" op sent by newer Lavalink versions
+  // Patch Node to handle the "ready" op sent by Lavalink v4
   var _origMessage = Node.prototype.message;
   Node.prototype.message = function(d) {
     if (Array.isArray(d)) d = Buffer.concat(d);
@@ -19,6 +19,42 @@ var {
     if (payload.op === "ready") return;
     return _origMessage.call(this, d);
   };
+
+  // Patch Node.makeRequest for Lavalink v4 REST API compatibility
+  // v4 uses /v4/ prefix and different response format
+  var _origMakeRequest = Node.prototype.makeRequest;
+  Node.prototype.makeRequest = async function(endpoint, modify) {
+    var v4Endpoint = "/v4/" + endpoint.replace(/^\//, "");
+    var result = await _origMakeRequest.call(this, v4Endpoint, modify);
+    if (endpoint.includes("loadtracks")) {
+      result = transformLoadResponse(result);
+    }
+    return result;
+  };
+
+  function transformLoadResponse(v4) {
+    if (!v4 || !v4.loadType) return v4;
+    // Already v3 format (has tracks array)
+    if (v4.tracks) return v4;
+    var typeMap = { track: "TRACK_LOADED", playlist: "PLAYLIST_LOADED", search: "SEARCH_RESULT", empty: "NO_MATCHES", error: "LOAD_FAILED" };
+    var v3 = { loadType: typeMap[v4.loadType] || v4.loadType, tracks: [], playlistInfo: { name: "", selectedTrack: -1 }, exception: null };
+    if (v4.loadType === "track" && v4.data) {
+      v3.tracks = [mapTrack(v4.data)];
+    } else if (v4.loadType === "playlist" && v4.data) {
+      v3.tracks = (v4.data.tracks || []).map(mapTrack);
+      v3.playlistInfo = { name: v4.data.info ? v4.data.info.name : "", selectedTrack: v4.data.info ? v4.data.info.selectedTrack : -1 };
+    } else if (v4.loadType === "search" && Array.isArray(v4.data)) {
+      v3.tracks = v4.data.map(mapTrack);
+    } else if (v4.loadType === "error" && v4.data) {
+      v3.exception = v4.data;
+    }
+    return v3;
+  }
+
+  function mapTrack(t) {
+    if (!t) return t;
+    return { track: t.encoded || t.track, info: t.info || {} };
+  }
   module.exports = (client) => {
       if (!clientID || !clientSecret || clientID.length < 5 || clientSecret.length < 5) {
         client.manager = new Manager({

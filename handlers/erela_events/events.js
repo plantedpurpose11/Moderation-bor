@@ -18,6 +18,7 @@ playermanager = require("../../handlers/playermanager"),
 
 playercreated = new Map(),
 errorCounts = new Map(),
+errorResetTimers = new Map(),
 collector = false,
 mi;
 module.exports = (client) => {
@@ -38,7 +39,8 @@ module.exports = (client) => {
       }
     })
     .on("playerDestroy", async (player) => {
-      
+      errorCounts.delete(player.guild);
+      if(errorResetTimers.has(player.guild)) { clearTimeout(errorResetTimers.get(player.guild)); errorResetTimers.delete(player.guild); }
       if(player.textChannel && player.guild){
         let Queuechannel = client.channels.cache.get(player.textChannel);
         if(Queuechannel && Queuechannel.permissionsFor(Queuechannel.guild.members.me).has(Permissions.FLAGS.SEND_MESSAGES)){
@@ -73,7 +75,11 @@ module.exports = (client) => {
     .on("trackStart", async (player, track) => {
       try {
         let edited = false;
-        errorCounts.delete(player.guild);
+        if(errorResetTimers.has(player.guild)) clearTimeout(errorResetTimers.get(player.guild));
+        errorResetTimers.set(player.guild, setTimeout(() => {
+          errorCounts.delete(player.guild);
+          errorResetTimers.delete(player.guild);
+        }, 5000));
         if(playercreated.has(player.guild)){
           player.set("eq", "💣 None");
           player.set("filter", "🧨 None");
