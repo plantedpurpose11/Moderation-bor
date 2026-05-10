@@ -24,24 +24,24 @@ module.exports = client => {
                   return message.channel.send({files: [attachment]})
               }
               try{
-                fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${config.gemini_api_key}`, {
+                const geminiKey = process.env.GEMINI_API_KEY || config.gemini_api_key;
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`, {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({
                     contents: [{ parts: [{ text: message.content }] }],
                     generationConfig: { maxOutputTokens: 500 }
                   })
-                })
-                .then(res => res.json())
-                .then(data => {
-                  const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-                  if (reply) message.channel.send({content: reply.substring(0, 2000)}).catch(() => {});
-                  else message.channel.send({content: "❌ Couldn't generate a response."}).catch(() => {});
-                })
-                .catch(() => {
-                  message.channel.send({content: "❌ AI CHAT API IS DOWN"}).catch(() => {});
                 });
+                const data = await res.json();
+                const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (reply) message.channel.send({content: reply.substring(0, 2000)}).catch(() => {});
+                else {
+                  console.log("AICHAT ERROR: No reply from Gemini. Response:", JSON.stringify(data));
+                  message.channel.send({content: "❌ Couldn't generate a response."}).catch(() => {});
+                }
               }catch (e){
+                console.log("AICHAT ERROR:", e.message || e);
                 message.channel.send({content: "❌ AI CHAT API IS DOWN"}).catch(() => {})
               }
             }

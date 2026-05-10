@@ -23,27 +23,25 @@ module.exports = {
 		//let IntOption = options.getInteger("OPTIONNAME"); //same as in IntChoices //RETURNS NUMBER
 		const Text = options.getString("chat_text"); //same as in StringChoices //RETURNS STRING 
 		try{
-      fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${config.gemini_api_key}`, {
+      const geminiKey = process.env.GEMINI_API_KEY || config.gemini_api_key;
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           contents: [{ parts: [{ text: Text }] }],
           generationConfig: { maxOutputTokens: 500 }
         })
-      })
-      .then(res => res.json())
-      .then(data => {
-        const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (reply) {
-          interaction?.editReply({content: reply.substring(0, 2000), ephemeral: true}).catch(e => console.log("CHATBOT:".underline.red + " :: " + e.stack.toString().grey));
-        } else {
-          interaction?.editReply({content: ":cry: **Sorry I am clueless... I can't generate a response!**", ephemeral: true}).catch(e => console.log("CHATBOT:".underline.red + " :: " + e.stack.toString().grey));
-        }
-      })
-      .catch(() => {
-        interaction?.editReply({content: ":cry: **Sorry I am clueless... I can't connect to the API!**", ephemeral: true}).catch(e => console.log("CHATBOT:".underline.red + " :: " + e.stack.toString().grey));
       });
+      const data = await res.json();
+      const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (reply) {
+        interaction?.editReply({content: reply.substring(0, 2000), ephemeral: true}).catch(e => console.log("CHATBOT:".underline.red + " :: " + e.stack.toString().grey));
+      } else {
+        console.log("CHATBOT ERROR: No reply from Gemini. Response:", JSON.stringify(data));
+        interaction?.editReply({content: ":cry: **Sorry I am clueless... I can't generate a response!**", ephemeral: true}).catch(e => console.log("CHATBOT:".underline.red + " :: " + e.stack.toString().grey));
+      }
     }catch (e){
+      console.log("CHATBOT ERROR:", e.message || e);
       interaction?.editReply({content: ":cry: **Sorry I am clueless... I can't connect to the API!**", ephemeral: true}).catch(e => console.log("CHATBOT:".underline.red + " :: " + e.stack.toString().grey));
     }
     } catch (e) {
