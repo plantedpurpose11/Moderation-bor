@@ -20,7 +20,7 @@ module.exports = {
     let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language")
 
     try {
-      if(!message.guild.me.permissions.has([Permissions.FLAGS.MANAGE_NICKNAMES]))      
+      if(!message.guild.members.me.permissions.has([Permissions.FLAGS.MANAGE_NICKNAMES]))      
         return message.reply({embeds : [new MessageEmbed()
           .setColor(es.wrongcolor).setFooter(client.getFooter(es))
           .setTitle(`❌ **I am missing the Permission to Manage Nicknames of others**`)

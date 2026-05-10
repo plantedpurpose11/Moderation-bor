@@ -387,7 +387,7 @@ module.exports = {
                 buffer = [];
                 for (let i = 0; i < allGiveaways.length; i++) {
                     try{
-                    let invite = client.guilds.cache.get(allGiveaways[i].guildId).invites.cache.size > 0 ? client.guilds.cache.get(allGiveaways[i].guildId).invites.cache.map(invite => invite.url)[0] : client.guilds.cache.get(allGiveaways[i].guildId).channels.cache.first().permissionsFor(message.guild.me).has(Permissions.FLAGS.CREATE_INSTANT_INVITE) ? await client.guilds.cache.get(allGiveaways[i].guildId).channels.cache.first().createInvite() : "";
+                    let invite = client.guilds.cache.get(allGiveaways[i].guildId).invites.cache.size > 0 ? client.guilds.cache.get(allGiveaways[i].guildId).invites.cache.map(invite => invite.url)[0] : client.guilds.cache.get(allGiveaways[i].guildId).channels.cache.first().permissionsFor(message.guild.members.me).has(Permissions.FLAGS.CREATE_INSTANT_INVITE) ? await client.guilds.cache.get(allGiveaways[i].guildId).channels.cache.first().createInvite() : "";
                     buffer.push(`> Guild: [\`${client.guilds.cache.get(allGiveaways[i].guildId).name}\`](${invite})\n> Prize: ${allGiveaways[i].prize}\n> Duration: \`${ms(new Date() - allGiveaways[i].startAt)}\` | [\`JUMP TO IT\`](https://discord.com/channels/${allGiveaways[i].guildId}/${allGiveaways[i].channelId}/${allGiveaways[i].messageId})\n`)
                 }catch{}
                 }

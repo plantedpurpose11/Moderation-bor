@@ -192,7 +192,7 @@ module.exports = client => {
                                 }
                             }
                     }
-                    if(message.channel.permissionsFor(message.channel.guild.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
+                    if(message.channel.permissionsFor(message.channel.guild.members.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
                         message.delete().catch((e) => {console.log(e)})
                     } else {
                         message.channel.send(":x: **I am missing the MANAGE_MESSAGES Permission!**").then(m => {

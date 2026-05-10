@@ -49,9 +49,9 @@ module.exports = {
       const player = client.manager.players.get(message.guild.id);
       //if no player available return aka not playing anything
       if (!player) {
-        if (message.guild.me.voice.channel) {
+        if (message.guild.members.me.voice.channel) {
           try {
-            message.guild.me.voice.disconnect();
+            message.guild.members.me.voice.disconnect();
           } catch {}
           message.reply({embeds : [new MessageEmbed()
             .setTitle(client.la[ls].cmds.music.skip.title)
@@ -77,9 +77,9 @@ module.exports = {
       if (player.queue.size == 0) {
         //if its on autoplay mode, then do autoplay before leaving...
         if (player.get("autoplay")) return autoplay(client, player, "skip");
-        if (message.guild.me.voice.channel) {
+        if (message.guild.members.me.voice.channel) {
           try {
-            message.guild.me.voice.disconnect();
+            message.guild.members.me.voice.disconnect();
           } catch {}
           try {
             player.destroy();

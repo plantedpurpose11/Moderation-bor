@@ -80,7 +80,7 @@ module.exports = client => {
                 setTimeout(() => {
                     try { 
                         if(!message.deleted) {
-                            if(message.channel.permissionsFor(message.channel.guild.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
+                            if(message.channel.permissionsFor(message.channel.guild.members.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
                                 message.delete().catch(() => {
                                     //Try a second time
                                     setTimeout(()=>{message.delete().catch(() => { })}, 1500)

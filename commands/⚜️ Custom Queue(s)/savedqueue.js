@@ -528,7 +528,7 @@ module.exports = {
             .setFooter(client.user.username, ee.footericon)
             .setTitle(eval(client.la[ls]["cmds"]["customqueues"]["savedqueue"]["variable82"]))
           ]});
-        const mechannel = message.guild.me.voice.channel;
+        const mechannel = message.guild.members.me.voice.channel;
         //get the player instance
         var player = client.manager.players.get(message.guild.id);
         let playercreate = false;
@@ -554,7 +554,7 @@ module.exports = {
           ]});
         //If there is no player, then kick the bot out of the channel, if connected to
         if(!player && mechannel) {
-          message.guild.me.voice.disconnect().catch(e=>console.log("This prevents a Bug"));
+          message.guild.members.me.voice.disconnect().catch(e=>console.log("This prevents a Bug"));
         }
         //if not in the same channel --> return
         if (mechannel && channel.id !== mechannel.id)

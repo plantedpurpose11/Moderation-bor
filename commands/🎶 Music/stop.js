@@ -32,8 +32,8 @@ const { handlemsg } = require(`${process.cwd()}/handlers/functions`);
     try {
       //if there is no current track error
       if (!player) {
-        if (message.guild.me.voice.channel) {
-          message.guild.me.voice.disconnect()
+        if (message.guild.members.me.voice.channel) {
+          message.guild.members.me.voice.disconnect()
           return message.reply({embeds : [new MessageEmbed()
             .setTitle(eval(client.la[ls]["cmds"]["music"]["stop"]["variable1"]))
             .setColor(es.color)
@@ -49,9 +49,9 @@ const { handlemsg } = require(`${process.cwd()}/handlers/functions`);
       }
 
       if (player.queue && !player.queue.current) {
-        if (message.guild.me.voice.channel) {
+        if (message.guild.members.me.voice.channel) {
           try {
-            message.guild.me.voice.disconnect();
+            message.guild.members.me.voice.disconnect();
           } catch {}
           try {
             player.destroy();

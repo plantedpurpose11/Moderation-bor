@@ -21,7 +21,7 @@ module.exports = {
     
     let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language")
     try {
-      if (!message.guild.me.permissions.has([Permissions.FLAGS.MANAGE_ROLES]))
+      if (!message.guild.members.me.permissions.has([Permissions.FLAGS.MANAGE_ROLES]))
         return message.reply({embeds : [new MessageEmbed()
           .setColor(es.wrongcolor).setFooter(client.getFooter(es))
           .setTitle(eval(client.la[ls]["cmds"]["administration"]["permamute"]["variable1"]))
@@ -75,7 +75,7 @@ module.exports = {
       }
       //if no mutedrole found, do things here
       if (!mutedrole) {
-        let highestrolepos = message.guild.me.roles.highest.position;
+        let highestrolepos = message.guild.members.me.roles.highest.position;
         mutedrole = await message.guild.roles.create({
           data: {
             name: `muted`,
@@ -94,7 +94,7 @@ module.exports = {
         });
       }
       //if the muted role position is bigger then the bots highest position
-      if (mutedrole.position > message.guild.me.roles.highest.position)
+      if (mutedrole.position > message.guild.members.me.roles.highest.position)
         return message.reply({embeds : [new MessageEmbed()
           .setColor(es.wrongcolor)
           .setFooter(client.getFooter(es))
@@ -103,7 +103,7 @@ module.exports = {
       //for each channel which does not have the mutedrole in it, update the permissions
       await message.guild.channels.cache.filter(c => !c.permissionOverwrites.cache.has(mutedrole.id)).forEach(async (ch) => {
         try {
-          if(ch.permissionsFor(ch.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+          if(ch.permissionsFor(ch.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
             await ch.permissionOverwrites.edit(mutedrole, {
               SEND_MESSAGES: false,
               ADD_REACTIONS: false,

@@ -15,10 +15,10 @@ module.exports = {
 		const ls = client.settings.get(message.guild.id, "language")
 		if (!client.settings.get(message.guild.id, "SOUNDBOARD")) {return message.reply({embeds: [new MessageEmbed().setColor(es.wrongcolor).setFooter(client.getFooter(es)).setTitle(client.la[ls].common.disabled.title).setDescription(require(`${process.cwd()}/handlers/functions`).handlemsg(client.la[ls].common.disabled.description, {prefix: prefix}))]});}
 		const { channel } = message.member.voice;
-		const botchannel = message.guild.me.voice.channel;
+		const botchannel = message.guild.members.me.voice.channel;
 		if (!channel) {return message.reply({embeds: [new MessageEmbed().setTitle('❌ You need to join a voice channel').setColor(es.wrongcolor).setFooter(client.getFooter(es))]});}
-		if(!channel.permissionsFor(message.guild.me).has("CONNECT")){return message.reply({embeds: [new MessageEmbed().setTitle(":x: I'm missing the Permission to join your Voice Channel").setColor(es.wrongcolor).setFooter(client.getFooter(es))]});}
-		if(!channel.permissionsFor(message.guild.me).has("SPEAK")){return message.reply({embeds: [new MessageEmbed().setTitle(":x: I'm missing the Permission to speak in your Voice Channel").setColor(es.wrongcolor).setFooter(client.getFooter(es))]});}
+		if(!channel.permissionsFor(message.guild.members.me).has("CONNECT")){return message.reply({embeds: [new MessageEmbed().setTitle(":x: I'm missing the Permission to join your Voice Channel").setColor(es.wrongcolor).setFooter(client.getFooter(es))]});}
+		if(!channel.permissionsFor(message.guild.members.me).has("SPEAK")){return message.reply({embeds: [new MessageEmbed().setTitle(":x: I'm missing the Permission to speak in your Voice Channel").setColor(es.wrongcolor).setFooter(client.getFooter(es))]});}
 		if(channel.userLimit != 0 && channel.full){return message.reply({embeds: [new MessageEmbed().setTitle(":x: Your Voice Channel is full!").setColor(es.wrongcolor).setFooter(client.getFooter(es))]});}
 		if (botchannel) {return message.reply({embeds: [new MessageEmbed().setTitle(`❌ I am already connected in: \`${botchannel.name}\``).setFooter(client.getFooter(es))]});}
 		const e = await message.react('🎙️').catch(e => console.log(String(e).grey))

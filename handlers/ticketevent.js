@@ -172,7 +172,7 @@ module.exports = client => {
                             }
                         }
 
-                        if(msg.channel.permissionsFor(msg.channel.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                        if(msg.channel.permissionsFor(msg.channel.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                             await msg.channel.permissionOverwrites.edit(data.user, {
                                 SEND_MESSAGES: false,
                                 VIEW_CHANNEL: false,
@@ -587,7 +587,7 @@ module.exports = client => {
                         oldmapped.forEach((element) => {
                             if (element.id == user.id) {
                                 if (!element.allow.includes("VIEW_CHANNEL")) {
-                                    if(!channel.permissionsFor(channel.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                                    if(!channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                                         return channel.send(`:x: **I am missing the Permissions MANAGE_CHANNELS for: \`${channel.name}\`**`);
                                     }
                                     channel.permissionOverwrites.edit(user.id, {
@@ -633,7 +633,7 @@ module.exports = client => {
                                             });
                                         });
                                 } else {
-                                    if(!channel.permissionsFor(channel.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                                    if(!channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                                         return channel.send(`:x: **I am missing the Permissions MANAGE_CHANNELS for: \`${channel.name}\`**`);
                                     }
                                     channel.permissionOverwrites.edit(user.id, {
@@ -662,7 +662,7 @@ module.exports = client => {
                             }
                         });
                     } else {
-                        if(!channel.permissionsFor(channel.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                        if(!channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                             return channel.send(`:x: **I am missing the Permissions MANAGE_CHANNELS for: \`${channel.name}\`**`);
                         }
                         channel.permissionOverwrites.edit(user.id, {
@@ -780,7 +780,7 @@ module.exports = client => {
                         oldmapped.forEach((element) => {
                             if (element.id == user.id) {
                                 if (!element.allow.includes("VIEW_CHANNEL")) {
-                                    if(!channel.permissionsFor(channel.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                                    if(!channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                                         return channel.send(`:x: **I am missing the Permissions MANAGE_CHANNELS for: \`${channel.name}\`**`);
                                     }
                                     channel.permissionOverwrites.edit(user.id, {
@@ -825,7 +825,7 @@ module.exports = client => {
                                             });
                                         });
                                 } else {
-                                    if(!channel.permissionsFor(channel.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                                    if(!channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                                         return channel.send(`:x: **I am missing the Permissions MANAGE_CHANNELS for: \`${channel.name}\`**`);
                                     }
                                     channel.permissionOverwrites.edit(user.id, {
@@ -853,7 +853,7 @@ module.exports = client => {
                             }
                         });
                     } else {
-                        if(!channel.permissionsFor(channel.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                        if(!channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                             return channel.send(`:x: **I am missing the Permissions MANAGE_CHANNELS for: \`${channel.name}\`**`);
                         }
                         channel.permissionOverwrites.edit(user.id, {
@@ -925,7 +925,7 @@ module.exports = client => {
             }
             let data = client.setups.get(channel.id, "ticketdata");
             if(!channel.permissionsFor(member).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-                if(!channel.permissionsFor(channel.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                if(!channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                     return channel.send(`:x: **I am missing the Permissions MANAGE_CHANNELS for: \`${channel.name}\`**`);
                 }
                 channel.permissionOverwrites.edit(member.user, {
@@ -1188,8 +1188,8 @@ module.exports = client => {
                 if(settings.claim.enabled){
                     allbuttons.push(new MessageActionRow().addComponents([new MessageButton().setStyle('SECONDARY').setCustomId('ticket_claim').setLabel("Claim the Ticket").setEmoji("✅")]))
                 }
-                if(ch.permissionsFor(ch.guild.me).has(Permissions.FLAGS.SEND_MESSAGES)){
-                    if(ch.permissionsFor(ch.guild.me).has(Permissions.FLAGS.EMBED_LINKS)){
+                if(ch.permissionsFor(ch.guild.members.me).has(Permissions.FLAGS.SEND_MESSAGES)){
+                    if(ch.permissionsFor(ch.guild.members.me).has(Permissions.FLAGS.EMBED_LINKS)){
                         await ch.send({
                             content: `<@${user.id}>${extrastring}`,
                             embeds: ticketembeds,
@@ -1197,7 +1197,7 @@ module.exports = client => {
                         }).catch((O) => {
                             console.log(String(O).grey)
                         }).then(msg => {
-                            if(msg.channel.permissionsFor(msg.guild.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
+                            if(msg.channel.permissionsFor(msg.guild.members.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
                                 msg.pin().catch((O) => {
                                     console.log(String(O).grey)
                                 })
@@ -1210,7 +1210,7 @@ module.exports = client => {
                         }).catch((O) => {
                             console.log(String(O).grey)
                         }).then(msg => {
-                            if(msg.channel.permissionsFor(msg.guild.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
+                            if(msg.channel.permissionsFor(msg.guild.members.me).has(Permissions.FLAGS.MANAGE_MESSAGES)){
                                 msg.pin().catch((O) => {
                                     console.log(String(O).grey)
                                 })

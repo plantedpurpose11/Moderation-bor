@@ -2142,7 +2142,7 @@ async function check_created_voice_channels(client) {
                           client.jointocreatemap.delete(`tempvoicechannel_${vc.guild.id}_${vc.id}`);
                           client.jointocreatemap.delete(`owner_${vc.guild.id}_${vc.id}`);
                           //move user
-                          if(vc.permissionsFor(vc.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+                          if(vc.permissionsFor(vc.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
                             vc.delete().catch(e => console.error(e) )
                             console.log(`Deleted the Channel: ${vc.name} in: ${vc.guild ? vc.guild.name : "undefined"} DUE TO EMPTYNESS`.strikethrough.brightRed)
                           } else {
@@ -2167,7 +2167,7 @@ function create_join_to_create_Channel(client, voiceState, type) {
   let chname =  client.jtcsettings.get(voiceState.member.guild.id, `jtcsettings${type}.channelname`) || "{user}'s Room";
   
   //CREATE THE CHANNEL
-  if (!voiceState.guild.me.permissions.has("MANAGE_CHANNELS")) {
+  if (!voiceState.guild.members.me.permissions.has("MANAGE_CHANNELS")) {
     try {
       voiceState.member.user.send(eval(client.la[ls]["handlers"]["functionsjs"]["functions"]["variable10"]))
     } catch {
@@ -2175,7 +2175,7 @@ function create_join_to_create_Channel(client, voiceState, type) {
         let channel = guild.channels.cache.find(
           channel =>
           channel.type === "GUILD_TEXT" &&
-          channel.permissionsFor(guild.me).has("SEND_MESSAGES")
+          channel.permissionsFor(guild.members.me).has("SEND_MESSAGES")
         );
         channel.send(eval(client.la[ls]["handlers"]["functionsjs"]["functions"]["variable11"])).catch(e => console.log("THIS IS TO PREVENT A CRASH"))
       } catch {}
@@ -2221,15 +2221,15 @@ function create_join_to_create_Channel(client, voiceState, type) {
       client.jointocreatemap.set(`owner_${vc.guild.id}_${vc.id}`, voiceState.id);
       client.jointocreatemap.set(`tempvoicechannel_${vc.guild.id}_${vc.id}`, vc.id);
       //move user
-      if(vc.permissionsFor(vc.guild.me).has(Permissions.FLAGS.MOVE_MEMBERS) && voiceState.channel.permissionsFor(voiceState.guild.me).has(Permissions.FLAGS.MOVE_MEMBERS)){
+      if(vc.permissionsFor(vc.guild.members.me).has(Permissions.FLAGS.MOVE_MEMBERS) && voiceState.channel.permissionsFor(voiceState.guild.members.me).has(Permissions.FLAGS.MOVE_MEMBERS)){
         await voiceState.setChannel(vc);
       }
       /*//move to parent
-      if(vc.permissionsFor(vc.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+      if(vc.permissionsFor(vc.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
         await vc.setParent(voiceState.channel.parent)
       }*/
       //add permissions
-      if(vc.permissionsFor(vc.guild.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
+      if(vc.permissionsFor(vc.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
         await vc.permissionOverwrites.edit(voiceState.id, {
           MANAGE_CHANNELS: true,
           VIEW_CHANNEL: true,

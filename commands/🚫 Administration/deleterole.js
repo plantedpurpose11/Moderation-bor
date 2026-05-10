@@ -19,7 +19,7 @@ module.exports = {
   type: "role",
   run: async (client, message, args, cmduser, text, prefix) => {
     
-    if(!message.guild.me.permissions.has([Permissions.FLAGS.MANAGE_ROLES]))      
+    if(!message.guild.members.me.permissions.has([Permissions.FLAGS.MANAGE_ROLES]))      
     return message.reply({embeds : [new MessageEmbed()
       .setColor(es.wrongcolor)
       .setFooter(client.getFooter(es))

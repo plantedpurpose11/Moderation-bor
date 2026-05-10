@@ -748,13 +748,13 @@ module.exports = {
                                     });
                                     var guildrole = message.guild.roles.cache.get(role.id)
 
-                                    if (!message.guild.me.roles) return message.reply({
+                                    if (!message.guild.members.me.roles) return message.reply({
                                       embeds: [new Discord.MessageEmbed().setFooter(client.getFooter(es)).setColor("RED").setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable25"])).setAuthor("❌ ERROR | Could not Access the Role", message.author.displayAvatarURL({
                                         dynamic: true
                                       }))]
                                     })
 
-                                    var botrole = message.guild.me.roles.highest
+                                    var botrole = message.guild.members.me.roles.highest
                                     if (guildrole.rawPosition >= botrole.rawPosition) {
                                       message.reply({
                                         content: eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable26"])
@@ -1198,13 +1198,13 @@ module.exports = {
                           });
                           var guildrole = message.guild.roles.cache.get(role.id)
 
-                          if (!message.guild.me.roles) return message.reply({
+                          if (!message.guild.members.me.roles) return message.reply({
                             embeds: [new Discord.MessageEmbed().setFooter(client.getFooter(es)).setColor("RED").setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable58"])).setAuthor("❌ ERROR | Could not Access the Role", message.author.displayAvatarURL({
                               dynamic: true
                             }))]
                           })
 
-                          var botrole = message.guild.me.roles.highest
+                          var botrole = message.guild.members.me.roles.highest
                           if (guildrole.rawPosition >= botrole.rawPosition) {
                             message.reply({
                               content: eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable59"])
@@ -1315,13 +1315,13 @@ module.exports = {
               })
               var guildrole = message.guild.roles.cache.get(role.id)
 
-              if (!message.guild.me.roles) return message.reply({
+              if (!message.guild.members.me.roles) return message.reply({
                 embeds: [new Discord.MessageEmbed().setFooter(client.getFooter(es)).setColor("RED").setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable70"])).setAuthor("❌ ERROR | Could not Access the Role", message.author.displayAvatarURL({
                   dynamic: true
                 }))]
               })
 
-              var botrole = message.guild.me.roles.highest
+              var botrole = message.guild.members.me.roles.highest
 
               if (guildrole.rawPosition <= botrole.rawPosition) {
                 apply_for_here.set(message.guild.id, role.id, pre+".accept_role")
@@ -1522,13 +1522,13 @@ module.exports = {
                 })
                 var guildrole = message.guild.roles.cache.get(role.id)
 
-                if (!message.guild.me.roles) return message.reply({
+                if (!message.guild.members.me.roles) return message.reply({
                   embeds: [new Discord.MessageEmbed().setFooter(client.getFooter(es)).setColor("RED").setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable81"])).setAuthor("❌ ERROR | Could not Access the Role", message.author.displayAvatarURL({
                     dynamic: true
                   }))]
                 })
 
-                var botrole = message.guild.me.roles.highest
+                var botrole = message.guild.members.me.roles.highest
 
                 if (guildrole.rawPosition <= botrole.rawPosition) {
                   apply_for_here.set(message.guild.id, role.id, pre+".one.role")
@@ -1777,13 +1777,13 @@ module.exports = {
                 });
                 var guildrole = message.guild.roles.cache.get(role.id)
 
-                if (!message.guild.me.roles) return message.reply({
+                if (!message.guild.members.me.roles) return message.reply({
                   embeds: [new Discord.MessageEmbed().setFooter(client.getFooter(es)).setColor("RED").setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable100"])).setAuthor("❌ ERROR | Could not Access the Role", message.author.displayAvatarURL({
                     dynamic: true
                   }))]
                 })
 
-                var botrole = message.guild.me.roles.highest
+                var botrole = message.guild.members.me.roles.highest
 
                 if (guildrole.rawPosition <= botrole.rawPosition) {
                   apply_for_here.set(message.guild.id, role.id, pre+".two.role")
@@ -2034,13 +2034,13 @@ module.exports = {
                 });
                 var guildrole = message.guild.roles.cache.get(role.id)
 
-                if (!message.guild.me.roles) return message.reply({
+                if (!message.guild.members.me.roles) return message.reply({
                   embeds: [new Discord.MessageEmbed().setFooter(client.getFooter(es)).setColor("RED").setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable119"])).setAuthor("❌ ERROR | Could not Access the Role", message.author.displayAvatarURL({
                     dynamic: true
                   }))]
                 })
 
-                var botrole = message.guild.me.roles.highest
+                var botrole = message.guild.members.me.roles.highest
 
                 if (guildrole.rawPosition <= botrole.rawPosition) {
                   apply_for_here.set(message.guild.id, role.id, pre+".three.role")
@@ -2293,13 +2293,13 @@ module.exports = {
                 });
                 var guildrole = message.guild.roles.cache.get(role.id)
 
-                if (!message.guild.me.roles) return message.reply({
+                if (!message.guild.members.me.roles) return message.reply({
                   embeds: [new Discord.MessageEmbed().setFooter(client.getFooter(es)).setColor("RED").setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable140"])).setAuthor("❌ ERROR | Could not Access the Role", message.author.displayAvatarURL({
                     dynamic: true
                   }))]
                 })
 
-                var botrole = message.guild.me.roles.highest
+                var botrole = message.guild.members.me.roles.highest
 
                 if (guildrole.rawPosition <= botrole.rawPosition) {
                   apply_for_here.set(message.guild.id, role.id, pre+".four.role")
@@ -2553,13 +2553,13 @@ module.exports = {
                 });
                 var guildrole = message.guild.roles.cache.get(role.id)
 
-                if (!message.guild.me.roles) return message.reply({
+                if (!message.guild.members.me.roles) return message.reply({
                   embeds: [new Discord.MessageEmbed().setFooter(client.getFooter(es)).setColor("RED").setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable161"])).setAuthor("❌ ERROR | Could not Access the Role", message.author.displayAvatarURL({
                     dynamic: true
                   }))]
                 })
 
-                var botrole = message.guild.me.roles.highest
+                var botrole = message.guild.members.me.roles.highest
 
                 if (guildrole.rawPosition <= botrole.rawPosition) {
                   apply_for_here.set(message.guild.id, role.id, pre+".five.role")
@@ -2950,13 +2950,13 @@ module.exports = {
               })
               var guildrole = message.guild.roles.cache.get(role.id)
 
-              if (!message.guild.me.roles) return message.reply({
+              if (!message.guild.members.me.roles) return message.reply({
                 embeds: [new Discord.MessageEmbed().setFooter(client.getFooter(es)).setColor("RED").setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable183"])).setAuthor("❌ ERROR | Could not Access the Role", message.author.displayAvatarURL({
                   dynamic: true
                 }))]
               })
 
-              var botrole = message.guild.me.roles.highest
+              var botrole = message.guild.members.me.roles.highest
 
               if (guildrole.rawPosition <= botrole.rawPosition) {
                 apply_for_here.set(message.guild.id, role.id, pre+".TEMP_ROLE")

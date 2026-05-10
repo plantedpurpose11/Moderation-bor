@@ -39,7 +39,7 @@ module.exports = client => {
   client.on("ready", async () => {
     for(const guild of [...client.guilds.cache.values()]){
       let fetchedInvites = null;
-      if (guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD)) {
+      if (guild.members.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD)) {
         await guild.invites.fetch().catch(() => {});
       }
       fetchedInvites = await generateInvitesCache(guild.invites.cache);
@@ -53,7 +53,7 @@ module.exports = client => {
    */
   client.on("guildCreate", async (guild) => {
       let fetchedInvites = null;
-      if (guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD)) {
+      if (guild.members.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD)) {
         await guild.invites.fetch().catch(() => {});
       }
       fetchedInvites = await generateInvitesCache(guild.invites.cache);
@@ -141,14 +141,14 @@ module.exports = client => {
       let perm = false; //if manage guild permissions
 
       //if i dont exist in the guild fetch me
-      if (!member.guild.me) {
+      if (!member.guild.members.me) {
         await member.guild.members.fetch({
             user: client.user.id,
             cache: true
         }).catch(() => {});
       }
       //if not allowed set perm to true
-      if (!member.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD)) perm = true;
+      if (!member.guild.members.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_GUILD)) perm = true;
       /**
        * @INFO
        * GET THE INVITE LINK INFORMATION
@@ -316,7 +316,7 @@ module.exports = client => {
             name: `DISABLED - CAPTCHA`,
             color: `#222222`,
             hoist: true,
-            position: member.guild.me.roles.highest.position - 1,
+            position: member.guild.members.me.roles.highest.position - 1,
             reason: `This role got created, to DISABLED - CAPTCHA Members!`
           }).catch((e) => {
             console.log(e.stack ? String(e.stack).grey : String(e).grey);
@@ -331,7 +331,7 @@ module.exports = client => {
               (c.permissionOverwrites.cache.has(mutedrole.id) && !c.permissionOverwrites.cache.get(mutedrole.id).deny.toArray().includes("ADD_REACTIONS"))
         ).forEach(async (ch) => {
           try {
-            if(ch.permissionsFor(ch.guild.me).has(Discord.Permissions.FLAGS.MANAGE_CHANNELS)){
+            if(ch.permissionsFor(ch.guild.members.me).has(Discord.Permissions.FLAGS.MANAGE_CHANNELS)){
               await ch.permissionOverwrites.edit(mutedrole, {
                 VIEW_CHANNEL: false,
                 SEND_MESSAGES: false,
@@ -387,7 +387,7 @@ module.exports = client => {
                   await member.send(`**OH NO - You failed the CAPTCHA!**\n> Here is an Invite Link in case u need one: https://discord.gg/${member.guild.invites.cache.filter(i => i?.code && i?.maxAge === 0).first().code}\n> :hammer: *I kicked you from the Server due to Security Reasons*`)
                   member.kick("FAILED THE CAPTCHA").catch(() => {});
                 } else {
-                  let channels = member.guild.channels.cache.filter(ch => ch.permissionsFor(member.guild.me).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE));
+                  let channels = member.guild.channels.cache.filter(ch => ch.permissionsFor(member.guild.members.me).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE));
                   if(channels.size > 0) {
                     member.guild.invites.create(channels.first().id).create().then(async invite => {
                       await member.send(`**OH NO - You failed the CAPTCHA!**\n> Here is an Invite Link in case u need one: https://discord.gg/${invite.code}\n> :hammer: *I kicked you from the Server due to Security Reasons*`)
@@ -416,7 +416,7 @@ module.exports = client => {
                 await member.send(`**OH NO - You failed the CAPTCHA!**\n> Here is an Invite Link in case u need one: https://discord.gg/${member.guild.invites.cache.filter(i => i?.code && i?.maxAge === 0).first().code}\n> :hammer: *I kicked you from the Server due to Security Reasons*`)
                 member.kick("FAILED THE CAPTCHA").catch(() => {});
               } else {
-                let channels = member.guild.channels.cache.filter(ch => ch.permissionsFor(member.guild.me).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE));
+                let channels = member.guild.channels.cache.filter(ch => ch.permissionsFor(member.guild.members.me).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE));
                 if(channels.size > 0) {
                   member.guild.invites.create(channels.first().id).create().then(async invite => {
                     await member.send(`**OH NO - You failed the CAPTCHA!**\n> Here is an Invite Link in case u need one: https://discord.gg/${invite.code}\n> :hammer: *I kicked you from the Server due to Security Reasons*`)
@@ -450,8 +450,8 @@ module.exports = client => {
             ]
           }).then(ch => {
             try{
-              if(ch.permissionsFor(ch.guild.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-                if(ch.permissionsFor(ch.guild.me).has(Discord.Permissions.FLAGS.EMBED_LINKS)){
+              if(ch.permissionsFor(ch.guild.members.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                if(ch.permissionsFor(ch.guild.members.me).has(Discord.Permissions.FLAGS.EMBED_LINKS)){
                   ch.send({
                     content: `<@${member.user.id}>`,
                     embeds: [captchaembed], 
@@ -486,7 +486,7 @@ module.exports = client => {
                             member.kick("FAILED THE CAPTCHA").catch(() => {});
                             ch.delete(() => {});
                           } else {
-                            let channels = member.guild.channels.cache.filter(ch => ch.permissionsFor(member.guild.me).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE));
+                            let channels = member.guild.channels.cache.filter(ch => ch.permissionsFor(member.guild.members.me).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE));
                             if(channels.size > 0) {
                               member.guild.invites.create(channels.first().id).create().then(async invite => {
                                 await ch.send(`**OH NO - You failed the CAPTCHA!**\n> Here is an Invite Link in case u need one: https://discord.gg/${invite.code}\n> :hammer: *I will kick you in 2 Seconds from the Server due to Security Reasons*`)
@@ -521,7 +521,7 @@ module.exports = client => {
                           member.kick("FAILED THE CAPTCHA").catch(() => {});
                           ch.delete(() => {});
                         } else {
-                          let channels = member.guild.channels.cache.filter(ch => ch.permissionsFor(member.guild.me).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE));
+                          let channels = member.guild.channels.cache.filter(ch => ch.permissionsFor(member.guild.members.me).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE));
                           if(channels.size > 0) {
                             member.guild.invites.create(channels.first().id).create().then(async invite => {
                               await ch.send(`**OH NO - You failed the CAPTCHA!**\n> Here is an Invite Link in case u need one: https://discord.gg/${invite.code}\n> :hammer: *I kicked you from the Server due to Security Reasons*`)
@@ -579,7 +579,7 @@ module.exports = client => {
                             member.kick("FAILED THE CAPTCHA").catch(() => {});
                             ch.delete(() => {});
                           } else {
-                            let channels = member.guild.channels.cache.filter(ch => ch.permissionsFor(member.guild.me).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE));
+                            let channels = member.guild.channels.cache.filter(ch => ch.permissionsFor(member.guild.members.me).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE));
                             if(channels.size > 0) {
                               member.guild.invites.create(channels.first().id).create().then(async invite => {
                                 await ch.send(`**OH NO - You failed the CAPTCHA!**\n> Here is an Invite Link in case u need one: https://discord.gg/${invite.code}\n> :hammer: *I kicked you from the Server due to Security Reasons*`)
@@ -614,7 +614,7 @@ module.exports = client => {
                           member.kick("FAILED THE CAPTCHA").catch(() => {});
                           ch.delete(() => {});
                         } else {
-                          let channels = member.guild.channels.cache.filter(ch => ch.permissionsFor(member.guild.me).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE));
+                          let channels = member.guild.channels.cache.filter(ch => ch.permissionsFor(member.guild.members.me).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE));
                           if(channels.size > 0) {
                             member.guild.invites.create(channels.first().id).create().then(async invite => {
                               await ch.send(`**OH NO - You failed the CAPTCHA!**\n> Here is an Invite Link in case u need one: https://discord.gg/${invite.code}\n> :hammer: *I kicked you from the Server due to Security Reasons*`)
@@ -675,7 +675,7 @@ module.exports = client => {
             console.log(e.stack ? String(e.stack).grey : String(e).grey)
           }
         } else {
-          if(channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+          if(channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
             channel.send({content: themessage}).catch(() => {});
           }
         }
@@ -717,8 +717,8 @@ module.exports = client => {
           .addField(eval(client.la[ls]["handlers"]["welcomejs"]["welcome"]["variablex_8"]), eval(client.la[ls]["handlers"]["welcomejs"]["welcome"]["variable8"]))
         
           //send the welcome embed to there
-          if(channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-            if(channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.EMBED_LINKS)){
+          if(channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+            if(channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.EMBED_LINKS)){
               channel.send({
                 content: `<@${member.user.id}>`,
                 embeds: [welcomeembed]
@@ -780,8 +780,8 @@ module.exports = client => {
           .setImage(client.settings.get(member.guild.id, "welcome.custom"))
           if(client.settings.get(member.guild.id, "welcome.invite")) welcomeembed.addField("\u200b", `${invitemessage}`)
           //send the welcome embed to there
-        if(channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-          if(channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.EMBED_LINKS)){
+        if(channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+          if(channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.EMBED_LINKS)){
             channel.send({
               content: `<@${member.user.id}>`,
               embeds: [welcomeembed]
@@ -1019,14 +1019,14 @@ module.exports = client => {
             //get it as a discord attachment
             const attachment = new Discord.MessageAttachment(await canvas.toBuffer(), `welcome-image.png`);
             //send the welcome embed to there
-            if(channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-              if(channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.EMBED_LINKS) && channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.ATTACH_FILES)){
+            if(channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+              if(channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.EMBED_LINKS) && channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.ATTACH_FILES)){
                 channel.send({
                   content: `<@${member.user.id}>`,
                   embeds: [welcomeembed.setImage(`attachment://welcome-image.png`)],
                   files: [attachment]
                 }).catch(() => {});
-              } else if(channel.permissionsFor(channel.guild.me).has(Discord.Permissions.FLAGS.ATTACH_FILES)){
+              } else if(channel.permissionsFor(channel.guild.members.me).has(Discord.Permissions.FLAGS.ATTACH_FILES)){
                 channel.send({
                   content: `<@${member.user.id}>\n${welcomeembed.description}`.substring(0, 2000),
                   files: [attachment]

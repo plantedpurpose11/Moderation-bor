@@ -39,7 +39,7 @@ const {
             .setFooter(client.getFooter(es))
             .setTitle(eval(client.la[ls]["cmds"]["minigames"]["youtubetogether"]["variable1"]))
         );
-        if (!channel.permissionsFor(channel.guild.me).has("CREATE_INSTANT_INVITE")) {
+        if (!channel.permissionsFor(channel.guild.members.me).has("CREATE_INSTANT_INVITE")) {
           const nochannel = new MessageEmbed()
           .setDescription(eval(client.la[ls]["cmds"]["minigames"]["youtubetogether"]["variable2"]))
           .setColor(es.wrongcolor)
