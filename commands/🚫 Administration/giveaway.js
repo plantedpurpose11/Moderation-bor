@@ -133,7 +133,7 @@ module.exports = {
                     botsCanWin: false,
                     embedColor: require("discord.js").Util.resolveColor(es.color) ? require("discord.js").Util.resolveColor(es.color) : 3932049,
                     embedColorEnd: require("discord.js").Util.resolveColor(es.wrongcolor) ? require("discord.js").Util.resolveColor(es.wrongcolor) : 16731451,
-                    reaction: '867721863151747092',
+                    reaction: '🎉',
                     lastChance: {
                         enabled: true,
                         content: '⚠️ **LAST CHANCE TO ENTER!** ⚠️',
