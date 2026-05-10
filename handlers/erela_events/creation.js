@@ -10,19 +10,27 @@ var {
     clientID = process.env.clientID || config.spotify.clientID,
     clientSecret = process.env.clientSecret || config.spotify.clientSecret;
 
-  // Patch Node to handle the "ready" op sent by Lavalink v4
+  // ── Lavalink v4 compatibility layer ──
+  // v4 changes: WebSocket at /v4/websocket, REST prefix /v4/, player commands via REST not WS
+
+  var _origMakeRequest = Node.prototype.makeRequest;
+  var WebSocket = require("ws");
+  var lavalinkSessions = new Map();
+
+  // 1. Capture sessionId from "ready" op, pass everything else through
   var _origMessage = Node.prototype.message;
   Node.prototype.message = function(d) {
     if (Array.isArray(d)) d = Buffer.concat(d);
     else if (d instanceof ArrayBuffer) d = Buffer.from(d);
     var payload = JSON.parse(d.toString());
-    if (payload.op === "ready") return;
+    if (payload.op === "ready") {
+      lavalinkSessions.set(this.options.identifier, payload.sessionId);
+      return;
+    }
     return _origMessage.call(this, d);
   };
 
-  // Patch Node.connect for Lavalink v4 WebSocket endpoint (/v4/websocket)
-  var _origConnect = Node.prototype.connect;
-  var WebSocket = require("ws");
+  // 2. Connect to /v4/websocket instead of /
   Node.prototype.connect = function() {
     if (this.connected) return;
     var headers = {
@@ -41,9 +49,80 @@ var {
     this.socket.on("error", this.error.bind(this));
   };
 
-  // Patch Node.makeRequest for Lavalink v4 REST API compatibility
-  // v4 uses /v4/ prefix and different response format
-  var _origMakeRequest = Node.prototype.makeRequest;
+  // 3. REST helper for player commands
+  Node.prototype.restCall = async function(path, method, body) {
+    var options = {
+      path: "/" + path.replace(/^\//, ""),
+      method: method,
+      headers: { Authorization: this.options.password },
+      headersTimeout: this.options.requestTimeout,
+    };
+    if (body) {
+      options.headers["Content-Type"] = "application/json";
+      options.body = JSON.stringify(body);
+    }
+    try {
+      var req = await this.http.request(options);
+      this.calls++;
+      try { return await req.body.json(); } catch(e) { return true; }
+    } catch (err) {
+      console.log("[LAVALINK REST]", method, path, err.message);
+      return true;
+    }
+  };
+
+  // 4. Intercept Node.send — convert v3 WS ops to v4 REST calls
+  Node.prototype.send = function(data) {
+    return new Promise(async (resolve, reject) => {
+      if (!data || !data.op) return resolve(false);
+      var sid = lavalinkSessions.get(this.options.identifier);
+      if (!sid) return resolve(false);
+      var guildId = data.guildId;
+      var base = "/v4/sessions/" + sid + "/players/" + guildId;
+      try {
+        switch (data.op) {
+          case "voiceUpdate":
+            await this.restCall(base, "PATCH", {
+              voice: { token: data.event.token, endpoint: data.event.endpoint, sessionId: data.sessionId }
+            });
+            break;
+          case "play":
+            var playBody = { track: { encoded: data.track } };
+            if (data.startTime) playBody.position = data.startTime;
+            if (data.endTime) playBody.endTime = data.endTime;
+            if (data.volume !== undefined) playBody.volume = data.volume;
+            var playPath = data.noReplace ? base + "?noReplace=true" : base;
+            await this.restCall(playPath, "PATCH", playBody);
+            break;
+          case "stop":
+            await this.restCall(base, "PATCH", { track: { encoded: null } });
+            break;
+          case "pause":
+            await this.restCall(base, "PATCH", { paused: data.pause });
+            break;
+          case "seek":
+            await this.restCall(base, "PATCH", { position: data.position });
+            break;
+          case "volume":
+            await this.restCall(base, "PATCH", { volume: data.volume });
+            break;
+          case "equalizer":
+            await this.restCall(base, "PATCH", { filters: { equalizer: data.bands } });
+            break;
+          case "destroy":
+            await this.restCall(base, "DELETE");
+            break;
+          default:
+            return resolve(false);
+        }
+        resolve(true);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  };
+
+  // 5. Prefix REST calls with /v4/ and transform loadtracks response
   Node.prototype.makeRequest = async function(endpoint, modify) {
     var v4Endpoint = "/v4/" + endpoint.replace(/^\//, "");
     var result = await _origMakeRequest.call(this, v4Endpoint, modify);
