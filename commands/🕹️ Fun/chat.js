@@ -35,11 +35,23 @@ module.exports = {
         message.content = args.join(" ")
       if (message.attachments.size > 0)
         return message.reply({content : "Look at this too...", files : "https://cdn.discordapp.com/attachments/816645188461264896/826736269509525524/I_CANNOT_READ_FILES.png"})
-      fetch(`http://api.brainshop.ai/get?bid=153861&key=0ZjvbPWKAxJvcJ96&uid=1&msg=${encodeURIComponent(message)}`).
-      then(res => res.json())
-        .then(data => {
-          message.reply({content : data.cnt}).catch(e => console.log("ERROR | " + e.stack));
+      fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${config.gemini_api_key}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: args.join(" ") }] }],
+          generationConfig: { maxOutputTokens: 500 }
         })
+      })
+      .then(res => res.json())
+      .then(data => {
+        const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (reply) message.reply({content: reply.substring(0, 2000)}).catch(e => console.log("ERROR | " + e.stack));
+        else message.reply({content: "❌ Couldn't generate a response."}).catch(e => console.log("ERROR | " + e.stack));
+      })
+      .catch(e => {
+        message.reply({content: "❌ AI Chat API is currently unavailable."}).catch(() => {});
+      })
     } catch (e) {
       console.log(String(e.stack).grey.bgRed)
       return message.reply({embeds : [new MessageEmbed()

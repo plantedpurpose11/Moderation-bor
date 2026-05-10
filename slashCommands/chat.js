@@ -23,15 +23,26 @@ module.exports = {
 		//let IntOption = options.getInteger("OPTIONNAME"); //same as in IntChoices //RETURNS NUMBER
 		const Text = options.getString("chat_text"); //same as in StringChoices //RETURNS STRING 
 		try{
-      fetch(`http://api.brainshop.ai/get?bid=153861&key=0ZjvbPWKAxJvcJ96&uid=1&msg=${encodeURIComponent(Text)}`)
-     .then(res => res.json())
-     .then(data => {
-       if(!data.cnt){
+      fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${config.gemini_api_key}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: Text }] }],
+          generationConfig: { maxOutputTokens: 500 }
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (reply) {
+          interaction?.editReply({content: reply.substring(0, 2000), ephemeral: true}).catch(e => console.log("CHATBOT:".underline.red + " :: " + e.stack.toString().grey));
+        } else {
+          interaction?.editReply({content: ":cry: **Sorry I am clueless... I can't generate a response!**", ephemeral: true}).catch(e => console.log("CHATBOT:".underline.red + " :: " + e.stack.toString().grey));
+        }
+      })
+      .catch(() => {
         interaction?.editReply({content: ":cry: **Sorry I am clueless... I can't connect to the API!**", ephemeral: true}).catch(e => console.log("CHATBOT:".underline.red + " :: " + e.stack.toString().grey));
-       }else{
-        interaction?.editReply({content: data.cnt, ephemeral: true}).catch(e => console.log("CHATBOT:".underline.red + " :: " + e.stack.toString().grey));
-       }
-     });
+      });
     }catch (e){
       interaction?.editReply({content: ":cry: **Sorry I am clueless... I can't connect to the API!**", ephemeral: true}).catch(e => console.log("CHATBOT:".underline.red + " :: " + e.stack.toString().grey));
     }
