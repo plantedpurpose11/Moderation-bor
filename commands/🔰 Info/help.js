@@ -228,12 +228,6 @@ module.exports = {
             description: "Commands to show your Emotions with Anime style"
           },
           {
-            label: "Nsfw",
-            value: "Nsfw",
-            emoji: "🔞",
-            description: "Commands for Nsfw (underage) Content."
-          },
-          {
             label: "Customcommand",
             value: "Customcommand",
             emoji: "🦾",
@@ -269,11 +263,10 @@ module.exports = {
           .setFooter({ text: "Page Overview\n" + client.user.username, iconURL: client.user.displayAvatarURL() })
           .setTitle(`Information about __${client.user.username}__`)
           .addField(":muscle: **__My Features__**",
-            `>>> **58+ Systems**, like: 🐦 **Twitter-** & 📺 **Youtube-Auto-Poster** 
-**Application-**, Ticket-, **Welcome-Images-** and Reaction Role-, ... Systems
-:notes: An advanced 🎵 **Music System** with **Audio Filtering**
-:video_game: Many **Minigames** and :joystick: **Fun** Commands (150+)
-:no_entry_sign: **Administration** and **Auto-Moderation** and way much more!`)
+            `>>> **58+ Systems**, like: 📺 **Youtube-Auto-Poster** 
+📝 **Application-**, 🎟️ **Ticket**-, 👋 **Welcome-Images** and 👥 **Reaction Role**, An advanced 🎵 **Music System** with 🎧 **Audio Filtering**
+🎮 Many **Minigames** and 🕹️ **Fun** Commands (150+)
+🗣️ **Administration** and 🚫 **Auto-Moderation** and way much more!`)
           .addField(":question: **__How do you use me?__**",
             `>>> \`${prefix}setup\` and react with the Emoji for the right action,
 but you can also do \`${prefix}setup-SYSTEM\` e.g. \`${prefix}setup-welcome\``)
@@ -282,7 +275,7 @@ but you can also do \`${prefix}setup-SYSTEM\` e.g. \`${prefix}setup-welcome\``)
 :file_folder: on **${client.guilds.cache.size} Guilds**
 ⌚️ **${duration(client.uptime).map(i => `\`${i}\``).join("︲")} Uptime**
 📶 **\`${Math.floor(client.ws.ping)}ms\` Ping**
-⚡  Made by [**BestGamersHK**](https://discord.com/users/399650958096728064)`)
+⚡  Made by [**PlantedPurpose**](https://discord.com/users/1281693669749030922)`)
           .addField("How to get help?", `>>> **\` 1. Way \`** *Use the Buttons, to swap the Pages*\n**\` 2. Way \`** *Use the Menu to select all Help Pages, you want to display*\n**\` 3. Way \`** *Watch the Youtube Tutorial*`)
 
         let err = false;
