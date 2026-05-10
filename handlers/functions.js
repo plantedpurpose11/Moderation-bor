@@ -152,7 +152,7 @@ function GetUser(message, arg){
     if(!client || !message) return reject("CLIENT IS NOT DEFINED")
     if(!args || args == null || args == undefined) args = message.content.trim().split(/ +/).slice(1);
     let user = message.mentions.users.first();
-    if(!user && args[0] && args[0].length == 18) {
+    if(!user && args[0] && args[0].length >= 17 && args[0].length <= 21 && /^\d+$/.test(args[0])) {
       user = await client.users.fetch(args[0]).catch((e)=>{
         return reject(errormessage);
       })
@@ -196,7 +196,7 @@ function GetRole(message, arg){
     if(!client || !message) return reject("CLIENT IS NOT DEFINED")
     if(!args || args == null || args == undefined) args = message.content.trim().split(/ +/).slice(1);
     let user = message.mentions.roles.filter(role=>role.guild.id==message.guild.id).first();
-    if(!user && args[0] && args[0].length == 18) {
+    if(!user && args[0] && args[0].length >= 17 && args[0].length <= 21 && /^\d+$/.test(args[0])) {
       user = message.guild.roles.cache.get(args[0])
       if(!user) return reject(errormessage)
       return resolve(user);
@@ -222,7 +222,7 @@ function GetGlobalUser(message, arg){
     if(!client || !message) return reject("CLIENT IS NOT DEFINED")
     if(!args || args == null || args == undefined) args = message.content.trim().split(/ +/).slice(1);
     let user = message.mentions.users.first();
-    if(!user && args[0] && args[0].length == 18) {
+    if(!user && args[0] && args[0].length >= 17 && args[0].length <= 21 && /^\d+$/.test(args[0])) {
       user = await client.users.fetch(args[0]).catch(() => {})
       if(!user) return reject(errormessage)
       return resolve(user);

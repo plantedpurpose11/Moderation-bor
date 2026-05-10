@@ -299,8 +299,8 @@ module.exports = {
                 errors: ['time']
               }).then(collected => {
                 let content = collected.first().content;
-                if (!content || content.length > 19 || content.length < 17) {
-                  return message.reply("An Id is between 17 and 19 characters big")
+                if (!content || content.length < 17 || content.length > 21 || !/^\d+$/.test(content)) {
+                  return message.reply("Please provide a valid ID (17-21 digit number)")
                 }
                 parent = message.guild.channels.cache.get(content);
                 if(!parent) {
@@ -604,9 +604,10 @@ module.exports = {
                 time: 30000,
                 errors: ['time']
               }).then(collected => {
-                if (collected.first().content.length == 18) {
+                let categoryId = collected.first().content.trim();
+                if (categoryId.length >= 17 && categoryId.length <= 21 && /^\d+$/.test(categoryId)) {
                   try {
-                    var cat = message.guild.channels.cache.get(collected.first().content)
+                    var cat = message.guild.channels.cache.get(categoryId)
                     message.reply(eval(client.la[ls]["cmds"]["setup"]["setup-ticket"]["variable35"]))
                     client.setups.set(message.guild.id, cat.id, `ticketsystem${SetupNumber}.parentid`);
                   } catch {
