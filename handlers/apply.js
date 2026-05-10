@@ -247,7 +247,7 @@ module.exports = client => {
                     //find the role from the database
                     var roleid = apply_db.get(message.guild.id, `${pre}.TEMP_ROLE`);
                     if (roleid) {
-                      if (roleid.length == 18) {
+                      if (roleid.length >= 17 && roleid.length <= 21 && /^\d+$/.test(roleid)) {
                         //find the member from the reaction event
                         var member = message.guild.members.cache.get(originaluser.id);
                         //find the role
@@ -327,7 +327,7 @@ module.exports = client => {
             //find the role from the database
             var roleid = apply_db.get(message.guild.id, `${pre}.TEMP_ROLE`);
             if (roleid) {
-              if (roleid.length == 18) {
+              if (roleid.length >= 17 && roleid.length <= 21 && /^\d+$/.test(roleid)) {
                 //find the member from the reaction event
                 var member = message.guild.members.cache.get(originaluser.id);
                 //find the role

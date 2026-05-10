@@ -30,7 +30,7 @@ module.exports = {
       ]});
      //find the USER
      let user = message.mentions.users.first();
-     if(!user && args[0] && args[0].length == 18) {
+     if(!user && args[0] && args[0].length >= 17 && args[0].length <= 21 && /^\d+$/.test(args[0])) {
        let tmp = await client.users.fetch(args[0]).catch(() => {})
        if(tmp) user = tmp;
        if(!tmp) return message.reply({content : eval(client.la[ls]["cmds"]["fun"]["bed"]["variable2"])})
@@ -46,7 +46,7 @@ module.exports = {
      }
      //find the USER
      let user2 = message.mentions.users.last();
-     if(!user2 && args[1] && args[1].length == 18) {
+     if(!user2 && args[1] && args[1].length >= 17 && args[1].length <= 21 && /^\d+$/.test(args[1])) {
        let tmp = await client.users.fetch(args[1]).catch(() => {})
        if(tmp) user2 = tmp;
        if(!tmp) user2 = message.author;

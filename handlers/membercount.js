@@ -71,7 +71,7 @@ module.exports = function (client, options) {
     //If no settings found, or defined on "no" return
     if(!set) return
     for(let i = 1; i <= 25; i++){
-      if(set[`channel${i}`] && set[`channel${i}`].length == 18){
+      if(set[`channel${i}`] && set[`channel${i}`].length >= 17 && set[`channel${i}`].length <= 21 && /^\d+$/.test(set[`channel${i}`])){
         if(await Channel(set[`channel${i}`], set[`message${i}`])){
           await delay(1000 * 60 * 6)
         }

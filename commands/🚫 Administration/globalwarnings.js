@@ -20,7 +20,7 @@ module.exports = {
     try {
       //find the USER
       let warnmember = message.mentions.users.first();
-      if(!warnmember && args[0] && args[0].length == 18) {
+      if(!warnmember && args[0] && args[0].length >= 17 && args[0].length <= 21 && /^\d+$/.test(args[0])) {
         let tmp = await client.users.fetch(args[0]).catch(() => {})
         if(tmp) warnmember = tmp;
         if(!tmp) return message.reply({content : eval(client.la[ls]["cmds"]["administration"]["globalwarnings"]["variable1"])})
