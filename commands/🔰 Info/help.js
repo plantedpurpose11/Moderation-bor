@@ -117,7 +117,6 @@ module.exports = {
         let button_back = new MessageButton().setStyle('SUCCESS').setCustomId('1').setEmoji("833802907509719130").setLabel(handlemsg(client.la[ls].cmds.info.help.buttons.back))
         let button_home = new MessageButton().setStyle('DANGER').setCustomId('2').setEmoji("🏠").setLabel(handlemsg(client.la[ls].cmds.info.help.buttons.home))
         let button_forward = new MessageButton().setStyle('SUCCESS').setCustomId('3').setEmoji('832598861813776394').setLabel(handlemsg(client.la[ls].cmds.info.help.buttons.forward))
-        let button_tutorial = new MessageButton().setStyle('LINK').setEmoji("840260133686870036").setLabel("Youtube").setURL("https://www.youtube.com/channel/UC1xmHQbZUbW6zcmHS4yWjmA")
         let menuOptions = [
           {
             label: "Overview",
@@ -253,7 +252,7 @@ module.exports = {
           .setMinValues(1)
           .setMaxValues(5)
           .addOptions(menuOptions.filter(Boolean))
-        let buttonRow = new MessageActionRow().addComponents([button_back, button_home, button_forward, button_tutorial])
+        let buttonRow = new MessageActionRow().addComponents([button_back, button_home, button_forward])
         let SelectionRow = new MessageActionRow().addComponents([menuSelection])
         const allbuttons = [buttonRow, SelectionRow]
         //define default embed
@@ -276,7 +275,7 @@ but you can also do \`${prefix}setup-SYSTEM\` e.g. \`${prefix}setup-welcome\``)
 ⌚️ **${duration(client.uptime).map(i => `\`${i}\``).join("︲")} Uptime**
 📶 **\`${Math.floor(client.ws.ping)}ms\` Ping**
 ⚡  Made by [**PlantedPurpose**](https://discord.com/users/1281693669749030922)`)
-          .addField("How to get help?", `>>> **\` 1. Way \`** *Use the Buttons, to swap the Pages*\n**\` 2. Way \`** *Use the Menu to select all Help Pages, you want to display*\n**\` 3. Way \`** *Watch the Youtube Tutorial*`)
+          .addField("How to get help?", `>>> **\` 1. Way \`** *Use the Buttons, to swap the Pages*\n**\` 2. Way \`** *Use the Menu to select all Help Pages, you want to display*\n**\` 3. Way \`** *Type \`${prefix}help <command>\` for details on a specific command*`)
 
         let err = false;
         //Send message with buttons
@@ -376,7 +375,7 @@ but you can also do \`${prefix}setup-SYSTEM\` e.g. \`${prefix}setup-welcome\``)
 
         collector.on('end', collected => {
           //array of all disabled buttons
-          let d_buttonRow = new MessageActionRow().addComponents([button_back.setDisabled(true), button_home.setDisabled(true), button_forward.setDisabled(true), button_tutorial])
+          let d_buttonRow = new MessageActionRow().addComponents([button_back.setDisabled(true), button_home.setDisabled(true), button_forward.setDisabled(true)])
           const alldisabledbuttons = [d_buttonRow]
           if (!edited) {
             edited = true;
