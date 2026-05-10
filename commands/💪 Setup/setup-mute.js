@@ -48,7 +48,7 @@ module.exports = {
           {
             value: "Set Mute-Role",
             description: `Define the Mute-Role`,
-            emoji: "895066900105674822"
+            emoji: "📢"
           },
           {
             value: "Set Defaulttime",
@@ -63,7 +63,7 @@ module.exports = {
           {
             value: "Cancel",
             description: `Cancel and stop the Mute System-Setup!`,
-            emoji: "862306766338523166"
+            emoji: "🚫"
           }
         ]
         //define the selection

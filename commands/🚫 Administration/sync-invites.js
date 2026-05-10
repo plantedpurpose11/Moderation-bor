@@ -38,8 +38,8 @@ module.exports = {
         })
 
       }
-      let approve = new MessageButton().setStyle('SUCCESS').setCustomId('1').setEmoji("1026761151570264125").setLabel("YES DO IT!")
-      let deny = new MessageButton().setStyle('PRIMARY').setCustomId('2').setEmoji("833101993668771842").setLabel("Cancel")
+      let approve = new MessageButton().setStyle('SUCCESS').setCustomId('1').setEmoji("✅").setLabel("YES DO IT!")
+      let deny = new MessageButton().setStyle('PRIMARY').setCustomId('2').setEmoji("❌").setLabel("Cancel")
       let awaitedmsg = await message.reply({
         embeds: [new MessageEmbed()
           .setColor(es.color).setFooter(client.getFooter(es))

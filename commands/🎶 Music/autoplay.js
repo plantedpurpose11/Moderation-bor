@@ -37,12 +37,12 @@ module.exports = {
       if(player.get(`autoplay`)){
         try{
           message.react("♾").catch(()=>{})
-          message.react("1026761151570264125").catch(()=>{})
+          message.react("✅").catch(()=>{})
         }catch{ }
       }else {
         try{
           message.react("♾").catch(()=>{})
-          message.react("833101993668771842").catch(()=>{})
+          message.react("❌").catch(()=>{})
         }catch{  }
       }
       //Send Success Message

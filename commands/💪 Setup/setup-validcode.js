@@ -38,7 +38,7 @@ module.exports = {
           {
             value: `${client.settings.get(message.guild.id, `validcode`) ? "Disable" : "Enable"} Valid Code`,
             description: client.settings.get(message.guild.id, `validcode`) ? "Don't do anything with Messages containing Code" : "React to messages containing a Valid Code Snippet",
-            emoji: client.settings.get(message.guild.id, `validcode`) ? "833101993668771842" : "1026761151570264125"
+            emoji: client.settings.get(message.guild.id, `validcode`) ? "❌" : "✅"
           },
           {
             value: "Settings",
@@ -48,7 +48,7 @@ module.exports = {
           {
             value: "Cancel",
             description: `Cancel and stop the Ticket-Setup!`,
-            emoji: "862306766338523166"
+            emoji: "🚫"
           }
         ]
         let Selection = new MessageSelectMenu()

@@ -17,6 +17,7 @@ ee = require(`${process.cwd()}/botconfig/embed.json`),
 playermanager = require("../../handlers/playermanager"),
 
 playercreated = new Map(),
+errorCounts = new Map(),
 collector = false,
 mi;
 module.exports = (client) => {
@@ -72,6 +73,7 @@ module.exports = (client) => {
     .on("trackStart", async (player, track) => {
       try {
         let edited = false;
+        errorCounts.delete(player.guild);
         if(playercreated.has(player.guild)){
           player.set("eq", "💣 None");
           player.set("filter", "🧨 None");
@@ -380,7 +382,8 @@ module.exports = (client) => {
       }
     })
     .on("trackStuck", async (player, track, payload) => {
-      await player.stop();
+      let count = (errorCounts.get(player.guild) || 0) + 1;
+      errorCounts.set(player.guild, count);
       if(player.textChannel){
         let channel = client.channels.cache.get(player.textChannel);
         if(channel && channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.SEND_MESSAGES)){
@@ -388,10 +391,13 @@ module.exports = (client) => {
             if(currentSongPlayMsg && currentSongPlayMsg.embeds && currentSongPlayMsg.embeds[0]){
               var embed = currentSongPlayMsg.embeds[0];
               embed.author.iconURL = "https://cdn.discordapp.com/attachments/883978730261860383/883978741892649000/847032838998196234.png"
-              embed.footer.text += "\n⚠️⚠️⚠️ SONG STUCKED ⚠️⚠️!"
+              embed.footer.text += "\n⚠️ SONG STUCK!"
               currentSongPlayMsg.edit({embeds: [embed], components: []}).catch(() => {})
             }
           }).catch(() => {})
+          if(count >= 3){
+            channel.send({embeds: [new MessageEmbed().setColor("RED").setTitle("⚠️ Too many track errors in a row — stopping playback").setDescription("The music player encountered repeated failures. Please try a different song or check if Lavalink is working.")]}).catch(() => {})
+          }
         }
         if(client.musicsettings.get(player.guild, "channel") && client.musicsettings.get(player.guild, "channel").length > 5){
           let messageId = client.musicsettings.get(player.guild, "message");
@@ -402,7 +408,6 @@ module.exports = (client) => {
           let message = channel.messages.cache.get(messageId);
           if(!message) message = await channel.messages.fetch(messageId).catch(()=>{});
           if(!message) return
-          //edit the message so that it's right!
           var data = require("./musicsystem").generateQueueEmbed(client, player.guild)
           message.edit(data).catch(() => {})
           if(client.musicsettings.get(player.guild, "channel") == player.textChannel){
@@ -410,9 +415,18 @@ module.exports = (client) => {
           }
         }
       }
+      if(count >= 3){
+        errorCounts.delete(player.guild);
+        player.queue.clear();
+        player.destroy();
+        return;
+      }
+      await player.stop();
     })
     .on("trackError", async (player, track, payload) => {
-      await player.stop();
+      console.log(`[TRACK ERROR] ${track.title}: ${payload?.error || payload?.exception?.message || 'Unknown error'}`);
+      let count = (errorCounts.get(player.guild) || 0) + 1;
+      errorCounts.set(player.guild, count);
       if(player.textChannel){
         let channel = client.channels.cache.get(player.textChannel);
         if(channel && channel.permissionsFor(channel.guild.members.me).has(Permissions.FLAGS.SEND_MESSAGES)){
@@ -420,10 +434,13 @@ module.exports = (client) => {
             if(currentSongPlayMsg && currentSongPlayMsg.embeds && currentSongPlayMsg.embeds[0]){
               var embed = currentSongPlayMsg.embeds[0];
               embed.author.iconURL = "https://cdn.discordapp.com/attachments/883978730261860383/883978741892649000/847032838998196234.png"
-              embed.footer.text += "\n⚠️⚠️⚠️ SONG CRASHED ⚠️⚠️!"
+              embed.footer.text += "\n⚠️ SONG FAILED!"
               currentSongPlayMsg.edit({embeds: [embed], components: []}).catch(() => {})
             }
           }).catch(() => {})
+          if(count >= 3){
+            channel.send({embeds: [new MessageEmbed().setColor("RED").setTitle("⚠️ Too many track errors in a row — stopping playback").setDescription("The music player encountered repeated failures. Please try a different song or check if Lavalink is working.")]}).catch(() => {})
+          }
         }
         if(client.musicsettings.get(player.guild, "channel") && client.musicsettings.get(player.guild, "channel").length > 5){
           let messageId = client.musicsettings.get(player.guild, "message");
@@ -434,7 +451,6 @@ module.exports = (client) => {
           let message = channel.messages.cache.get(messageId);
           if(!message) message = await channel.messages.fetch(messageId).catch(()=>{});
           if(!message) return
-          //edit the message so that it's right!
           var data = require("./musicsystem").generateQueueEmbed(client, player.guild)
           message.edit(data).catch(() => {})
           if(client.musicsettings.get(player.guild, "channel") == player.textChannel){
@@ -442,6 +458,13 @@ module.exports = (client) => {
           }
         }
       }
+      if(count >= 3){
+        errorCounts.delete(player.guild);
+        player.queue.clear();
+        player.destroy();
+        return;
+      }
+      await player.stop();
     })
     .on("queueEnd", async (player) => {
       databasing(client, player.guild, player.get("playerauthor"));

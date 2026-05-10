@@ -51,22 +51,22 @@ module.exports = {
           {
             value: "Start Boost Message",
             description: `Define the Started Boosting Message`,
-            emoji: "867777823468027924"
+            emoji: "🚀"
           },
           {
             value: "Stop Boost Message",
             description: `Define the Stopped Boosting Message`,
-            emoji: "867777823468027924"
+            emoji: "🚀"
           },
           {
             value: "Again Boost Message",
             description: `Define the Again Boosting Message`,
-            emoji: "867777823468027924"
+            emoji: "🚀"
           },
           {
             value: "Cancel",
             description: `Cancel and stop the Ai-Chat-Setup!`,
-            emoji: "862306766338523166"
+            emoji: "🚫"
           }
         ]
         //define the selection

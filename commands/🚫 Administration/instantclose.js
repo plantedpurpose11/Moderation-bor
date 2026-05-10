@@ -72,7 +72,7 @@ module.exports = {
             ]
         })
       }
-      let button_ticket_verify = new MessageButton().setStyle('SUCCESS').setCustomId('ticket_verify').setLabel("Verify this Step").setEmoji("1026761151570264125")
+      let button_ticket_verify = new MessageButton().setStyle('SUCCESS').setCustomId('ticket_verify').setLabel("Verify this Step").setEmoji("✅")
       message.reply({
           content: `<@${buttonuser.id}>`,
           embeds: [new Discord.MessageEmbed()
@@ -195,7 +195,7 @@ module.exports = {
                   msg.edit({
                       content: `<@${buttonuser.id}>`,
                       embeds: [endedembed],
-                      components: [new MessageActionRow().addComponents(button_ticket_verify.setDisabled(true).setLabel("FAILED TO VERIFY").setEmoji("833101993668771842").setStyle('DANGER'))]
+                      components: [new MessageActionRow().addComponents(button_ticket_verify.setDisabled(true).setLabel("FAILED TO VERIFY").setEmoji("❌").setStyle('DANGER'))]
                   }).catch((e) => {
                       console.log(String(e).grey)
                   });

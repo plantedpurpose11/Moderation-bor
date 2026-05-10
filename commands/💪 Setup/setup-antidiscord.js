@@ -38,7 +38,7 @@ module.exports = {
           {
             value: `${client.settings.get(message.guild.id, `antidiscord.enabled`) ? "Disable" : "Enable"} Anti Discord`,
             description: `${client.settings.get(message.guild.id, `antidiscord.enabled`) ? "Don't delete other Discord Links" : "Delete other Discord Links"}`,
-            emoji: `${client.settings.get(message.guild.id, `antidiscord.enabled`) ? "833101993668771842" : "1026761151570264125"}`
+            emoji: `${client.settings.get(message.guild.id, `antidiscord.enabled`) ? "❌" : "✅"}`
           },
           {
             value: "Settings",
@@ -73,7 +73,7 @@ module.exports = {
           {
             value: "Cancel",
             description: `Cancel and stop the Ticket-Setup!`,
-            emoji: "862306766338523166"
+            emoji: "🚫"
           }
         ]
         let Selection = new MessageSelectMenu()

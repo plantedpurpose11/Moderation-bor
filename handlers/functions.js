@@ -1425,7 +1425,7 @@ async function swap_pages(client, message, description, TITLE) {
   .setFooter(client.getFooter(es))]}).catch(e => console.log("THIS IS TO PREVENT A CRASH"))
   if (embeds.length === 1) return message.channel.send({embeds: [embeds[0]]}).catch(e => console.log("THIS IS TO PREVENT A CRASH"))
 
-  let button_back = new MessageButton().setStyle('SUCCESS').setCustomId('1').setEmoji("833802907509719130").setLabel("Back")
+  let button_back = new MessageButton().setStyle('SUCCESS').setCustomId('1').setEmoji("⬅️").setLabel("Back")
   let button_home = new MessageButton().setStyle('DANGER').setCustomId('2').setEmoji("🏠").setLabel("Home")
   let button_forward = new MessageButton().setStyle('SUCCESS').setCustomId('3').setEmoji('832598861813776394').setLabel("Forward")
   let button_blank = new MessageButton().setStyle('SECONDARY').setCustomId('button_blank').setLabel("\u200b").setDisabled();
@@ -1499,7 +1499,7 @@ async function swap_pages2(client, message, embeds) {
   let currentPage = 0;
   let cmduser = message.author;
   if (embeds.length === 1) return message.channel.send({embeds: [embeds[0]]}).catch(e => console.log("THIS IS TO PREVENT A CRASH"))
-  let button_back = new MessageButton().setStyle('SUCCESS').setCustomId('1').setEmoji("833802907509719130").setLabel("Back")
+  let button_back = new MessageButton().setStyle('SUCCESS').setCustomId('1').setEmoji("⬅️").setLabel("Back")
   let button_home = new MessageButton().setStyle('DANGER').setCustomId('2').setEmoji("🏠").setLabel("Home")
   let button_forward = new MessageButton().setStyle('SUCCESS').setCustomId('3').setEmoji('832598861813776394').setLabel("Forward")
   let button_blank = new MessageButton().setStyle('SECONDARY').setCustomId('button_blank').setLabel("\u200b").setDisabled();
@@ -1580,7 +1580,7 @@ async function swap_pages2_interaction(client, interaction, embeds) {
   let currentPage = 0;
   let cmduser = interaction?.member.user;
   if (embeds.length === 1) return interaction?.reply({ephemeral: true, embeds: [embeds[0]]}).catch(e => console.log("THIS IS TO PREVENT A CRASH"))
-  let button_back = new MessageButton().setStyle('SUCCESS').setCustomId('1').setEmoji("833802907509719130").setLabel("Back")
+  let button_back = new MessageButton().setStyle('SUCCESS').setCustomId('1').setEmoji("⬅️").setLabel("Back")
   let button_home = new MessageButton().setStyle('DANGER').setCustomId('2').setEmoji("🏠").setLabel("Home")
   let button_forward = new MessageButton().setStyle('SUCCESS').setCustomId('3').setEmoji('832598861813776394').setLabel("Forward")
   let button_blank = new MessageButton().setStyle('SECONDARY').setCustomId('button_blank').setLabel("\u200b").setDisabled();

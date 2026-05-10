@@ -55,8 +55,8 @@ module.exports = {
                 soonmsg: `👌 Expect this Feature Soon!`,
                 statustext: `⏳ Waiting for Community Feedback, please vote!`,
                 footertext: `Want to suggest / Feedback something? Simply type in this channel!`,
-                approveemoji: `1026761151570264125`,
-                denyemoji: `833101993668771842`,
+                approveemoji: `✅`,
+                denyemoji: `❌`,
               }
             });
             let suggestdata = client.settings.get(message.guild.id, "suggest");

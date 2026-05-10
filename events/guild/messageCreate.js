@@ -61,7 +61,7 @@ module.exports = async (client, message) => {
           }
         }
         try {
-          message.react("833101993668771842").catch(()=>{})
+          message.react("✅").catch(()=>{})
         } catch {}
         not_allowed = true;
         return message.reply({embeds: [new Discord.MessageEmbed()
@@ -163,7 +163,7 @@ module.exports = async (client, message) => {
           if (!message.member.permissions.has(command.memberpermissions)) {
             not_allowed = true;
             try {
-              message.react("833101993668771842").catch(() => {});
+              message.react("✅").catch(() => {});
             } catch {}
             message.reply({embeds: [new Discord.MessageEmbed()
               .setColor(es.wrongcolor)

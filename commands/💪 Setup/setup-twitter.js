@@ -34,12 +34,12 @@ module.exports = {
         let menuoptions = [{
             value: "Set Twitter Account",
             description: `Define which Twitter Account to watch`,
-            emoji: "840255600851812393"
+            emoji: "🐦"
           },
           {
             value: "Set Poster Channel",
             description: `Define a Channel to post the messages to!`,
-            emoji: "895066899619119105"
+            emoji: "📢"
           },
           {
             value: "Set Posting Message",
@@ -59,7 +59,7 @@ module.exports = {
           {
             value: "Cancel",
             description: `Cancel and stop the Admin-Command-Log-Setup!`,
-            emoji: "862306766338523166"
+            emoji: "🚫"
           }
         ]
         //define the selection
@@ -82,7 +82,7 @@ module.exports = {
         //define the embed
         let MenuEmbed = new MessageEmbed()
           .setColor(es.color)
-          .setAuthor('Twitter Setup', 'https://cdn.discordapp.com/emojis/840255600851812393.png?size=96', 'https://discord.gg/rone')
+          .setAuthor('Twitter Setup', 'https://cdn.discordapp.com/emojis/🐦.png?size=96', 'https://discord.gg/rone')
           .setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-ticket"]["variable2"]))
         //send the menu msg
         let menumsg = await message.reply({

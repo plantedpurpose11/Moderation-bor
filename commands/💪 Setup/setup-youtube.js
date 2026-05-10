@@ -31,7 +31,7 @@ module.exports = {
           {
             value: "Set Discord Channel",
             description: `Define Poster Channel, where Uploads will be`,
-            emoji: "895066899619119105"
+            emoji: "📢"
           },
           {
             value: "Add Youtube Channel",
@@ -46,7 +46,7 @@ module.exports = {
           {
             value: "Edit Youtube Channel",
             description: `Edit one of the added Youtube Accounts`,
-            emoji: "877653386747605032"
+            emoji: "📝"
           },
           {
             value: "Show Settings",
@@ -56,7 +56,7 @@ module.exports = {
           {
             value: "Cancel",
             description: `Cancel and stop the Ai-Chat-Setup!`,
-            emoji: "862306766338523166"
+            emoji: "🚫"
           }
         ]
         //define the selection
@@ -79,7 +79,7 @@ module.exports = {
         //define the embed
         let MenuEmbed = new MessageEmbed()
           .setColor(es.color)
-          .setAuthor('Youtube-Poster', 'https://cdn.discordapp.com/emojis/840260133686870036.png?size=128', 'https://discord.gg/rone')
+          .setAuthor('Youtube-Poster', 'https://cdn.discordapp.com/emojis/📺.png?size=128', 'https://discord.gg/rone')
           .setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-ticket"]["variable2"]))
         //send the menu msg
         let menumsg = await message.reply({embeds: [MenuEmbed], components: [new MessageActionRow().addComponents(Selection)]})
@@ -234,7 +234,7 @@ module.exports = {
             //define the embed
             let MenuEmbed = new MessageEmbed()
               .setColor(es.color)
-              .setAuthor('Youtube-Poster', 'https://cdn.discordapp.com/emojis/840260133686870036.png?size=128', 'https://discord.gg/rone')
+              .setAuthor('Youtube-Poster', 'https://cdn.discordapp.com/emojis/📺.png?size=128', 'https://discord.gg/rone')
               .setDescription("Select all Youtube Channels you want to remove!")
             //send the menu msg
             let menumsg = await message.reply({embeds: [MenuEmbed], components: [new MessageActionRow().addComponents(Selection)]})
@@ -296,7 +296,7 @@ module.exports = {
             //define the embed
             let MenuEmbed = new MessageEmbed()
               .setColor(es.color)
-              .setAuthor('Youtube-Poster', 'https://cdn.discordapp.com/emojis/840260133686870036.png?size=128', 'https://discord.gg/rone')
+              .setAuthor('Youtube-Poster', 'https://cdn.discordapp.com/emojis/📺.png?size=128', 'https://discord.gg/rone')
               .setDescription("Select the Youtube Channel you want to edit!")
             //send the menu msg
             let menumsg = await message.reply({embeds: [MenuEmbed], components: [new MessageActionRow().addComponents(Selection)]})
