@@ -26,7 +26,7 @@ module.exports = {
     try {
       var originalowner = message.author.id;
       let timeouterror;
-      let NumberEmojiIds = getNumberEmojis().map(emoji => emoji?.replace(">", "").split(":")[2])
+      let NumberEmojiIds = getNumberEmojis()
       first_layer()
       async function first_layer(){
         let menuoptions = [{

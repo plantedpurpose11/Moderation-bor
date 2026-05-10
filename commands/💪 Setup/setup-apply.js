@@ -38,7 +38,7 @@ module.exports = {
       return user.id == cmduser.id
     };
     let guildid = message.guild.id;
-    let NumberEmojiIds = getNumberEmojis().map(emoji => emoji?.replace(">", "").split(":")[2])
+    let NumberEmojiIds = getNumberEmojis()
     first_layer()
     async function first_layer() {
       try {

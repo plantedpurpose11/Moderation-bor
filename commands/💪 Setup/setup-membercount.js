@@ -28,7 +28,7 @@ module.exports = {
     client.setups.ensure(message.guild.id,ensureobject,"membercount");
     try {
 
-      let NumberEmojiIds = getNumberEmojis().map(emoji => emoji?.replace(">", "").split(":")[2])
+      let NumberEmojiIds = getNumberEmojis()
       first_layer()
       async function first_layer(){
         

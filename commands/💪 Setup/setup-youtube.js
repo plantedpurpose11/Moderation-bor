@@ -24,7 +24,7 @@ module.exports = {
     try {
       
       let TextEmojis = getNumberEmojis();
-      let NumberEmojiIds = getNumberEmojis().map(emoji => emoji?.replace(">", "").split(":")[2])
+      let NumberEmojiIds = getNumberEmojis()
       first_layer()
       async function first_layer(){
         let menuoptions = [

@@ -22,7 +22,7 @@ module.exports = {
     
     let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language")
     let TextEmojis = getNumberEmojis();
-    let NumberEmojiIds = getNumberEmojis().map(emoji => emoji?.replace(">", "").split(":")[2])
+    let NumberEmojiIds = getNumberEmojis()
     try {
       first_layer()
       async function first_layer(){
