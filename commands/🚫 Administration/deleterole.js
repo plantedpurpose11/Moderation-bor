@@ -54,7 +54,7 @@ module.exports = {
       if (!role || role == null || role == undefined || role.name == null || role.name == undefined)
         return message.reply({embeds : [
         ]});
-      let button_verify = new MessageButton().setStyle('SUCCESS').setCustomId('deleterole_verify').setLabel("Verify this Step").setEmoji("1026761151570264125")
+      let button_verify = new MessageButton().setStyle('SUCCESS').setCustomId('deleterole_verify').setLabel("Verify this Step").setEmoji("✅")
       let msg = await message.channel.send({
           content: `<@${message.author.id}>`,
           embeds: [
@@ -134,7 +134,7 @@ module.exports = {
               msg.edit({
                   content: `<@${message.author.id}>`,
                   embeds: [endedembed],
-                  components: [new MessageActionRow().addComponents(button_verify.setDisabled(true).setLabel("FAILED TO VERIFY").setEmoji("833101993668771842").setStyle('DANGER'))]
+                  components: [new MessageActionRow().addComponents(button_verify.setDisabled(true).setLabel("FAILED TO VERIFY").setEmoji("❌").setStyle('DANGER'))]
               }).catch((e) => {
                   console.log(String(e).grey)
               });

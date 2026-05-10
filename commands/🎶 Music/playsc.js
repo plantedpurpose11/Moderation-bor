@@ -39,7 +39,7 @@ const { handlemsg } = require(`${process.cwd()}/handlers/functions`);
           .setTitle(eval(client.la[ls]["cmds"]["music"]["playsc"]["variable1"]))
         ]});
       message.react("🔎").catch(()=>{})
-      message.react("840260133686870036").catch(()=>{})
+      message.react("🎵").catch(()=>{})
       //play the song as SOUNDCLOUD
       playermanager(client, message, args, `song:soundcloud`);
     } catch (e) {

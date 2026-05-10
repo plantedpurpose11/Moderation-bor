@@ -44,27 +44,27 @@ module.exports = {
           {
             value: "Approve Text",
             description: `Define the Approve Text`,
-            emoji: "1168774094351765524"
+            emoji: "1️⃣"
           },
           {
             value: "Deny Text",
             description: `Define the Deny Text`,
-            emoji: "1168774123946774590"
+            emoji: "2️⃣"
           },
           {
             value: "Maybe Text",
             description: `Define the Maybe Text`,
-            emoji: "1168774143685165066"
+            emoji: "3️⃣"
           },
           {
             value: "Status Text",
             description: `Define the Status Text`,
-            emoji: "1168774160831492097"
+            emoji: "4️⃣"
           },
           {
             value: "Soon Text",
             description: `Define the Soon Text`,
-            emoji: "1168774179273842738"
+            emoji: "5️⃣"
           },
           {
             value: "Footer Text",
@@ -84,7 +84,7 @@ module.exports = {
           {
             value: "Cancel",
             description: `Cancel and stop the Suggestion System!`,
-            emoji: "862306766338523166"
+            emoji: "🚫"
           }
         ]
         //define the selection
@@ -146,8 +146,8 @@ module.exports = {
           soonmsg: `👌 Expect this Feature Soon!`,
           statustext: `⏳ Waiting for Community Feedback, please vote!`,
           footertext: `Want to suggest / Feedback something? Simply type in this channel!`,
-          approveemoji: `1026761151570264125`,
-          denyemoji: `833101993668771842`,
+          approveemoji: `✅`,
+          denyemoji: `❌`,
         }
     });
       */

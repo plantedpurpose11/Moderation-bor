@@ -34,7 +34,7 @@ async function search(client, message, args, type, slashCommand) {
       player.set("message", message);
       player.set("playerauthor", message.author.id);
       player.connect();
-      try{message.react("863876115584385074").catch(() => {});}catch(e){console.log(String(e).grey)}
+      try{message.react("🎵").catch(() => {});}catch(e){console.log(String(e).grey)}
       player.stop();
     }
     try {
@@ -90,7 +90,7 @@ async function search(client, message, args, type, slashCommand) {
         dynamic: true
       }))))
     ]}).catch(() => {});
-    const emojiarray = ["❌", "1168774094351765524, "1168774123946774590, "1168774143685165066, "1168774160831492097, "1168774179273842738, "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"]
+    const emojiarray = ["❌", "1️⃣, "2️⃣, "3️⃣, "4️⃣, "5️⃣, "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"]
     for (let i = 0; i < emojiarray.length; i++) {
       try {
         if (i == max + 1) break;
@@ -156,7 +156,7 @@ async function search(client, message, args, type, slashCommand) {
       player.set("message", message);
       player.set("playerauthor", message.author.id);
       player.connect();
-      try{message.react("863876115584385074").catch(() => {});}catch(e){console.log(String(e).grey)}
+      try{message.react("🎵").catch(() => {});}catch(e){console.log(String(e).grey)}
       //add track
       player.queue.add(track);
       //set the variables

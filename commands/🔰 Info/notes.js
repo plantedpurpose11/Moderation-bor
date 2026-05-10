@@ -33,7 +33,7 @@ module.exports = {
       })
       var notes = client.notes.get(message.author.id, "notes");
       var button_forward = new MessageButton().setStyle('PRIMARY').setCustomId('notes_forwards').setEmoji('832598861813776394').setLabel("Forwards")
-      var button_back = new MessageButton().setStyle('PRIMARY').setCustomId('notes_backwards').setEmoji("833802907509719130").setLabel("Backwards")
+      var button_back = new MessageButton().setStyle('PRIMARY').setCustomId('notes_backwards').setEmoji("⬅️").setLabel("Backwards")
       var button_jump = new MessageButton().setStyle('PRIMARY').setCustomId('notes_jump').setLabel('Jump to Page').setEmoji("🔢");
       var button_empty1 = new MessageButton().setStyle('SECONDARY').setCustomId('notes_empty1').setLabel("\u200b").setDisabled(true)
       var button_list = new MessageButton().setStyle('PRIMARY').setCustomId('notes_list').setLabel('List Notes').setEmoji("📑");
@@ -41,7 +41,7 @@ module.exports = {
       var button_create = new MessageButton().setStyle('SUCCESS').setCustomId('notes_create').setEmoji('📋').setLabel("Create New Note")
       var button_edit = new MessageButton().setStyle('PRIMARY').setCustomId('notes_edit').setEmoji('✏️').setLabel("Edit this Note")
       var button_Delete = new MessageButton().setStyle('PRIMARY').setCustomId('notes_delete').setEmoji('🗑').setLabel("Delete this Note")
-      var button_disable = new MessageButton().setStyle('SECONDARY').setCustomId('notes_disable').setLabel('Stop the Buttons').setEmoji("833101993668771842");
+      var button_disable = new MessageButton().setStyle('SECONDARY').setCustomId('notes_disable').setLabel('Stop the Buttons').setEmoji("❌");
       
       var embeds = [];
       var currentPage = 0;

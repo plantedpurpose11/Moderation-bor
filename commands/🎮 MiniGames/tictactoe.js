@@ -655,7 +655,7 @@ module.exports = {
                         xColor: 'DANGER', //Optional Discord BUTTONS Colour
                         oColor: 'SUCCESS', //Optional Discord BUTTONS Colour
                         xEmoji: '862306785007632385', //Optional EMOJI / CustomEMOJI-ID
-                        oEmoji: '862306766338523166', //Optional EMOJI / CustomEMOJI-ID
+                        oEmoji: '🚫', //Optional EMOJI / CustomEMOJI-ID
                 }).start();
                 return;
         }

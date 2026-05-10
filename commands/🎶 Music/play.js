@@ -39,7 +39,7 @@ const { handlemsg } = require(`${process.cwd()}/handlers/functions`);
         ]});
 
       message.react("🔎").catch(()=>{})
-      message.react("840260133686870036").catch(()=>{})
+      message.react("🎵").catch(()=>{})
       //play the SONG from YOUTUBE
       playermanager(client, message, args, `song:youtube`);
     } catch (e) {

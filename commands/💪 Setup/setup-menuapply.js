@@ -121,7 +121,7 @@ module.exports = {
         //send the menu msg
         let menumsg = await message.reply({
           embeds: [MenuEmbed],
-          components: [row1, row2, row3, row4, new MessageActionRow().addComponents(new MessageButton().setStyle("LINK").setURL("https://www.youtube.com/channel/UC1xmHQbZUbW6zcmHS4yWjmA").setLabel("Youtube").setEmoji("840260133686870036"))]
+          components: [row1, row2, row3, row4, new MessageActionRow().addComponents(new MessageButton().setStyle("LINK").setURL("https://www.youtube.com/channel/UC1xmHQbZUbW6zcmHS4yWjmA").setLabel("Youtube").setEmoji("📺"))]
         })
         //Create the collector
         const collector = menumsg.createMessageComponentCollector({
@@ -209,7 +209,7 @@ module.exports = {
         //send the menu msg
         let menumsg = await message.reply({
           embeds: [MenuEmbed],
-          components: [new MessageActionRow().addComponents(Selection), new MessageActionRow().addComponents(new MessageButton().setStyle("LINK").setURL("https://www.youtube.com/channel/UC1xmHQbZUbW6zcmHS4yWjmA").setLabel("Youtube").setEmoji("840260133686870036"))]
+          components: [new MessageActionRow().addComponents(Selection), new MessageActionRow().addComponents(new MessageButton().setStyle("LINK").setURL("https://www.youtube.com/channel/UC1xmHQbZUbW6zcmHS4yWjmA").setLabel("Youtube").setEmoji("📺"))]
         })
         //Create the collector
         const collector = menumsg.createMessageComponentCollector({
@@ -451,7 +451,7 @@ module.exports = {
               //define the embed
               let MenuEmbed = new Discord.MessageEmbed()
                 .setColor(es.color)
-                .setAuthor(client.getAuthor('Menu Apply Setup', 'https://cdn.discordapp.com/emojis/877653386747605032.png?size=96', 'https://discord.gg/rone'))
+                .setAuthor(client.getAuthor('Menu Apply Setup', 'https://cdn.discordapp.com/emojis/📝.png?size=96', 'https://discord.gg/rone'))
                 .setDescription("Select which Application System should be started with this Option")
               //send the menu msg
               let menumsg = await message.reply({embeds: [MenuEmbed], components: [row1, row2, row3, row4]})

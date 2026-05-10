@@ -40,7 +40,7 @@ const { handlemsg } = require(`${process.cwd()}/handlers/functions`);
           .setTitle(eval(client.la[ls]["cmds"]["music"]["playskipsc"]["variable1"]))
         ]});
       message.react("🔎").catch(()=>{})
-      message.react("825095625884434462").catch(()=>{})
+      message.react("⏭").catch(()=>{})
       message.react(emoji?.react.skip_track).catch(()=>{})
       //play the SONG from YOUTUBE
       playermanager(client, message, args, `skiptrack:soundcloud`);

@@ -49,17 +49,17 @@ module.exports = {
         let menuoptions = [{
             value: "Send Message in a Channel",
             description: `Send a Message on Join, and edit it on leave`,
-            emoji: "895066899619119105"
+            emoji: "📢"
           },
           {
             value: "Add / Remove Role",
             description: `Add a Role on Join, Remove it on Leave.`,
-            emoji: "895066900105674822"
+            emoji: "📢"
           },
           {
             value: "Cancel",
             description: `Cancel and stop the Setup!`,
-            emoji: "862306766338523166"
+            emoji: "🚫"
           }
         ]
         //define the selection
@@ -132,7 +132,7 @@ module.exports = {
                 {
                   value: "Cancel",
                   description: `Cancel and stop the Setup!`,
-                  emoji: "862306766338523166"
+                  emoji: "🚫"
                 }
               ]
               //define the selection
@@ -351,7 +351,7 @@ module.exports = {
                 {
                   value: "Cancel",
                   description: `Cancel and stop the Setup!`,
-                  emoji: "862306766338523166"
+                  emoji: "🚫"
                 }
               ]
               //define the selection

@@ -39,37 +39,37 @@ module.exports = {
           value: "Add Joins",
           description: "Add a specific Number of Joins to: " + user.username,
           replymsg: "Please Send the Number of Invites (Joins) you want to add to him/her!",
-          emoji: "866356465299488809" //optional
+          emoji: "📊" //optional
         },
         {
           value: "Remove Joins",
           description: "Remove a specific Number of Joins to: " + user.username,
           replymsg: "Please Send the Number of Invites (Joins) you want to remove to him/her!",
-          emoji: "866356465299488809" //optional
+          emoji: "📊" //optional
         },
         {
           value: "Add Fakes",
           description: "Add a specific Number of Fakes to: " + user.username,
           replymsg: "Please Send the Number of Fake-Invites you want to add to him/her!",
-          emoji: "833101993668771842" //optional
+          emoji: "❌" //optional
         },
         {
           value: "Remove Fakes",
           description: "Remove a specific Number of Fakes to: " + user.username,
           replymsg: "Please Send the Number of Fake-Invites you want to remove to him/her!",
-          emoji: "833101993668771842" //optional
+          emoji: "❌" //optional
         },
         {
           value: "Add Leaves",
           description: "Add a specific Number of Leaves to: " + user.username,
           replymsg: "Please Send the Number of Leaves you want to add to him/her!",
-          emoji: "866356598356049930" //optional
+          emoji: "📋" //optional
         },
         {
           value: "Remove Leaves",
           description: "Remove a specific Number of Leaves to: " + user.username,
           replymsg: "Please Send the Number of Leaves you want to remove to him/her!",
-          emoji: "866356598356049930" //optional
+          emoji: "📋" //optional
         },
         {
           value: "Cancel",
