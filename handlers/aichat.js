@@ -70,7 +70,9 @@ module.exports = client => {
     client.on("messageCreate", async message => {
         try{
             if (!message.guild || message.guild.available === false || !message.channel || message.author.bot) return;
-            if(message.content && !message.content.toLowerCase().startsWith("[afk]") && client.afkDB.has(message.guild.id + message.author.id)){
+            const msgLower = message.content ? message.content.toLowerCase() : "";
+            const isAfkPrefixed = msgLower.startsWith("[afk]") || msgLower.startsWith("afk ") || msgLower === "afk";
+            if(message.content && !isAfkPrefixed && client.afkDB.has(message.guild.id + message.author.id)){
                 if(Math.floor(client.afkDB.get(message.guild.id+message.author.id, "stamp") / 10000) == Math.floor(Date.now() / 10000)) return console.log("AFK CMD");
                 await message.reply({content: `:tada: Welcome back **${message.author.username}!** :tada:\n> You went <t:${Math.floor(client.afkDB.get(message.guild.id+message.author.id, "stamp") / 1000)}:R> Afk`}).then(msg=>{
                     setTimeout(()=>{ msg.delete().catch(() => {}) }, 5000)

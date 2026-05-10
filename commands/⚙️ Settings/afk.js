@@ -18,7 +18,7 @@ module.exports = {
     try {
       if(args[0]) client.afkDB.set(message.guild.id+user.id, args.join(" "), "message");
       client.afkDB.set(message.guild.id+user.id, Date.now(), "stamp");
-      message.reply(`You are now afk for: ${args.join(" ")}\n> **Tipp:** *Write \`[afk]\` infront of your Message to stay afk but still write*`);
+      message.reply(`You are now afk for: ${args.join(" ")}\n> **Tipp:** *Write \`afk\` infront of your Message to stay afk but still write*`);
     } catch (e) {
       console.log(String(e.stack).grey.bgRed)
       return message.reply({embeds : [new MessageEmbed()
