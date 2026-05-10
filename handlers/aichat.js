@@ -24,10 +24,22 @@ module.exports = client => {
                   return message.channel.send({files: [attachment]})
               }
               try{
-                fetch(`http://api.brainshop.ai/get?bid=153861&key=0ZjvbPWKAxJvcJ96&uid=1&msg=${encodeURIComponent(message)}`)
+                fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${config.gemini_api_key}`, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    contents: [{ parts: [{ text: message.content }] }],
+                    generationConfig: { maxOutputTokens: 500 }
+                  })
+                })
                 .then(res => res.json())
                 .then(data => {
-                  message.channel.send({content: data.cnt}).catch(() => {})
+                  const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                  if (reply) message.channel.send({content: reply.substring(0, 2000)}).catch(() => {});
+                  else message.channel.send({content: "❌ Couldn't generate a response."}).catch(() => {});
+                })
+                .catch(() => {
+                  message.channel.send({content: "❌ AI CHAT API IS DOWN"}).catch(() => {});
                 });
               }catch (e){
                 message.channel.send({content: "❌ AI CHAT API IS DOWN"}).catch(() => {})

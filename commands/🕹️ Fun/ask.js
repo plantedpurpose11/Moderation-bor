@@ -1,24 +1,36 @@
-const axios = require('axios');
+const fetch = require('node-fetch');
+const config = require(`${process.cwd()}/botconfig/config.json`);
 
 module.exports = {
   name: 'ask',
   category: '💬 Chat',
-  aliases: ['chat'],
+  aliases: [],
   usage: 'ask <question>',
-  description: 'Ask a question to BrainShop AI.',
+  description: 'Ask a question to the AI.',
   type: 'bot',
 
   run: async (client, message, args, cmduser, text, prefix) => {
     try {
-      const question = args.join(' ')
+      const question = args.join(' ');
+      if (!question) return message.reply('Please provide a question.');
 
-      const apiEndpoint = `http://api.brainshop.ai/get?bid=178672&key=2EHKmxNFo0NBZcx0&uid=[uid]&msg=${encodeURIComponent(question)}`;
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${config.gemini_api_key}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: question }] }],
+          generationConfig: { maxOutputTokens: 500 }
+        })
+      });
 
-      const response = await axios.get(apiEndpoint);
+      const data = await response.json();
+      const aiResponse = data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
-      const aiResponse = response.data.cnt;
-
-      await message.channel.send(aiResponse);
+      if (aiResponse) {
+        await message.channel.send(aiResponse.substring(0, 2000));
+      } else {
+        await message.reply("❌ Couldn't generate a response.");
+      }
     } catch (error) {
       console.error(error);
       return message.reply('An error occurred while processing your question.');
