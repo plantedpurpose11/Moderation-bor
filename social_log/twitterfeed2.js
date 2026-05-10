@@ -32,7 +32,7 @@ async function create_twit(client){/*
           //get the guildid for the twitter account
           var guildid = client.social_log.findKey("secondtwitter.TWITTER_USER_ID", tweet.user.id_str)
           //get the settings from the guildid
-          if(!guildid || guildid == null || guildid == undefined || guildid.length != 18) return;
+          if(!guildid || guildid == null || guildid == undefined || guildid.length < 17 || guildid.length > 21) return;
 
           try{
             client.social_log.ensure(guildid, {

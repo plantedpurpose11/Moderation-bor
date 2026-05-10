@@ -52,7 +52,7 @@ module.exports = {
           .setTitle(eval(client.la[ls]["cmds"]["administration"]["updatemessage"]["variable3"]))
           .setDescription(eval(client.la[ls]["cmds"]["administration"]["updatemessage"]["variable4"]))
         ]});
-        if (!id || id.length != 18)
+        if (!id || id.length < 17 || id.length > 21 || !/^\d+$/.test(id))
         return message.reply({embeds :[new MessageEmbed()
           .setColor(es.wrongcolor)
           .setFooter(client.getFooter(es))
