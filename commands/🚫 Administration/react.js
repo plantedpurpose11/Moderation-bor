@@ -51,7 +51,7 @@ module.exports = {
           .setTitle(eval(client.la[ls]["cmds"]["administration"]["react"]["variable3"]))
           .setDescription(eval(client.la[ls]["cmds"]["administration"]["react"]["variable4"]))
         ]});
-      if (args[0].length != 18)
+      if (args[0].length < 17 || args[0].length > 21 || !/^\d+$/.test(args[0]))
           return message.reply({embeds :[new MessageEmbed()
           .setColor(es.wrongcolor)
           .setFooter(client.getFooter(es))

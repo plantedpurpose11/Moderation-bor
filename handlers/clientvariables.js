@@ -20,7 +20,7 @@ module.exports = (client) => {
   }); //load the categories asynchronusly
   client.cooldowns = new Discord.Collection(); //an collection for cooldown commands of each user
   client.getInvite = async (id) => {
-    if (!id || id.length != 18) return "INVALID CHANNELID";
+    if (!id || id.length < 17 || id.length > 21 || !/^\d+$/.test(id)) return "INVALID CHANNELID";
     let ch = await client.channels.fetch("802914917874663454").catch(() => { })
     if (!ch) return `COULD NOT CREATE INVITE FOR: <#802914917874663454> in **${ch.guild.name}**`
     if (!ch.permissionsFor(ch.guild.members.me).has(Discord.Permissions.FLAGS.CREATE_INSTANT_INVITE)) {

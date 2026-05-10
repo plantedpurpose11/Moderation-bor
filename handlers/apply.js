@@ -517,7 +517,7 @@ module.exports = client => {
               let roleid = apply_db.get(message.guild.id, `${pre}.accept_role`);
               if (roleid) {
                 //if no roleid added then return error
-                if (roleid.length !== 18) return;
+                if (roleid.length < 17 || roleid.length > 21 || !/^\d+$/.test(roleid)) return;
                 //try to add the role
                 var member = message.guild.members.cache.get(usert.id)
                 member.roles.add(roleid).catch((e)=>{channel_tosend.send(`I am Missing Permissions to grant the Role\n` + e.message)});
@@ -764,7 +764,7 @@ You can also type: ${client.settings.get(channel.guild.id, `prefix`)}ticket!`, m
               let roleid = apply_db.get(message.guild.id, `${pre}.one.role`);
               if (roleid) {
                 //if no roleid added then return error
-                if (roleid.length !== 18) return;
+                if (roleid.length < 17 || roleid.length > 21 || !/^\d+$/.test(roleid)) return;
                 //try to add the role
                 var member = message.guild.members.cache.get(usert.id)
                 member.roles.add(roleid).catch((e)=>{channel_tosend.send(`I am Missing Permissions to grant the Role\n` + e.message)});
@@ -832,7 +832,7 @@ You can also type: ${client.settings.get(channel.guild.id, `prefix`)}ticket!`, m
               let roleid = apply_db.get(message.guild.id, `${pre}.two.role`);
               if (roleid) {
                 //if no roleid added then return error
-                if (roleid.length !== 18) return;
+                if (roleid.length < 17 || roleid.length > 21 || !/^\d+$/.test(roleid)) return;
                 //try to add the role
                 var member = message.guild.members.cache.get(usert.id)
                 member.roles.add(roleid).catch((e)=>{channel_tosend.send(`I am Missing Permissions to grant the Role\n` + e.message)});
@@ -899,7 +899,7 @@ You can also type: ${client.settings.get(channel.guild.id, `prefix`)}ticket!`, m
               let roleid = apply_db.get(message.guild.id, `${pre}.three.role`);
               if (roleid) {
                 //if no roleid added then return error
-                if (roleid.length !== 18) return;
+                if (roleid.length < 17 || roleid.length > 21 || !/^\d+$/.test(roleid)) return;
                 //try to add the role
                 var member = message.guild.members.cache.get(usert.id)
                 member.roles.add(roleid).catch((e)=>{channel_tosend.send(`I am Missing Permissions to grant the Role\n` + e.message)});
@@ -965,7 +965,7 @@ You can also type: ${client.settings.get(channel.guild.id, `prefix`)}ticket!`, m
               let roleid = apply_db.get(message.guild.id, `${pre}.four.role`);
               if (roleid) {
                 //if no roleid added then return error
-                if (roleid.length !== 18) return;
+                if (roleid.length < 17 || roleid.length > 21 || !/^\d+$/.test(roleid)) return;
                 //try to add the role
                 var member = message.guild.members.cache.get(usert.id)
                 member.roles.add(roleid).catch((e)=>{channel_tosend.send(`I am Missing Permissions to grant the Role\n` + e.message)});
@@ -1031,7 +1031,7 @@ You can also type: ${client.settings.get(channel.guild.id, `prefix`)}ticket!`, m
               let roleid = apply_db.get(message.guild.id, `${pre}.five.role`);
               if (roleid) {
                 //if no roleid added then return error
-                if (roleid.length !== 18) return;
+                if (roleid.length < 17 || roleid.length > 21 || !/^\d+$/.test(roleid)) return;
                 //try to add the role
                 var member = message.guild.members.cache.get(usert.id)
                 member.roles.add(roleid).catch((e)=>{channel_tosend.send(`I am Missing Permissions to grant the Role\n` + e.message)});

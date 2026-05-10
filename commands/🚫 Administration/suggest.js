@@ -90,7 +90,7 @@ module.exports = {
                     .setDescription(eval(client.la[ls]["cmds"]["administration"]["suggest"]["variable8"]))
                 ]});
             
-            if(args[1].length !== 18)
+            if(args[1].length < 17 || args[1].length > 21 || !/^\d+$/.test(args[1]))
                 return message.reply({embeds :[new MessageEmbed()
                     .setColor(es.wrongcolor)
                     .setFooter(client.getFooter(es)).setThumbnail(es.thumb ? es.footericon && (es.footericon.includes("http://") || es.footericon.includes("https://")) ? es.footericon : client.user.displayAvatarURL() : `https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png`)
