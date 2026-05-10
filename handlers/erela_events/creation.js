@@ -20,6 +20,27 @@ var {
     return _origMessage.call(this, d);
   };
 
+  // Patch Node.connect for Lavalink v4 WebSocket endpoint (/v4/websocket)
+  var _origConnect = Node.prototype.connect;
+  var WebSocket = require("ws");
+  Node.prototype.connect = function() {
+    if (this.connected) return;
+    var headers = {
+      Authorization: this.options.password,
+      "Num-Shards": String(this.manager.options.shards),
+      "User-Id": this.manager.options.clientId,
+      "Client-Name": this.manager.options.clientName,
+    };
+    this.socket = new WebSocket(
+      "ws" + (this.options.secure ? "s" : "") + "://" + this.address + "/v4/websocket",
+      { headers: headers }
+    );
+    this.socket.on("open", this.open.bind(this));
+    this.socket.on("close", this.close.bind(this));
+    this.socket.on("message", this.message.bind(this));
+    this.socket.on("error", this.error.bind(this));
+  };
+
   // Patch Node.makeRequest for Lavalink v4 REST API compatibility
   // v4 uses /v4/ prefix and different response format
   var _origMakeRequest = Node.prototype.makeRequest;
