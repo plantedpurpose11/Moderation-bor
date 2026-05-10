@@ -48,13 +48,13 @@ module.exports = {
         return message.reply({embeds :[new MessageEmbed()
           .setColor(es.wrongcolor)
           .setFooter(client.getFooter(es))
-          .setTitle(`<:NO:1169479454918180937> **This Channel is not a Thread**`)
+          .setTitle(`❌ **This Channel is not a Thread**`)
         ]});
       await channel.setLocked(false);
       message.reply({embeds :[new MessageEmbed()
         .setColor(es.color)
         .setFooter(client.getFooter(es))
-        .setTitle(`<:yes:1168770575116800042> **Successfully unlocked \`${channel.name}\`**`)
+        .setTitle(`✅ **Successfully unlocked \`${channel.name}\`**`)
       ]});
       if (client.settings.get(message.guild.id, `adminlog`) != "no") {
         try {

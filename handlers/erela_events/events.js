@@ -154,16 +154,16 @@ module.exports = (client) => {
               const { channel } = member.voice
               const player = client.manager.players.get(i?.guild.id);
               if (!player)
-                return i?.reply({content: "<:NO:1169479454918180937> Nothing Playing yet", ephemeral: true})
+                return i?.reply({content: "❌ Nothing Playing yet", ephemeral: true})
                 
               if (!channel)
                 return i?.reply({
-                  content: `<:NO:1169479454918180937> **Please join a Voice Channel first!**`,
+                  content: `❌ **Please join a Voice Channel first!**`,
                   ephemeral: true
                 })                  
               if (channel.id !== player.voiceChannel)
                 return i?.reply({
-                  content: `<:NO:1169479454918180937> **Please join __my__ Voice Channel first! <#${player.voiceChannel}>**`,
+                  content: `❌ **Please join __my__ Voice Channel first! <#${player.voiceChannel}>**`,
                   ephemeral: true
                 })
               
@@ -171,7 +171,7 @@ module.exports = (client) => {
                 return i?.reply({embeds: [new MessageEmbed()
                   .setColor(ee.wrongcolor)
                   .setFooter({text: `${ee.footertext}`, iconURL: `${ee.footericon}`})
-                  .setTitle(`<:NO:1169479454918180937> **You are not a DJ and not the Song Requester!**`)
+                  .setTitle(`❌ **You are not a DJ and not the Song Requester!**`)
                   .setDescription(`**DJ-ROLES:**\n${check_if_dj(client, i?.member, player.queue.current)}`)
                 ],
                 ephemeral: true});
@@ -267,7 +267,7 @@ module.exports = (client) => {
                   embeds: [new MessageEmbed()
                   .setColor(ee.color)
                   .setTimestamp()
-                  .setTitle(`${player.get(`autoplay`) ? `<a:yes:1168770575620128809> **Enabled Autoplay**`: `<:NO:1169479454918180937> **Disabled Autoplay**`}`)
+                  .setTitle(`${player.get(`autoplay`) ? `✅ **Enabled Autoplay**`: `❌ **Disabled Autoplay**`}`)
                   .setFooter(client.getFooter(`💢 Action by: ${member.user.tag}`, member.user.displayAvatarURL({dynamic: true})))]
                 })
               }
@@ -302,7 +302,7 @@ module.exports = (client) => {
                   embeds: [new MessageEmbed()
                   .setColor(ee.color)
                   .setTimestamp()
-                  .setTitle(`${player.trackRepeat ? `<a:yes:1168770575620128809> **Enabled Song Loop**`: `<:NO:1169479454918180937> **Disabled Song Loop**`}`)
+                  .setTitle(`${player.trackRepeat ? `✅ **Enabled Song Loop**`: `❌ **Disabled Song Loop**`}`)
                   .setFooter(client.getFooter(`💢 Action by: ${member.user.tag}`, member.user.displayAvatarURL({dynamic: true})))]
                 })
                 var data = generateQueueEmbed(client, player, track)
@@ -324,7 +324,7 @@ module.exports = (client) => {
                   embeds: [new MessageEmbed()
                   .setColor(ee.color)
                   .setTimestamp()
-                  .setTitle(`${player.queueRepeat ? `<a:yes:1168770575620128809> **Enabled Queue Loop**`: `<:NO:1169479454918180937> **Disabled Queue Loop**`}`)
+                  .setTitle(`${player.queueRepeat ? `✅ **Enabled Queue Loop**`: `❌ **Disabled Queue Loop**`}`)
                   .setFooter(client.getFooter(`💢 Action by: ${member.user.tag}`, member.user.displayAvatarURL({dynamic: true})))]
                 })
                 var data = generateQueueEmbed(client, player, track)

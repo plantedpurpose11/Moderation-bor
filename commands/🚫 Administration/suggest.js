@@ -48,12 +48,12 @@ module.exports = {
             client.settings.ensure(message.guild.id, {
               suggest: {
                 channel: "",
-                approvemsg: `<:yes:1168770575116800042> Accepted Idea! Expect this soon.`,
-                denymsg: `<:NO:1169479454918180937> Thank you for the feedback, but we are not interested in this idea at this time.`,
+                approvemsg: `✅ Accepted Idea! Expect this soon.`,
+                denymsg: `❌ Thank you for the feedback, but we are not interested in this idea at this time.`,
                 maybemsg: `💡 We are thinking about this idea!`,
                 duplicatemsg: `💢 This is a duplicated Suggestion`,
                 soonmsg: `👌 Expect this Feature Soon!`,
-                statustext: `<a:loading:1086988887383093298> Waiting for Community Feedback, please vote!`,
+                statustext: `⏳ Waiting for Community Feedback, please vote!`,
                 footertext: `Want to suggest / Feedback something? Simply type in this channel!`,
                 approveemoji: `1026761151570264125`,
                 denyemoji: `833101993668771842`,
@@ -199,10 +199,10 @@ module.exports = {
                 .setFooter(client.getFooter(`Want to suggest something? Simply type it in this channel`, "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/light-bulb_1f4a1.png"))
               
             if(embed.fields[2]){
-              embed.fields[2].name == `<:arrow:832598861813776394> __Reason by **${message.author.tag}**:__`;
+              embed.fields[2].name == `➡️ __Reason by **${message.author.tag}**:__`;
               embed.fields[2].value == `>>> ${String(reason).substring(0, 1000)}`;
             } else {
-              embed.addField(`<:arrow:832598861813776394> __Reason by **${message.author.tag}**__`, `>>> ${String(reason).substring(0, 1000)}`)
+              embed.addField(`➡️ __Reason by **${message.author.tag}**__`, `>>> ${String(reason).substring(0, 1000)}`)
             }
             targetMessage.edit({embeds: [embed]})
             try{
