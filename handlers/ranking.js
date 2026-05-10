@@ -806,7 +806,7 @@ module.exports = function (client) {
             let theDbDatas = ["level", "points", "neededpoints", ]
             if(type == "voice") theDbDatas = ["voicelevel", "voicepoints", "neededvoicepoints", ]
             let currentPage = 0;
-            const embeds = leaderboardembed();
+            const embeds = leaderboardembed(type);
             if(embeds.length == 1){
                 return message.channel.send({embeds: embeds}).catch(() => {})
             }
@@ -904,13 +904,16 @@ module.exports = function (client) {
                         array_usernames.push(user.username)
                         array_discriminator.push(user.discriminator)
                         array_level.push(data[`${theDbDatas[0]}`] && data[`${theDbDatas[0]}`] > 0 ? data[`${theDbDatas[0]}`] : 1)
-                        array_textpoints.push(data[`${theDbDatas[1]}` || 0])
+                        array_textpoints.push(data[theDbDatas[1]] || 0)
                         if(type == "voice") array_amount.push(data.voicetime || 0)
                         else {
                             let memberData = client.invitesdb?.get(message.guild.id + user.id)
-                            if(memberData.messagesCount < 0) memberData.messagesCount *= -1;
-                            let messagesCount = memberData.messagesCount;
-                            array_amount.push(messagesCount || 0 )
+                            if(memberData && memberData.messagesCount) {
+                                if(memberData.messagesCount < 0) memberData.messagesCount *= -1;
+                                array_amount.push(memberData.messagesCount || 0)
+                            } else {
+                                array_amount.push(0)
+                            }
                         }
                         array_avatar.push(user.displayAvatarURL({size: 4096, format: "png"}))      
                     } catch (e){
@@ -1027,13 +1030,16 @@ module.exports = function (client) {
                             array_usernames.push(user.username)
                             array_discriminator.push(user.discriminator)
                             array_level.push(data[`${theDbDatas[0]}`] && data[`${theDbDatas[0]}`] > 0 ? data[`${theDbDatas[0]}`] : 1)
-                            array_textpoints.push(data[`voicetime` || 0])
+                            array_textpoints.push(data["voicetime"] || 0)
                             if(type == "voice") array_amount.push(data.voicepoints || 0)
                             else {
                                 let memberData = client.invitesdb?.get(message.guild.id + user.id)
-                                if(memberData.messagesCount < 0) memberData.messagesCount *= -1;
-                                let messagesCount = memberData.messagesCount;
-                                array_amount.push(messagesCount || 0 )
+                                if(memberData && memberData.messagesCount) {
+                                    if(memberData.messagesCount < 0) memberData.messagesCount *= -1;
+                                    array_amount.push(memberData.messagesCount || 0)
+                                } else {
+                                    array_amount.push(0)
+                                }
                             }
                             array_avatar.push(user.displayAvatarURL({size: 4096, format: "png"}))      
                         } catch (e){
@@ -1392,7 +1398,7 @@ module.exports = function (client) {
                 const sssembed = new Discord.MessageEmbed()
                 .setColor(embedcolor)
                 .setDescription(eval(client.la[ls]["handlers"]["rankingjs"]["ranking"]["variable62"]))
-                message.reply(sssembed);
+                message.reply({embeds: [sssembed]});
             } catch (error) {
                 console.log("RANKING:".underline.red + " :: " + error.stack.toString().grey)
                 message.reply(eval(client.la[ls]["handlers"]["rankingjs"]["ranking"]["variable63"]));
@@ -1445,7 +1451,7 @@ module.exports = function (client) {
                 const sssembed = new Discord.MessageEmbed()
                 .setColor(embedcolor)
                 .setDescription(eval(client.la[ls]["handlers"]["rankingjs"]["ranking"]["variable70"]))
-                message.reply(sssembed);
+                message.reply({embeds: [sssembed]});
             } catch (error) {
                 console.log("RANKING:".underline.red + " :: " + error.stack.toString().grey)
                 message.reply(eval(client.la[ls]["handlers"]["rankingjs"]["ranking"]["variable71"]));
@@ -1476,7 +1482,7 @@ module.exports = function (client) {
                     newLevel = client.points.get(key, `level`); //get current NEW level
                     if(newLevel < 1) client.points.set(key, 1 ,`level`); //if smaller then 1 set to 1
                 }
-                snewLevel = client.points.get(key, `level`); //get current NEW level
+                let snewLevel = client.points.get(key, `level`); //get current NEW level
                 let counter = Number(snewLevel) / 4;
 
                 client.points.set(key, 400, `neededpoints`) //set neededpoints to 0 for beeing sure
@@ -1499,7 +1505,7 @@ module.exports = function (client) {
                 const sssembed = new Discord.MessageEmbed()
                 .setColor(embedcolor)
                 .setDescription(eval(client.la[ls]["handlers"]["rankingjs"]["ranking"]["variable77"]))
-                message.reply(sssembed);
+                message.reply({embeds: [sssembed]});
             } catch (error) {
                 console.log("RANKING:".underline.red + " :: " + error.stack.toString().grey)
                 message.reply(eval(client.la[ls]["handlers"]["rankingjs"]["ranking"]["variable78"]));
@@ -1583,7 +1589,7 @@ module.exports = function (client) {
             let maxnum = 5;
             if (args[0]) maxnum = Number(args[0]);
             if(args[0] && Number(maxnum) > 10000) return message.reply(eval(client.la[ls]["handlers"]["rankingjs"]["ranking"]["variable87"]))
-            let allmembers = message.guild.members.cache.filter(member=> !member.user.bot).keyArray();
+            let allmembers = [...message.guild.members.cache.filter(member=> !member.user.bot).keys()];
             for (let i = 0; i < allmembers.length; i++) {
                 //Call the databasing function!
                 let rankuser = message.guild.members.cache.get(allmembers[i]).user;
