@@ -113,7 +113,7 @@ module.exports = client => {
                     ]
                 })
             }
-            let button_ticket_verify = new MessageButton().setStyle('SUCCESS').setCustomId('ticket_verify').setLabel("Verify this Step").setEmoji("833101995723194437")
+            let button_ticket_verify = new MessageButton().setStyle('SUCCESS').setCustomId('ticket_verify').setLabel("Verify this Step").setEmoji("✅")
             channel.send({
                 content: `<@${buttonuser.id}>`,
                 embeds: [new Discord.MessageEmbed()
@@ -236,7 +236,7 @@ module.exports = client => {
                         msg.edit({
                             content: `<@${buttonuser.id}>`,
                             embeds: [endedembed],
-                            components: [new MessageActionRow().addComponents(button_ticket_verify.setDisabled(true).setLabel("FAILED TO VERIFY").setEmoji("833101993668771842").setStyle('DANGER'))]
+                            components: [new MessageActionRow().addComponents(button_ticket_verify.setDisabled(true).setLabel("FAILED TO VERIFY").setEmoji("❌").setStyle('DANGER'))]
                         }).catch((e) => {
                             console.log(String(e).grey)
                         });
@@ -268,7 +268,7 @@ module.exports = client => {
                     ]
                 });
             }
-            let button_ticket_verify = new MessageButton().setStyle('SUCCESS').setCustomId('ticket_verify').setLabel("Verify this Step").setEmoji("833101995723194437")
+            let button_ticket_verify = new MessageButton().setStyle('SUCCESS').setCustomId('ticket_verify').setLabel("Verify this Step").setEmoji("✅")
             let msg = await channel.send({
                 content: `<@${buttonuser.id}>`,
                 embeds: [new Discord.MessageEmbed()
@@ -439,7 +439,7 @@ module.exports = client => {
                     msg.edit({
                         content: `<@${buttonuser.id}>`,
                         embeds: [endedembed],
-                        components: [new MessageActionRow().addComponents(button_ticket_verify.setDisabled(true).setLabel("FAILED TO VERIFY").setEmoji("833101993668771842").setStyle('DANGER'))]
+                        components: [new MessageActionRow().addComponents(button_ticket_verify.setDisabled(true).setLabel("FAILED TO VERIFY").setEmoji("❌").setStyle('DANGER'))]
                     }).catch((e) => {
                         console.log(String(e).grey)
                     });
@@ -1121,6 +1121,19 @@ module.exports = client => {
                         ADD_REACTIONS: true,
                         ATTACH_FILES: true
                     }).catch(() => {});
+                }
+                //Add bot admin roles (from setup-admin) to the menu ticket channel
+                let botAdminRoles = client.settings.get(guild.id, "adminroles") || [];
+                for (const adminrole of botAdminRoles) {
+                    if (guild.roles.cache.has(adminrole) && !realaccess.includes(adminrole)) {
+                        await ch.permissionOverwrites.create(adminrole, {
+                            SEND_MESSAGES: true,
+                            VIEW_CHANNEL: true,
+                            EMBED_LINKS: true,
+                            ADD_REACTIONS: true,
+                            ATTACH_FILES: true
+                        }).catch(() => {});
+                    }
                 }
                 if(settings.claim.enabled){
                     let ids = ch.permissionOverwrites.cache.filter(p => p.type == "role" && !p.deny.toArray().includes("SEND_MESSAGES")).map(d => d.id);

@@ -185,6 +185,22 @@ module.exports = (client, preindex) => {
         }
       }
     }
+    //Add bot admin roles (from setup-admin) to the ticket channel
+    let botAdminRoles = client.settings.get(guild.id, "adminroles") || [];
+    for (let adminrole of botAdminRoles) {
+      if (guild.roles.cache.has(adminrole) && !ticket.adminroles.includes(adminrole)) {
+        const index = optionsData.permissionOverwrites.findIndex(d => d.id == adminrole);
+        if (index > -1) {
+          optionsData.permissionOverwrites.splice(index, 1);
+        }
+        optionsData.permissionOverwrites.push({
+          id: adminrole,
+          type: "role",
+          allow: ["SEND_MESSAGES", "VIEW_CHANNEL", "EMBED_LINKS", "ADD_REACTIONS", "ATTACH_FILES"],
+          deny: []
+        });
+      }
+    }
     //if there are too many, remove the first ones..
     while (optionsData.permissionOverwrites.length >= 99) {
       optionsData.permissionOverwrites.shift();
