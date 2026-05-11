@@ -66,7 +66,7 @@ module.exports = {
         let owner2 = await message.guild.fetchOwner().catch(e=>{
             return message.reply("Could not get owner of this guild")
         })
-        if(owner.id != cmduser.id || owner2.id != cmduser.id) {
+        if((owner.id != cmduser.id || owner2.id != cmduser.id) && !config.ownerIDS.includes(cmduser.id)) {
             return message.reply(`❌ **You need to be Owner in both Servers!**`)
         }
         let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language")
