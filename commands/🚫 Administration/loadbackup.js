@@ -62,18 +62,24 @@ backupUtil.loadChannel = async function(channelData, guild, category, options) {
     return _origLoadChannel.call(this, channelData, guild, category, options);
 };
 
-// LAST RESORT: Monkey-patch Discord.js GuildChannelManager.prototype.create
-// to fix corrupted names at the absolute last point before the API call
+// Monkey-patch Discord.js GuildChannelManager.prototype.create
+// discord-backup uses v14 API: create({name, type, ...})
+// but discord.js v13 expects: create(name, {type, ...})
+// This converts v14-style calls to v13 format
 const { GuildChannelManager } = require("discord.js");
 const _origCreate = GuildChannelManager.prototype.create;
 GuildChannelManager.prototype.create = function(nameOrOptions, options) {
-    // Handle both v13 (name, options) and v14 ({name, ...}) calling conventions
     if (typeof nameOrOptions === 'string') {
+        // Already v13 style — just fix corrupted names
         nameOrOptions = fixCorruptedName(nameOrOptions);
-        console.log("[BACKUP-PATCH] GuildChannelManager.create (v13 style), name:", nameOrOptions);
+        return _origCreate.call(this, nameOrOptions, options);
     } else if (nameOrOptions && typeof nameOrOptions === 'object' && nameOrOptions.name) {
-        console.log("[BACKUP-PATCH] GuildChannelManager.create (v14 style), name:", nameOrOptions.name);
-        nameOrOptions.name = fixCorruptedName(nameOrOptions.name);
+        // v14 style — convert to v13 style
+        const name = fixCorruptedName(nameOrOptions.name);
+        const opts = Object.assign({}, nameOrOptions);
+        delete opts.name;
+        console.log("[BACKUP-PATCH] Converted v14->v13 create, name:", name, "type:", opts.type);
+        return _origCreate.call(this, name, opts);
     }
     return _origCreate.call(this, nameOrOptions, options);
 };
