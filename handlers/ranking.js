@@ -12,6 +12,9 @@ const { GetUser, duration, nFormatter } = require(`./functions`)
 //Canvas.registerFont("./assets/fonts/Genta.ttf", { family: "Genta" } );
 //Canvas.registerFont("./assets/fonts/UbuntuMono.ttf", { family: "UbuntuMono" } );
 const Fonts = "`DM Sans`, STIXGeneral, AppleSymbol, Arial, ArialUnicode";
+async function safeLoadImage(url) {
+    try { return await Canvas.loadImage(url); } catch(e) { console.log("[RANK] Failed to load image:", url, e.message); return null; }
+}
 module.exports = function (client) {
     //log that the module is loaded
     client.on("messageCreate", async (message) => {
@@ -335,8 +338,8 @@ module.exports = function (client) {
             ctx.arc(345/2 + 83.5, 345/2 + 36, 345/2, 0, Math.PI * 2, true); 
             ctx.closePath();
             ctx.clip();
-            const avatar = await Canvas.loadImage(message.author.displayAvatarURL({ dynamic: false, format: "png", size: 4096 }));
-            ctx.drawImage(avatar, 83.5, 36, 345, 345);
+            const avatar = await safeLoadImage(message.author.displayAvatarURL({ dynamic: false, format: "png", size: 4096 }));
+            if (avatar) ctx.drawImage(avatar, 83.5, 36, 345, 345);
 
             //get it as a discord attachment
             const attachment = new Discord.MessageAttachment(canvas.toBuffer(), "ranking-image.png");
@@ -485,8 +488,8 @@ module.exports = function (client) {
                     const SizeY = 200;
                     const SizeX = rankuser.flags && rankuser.flags.toArray().includes("VERIFIED_BOT") ? 400 : 301.1765
                     let bgIMG = rankuser.flags && rankuser.flags.toArray().includes("VERIFIED_BOT") ? "https://cdn.discordapp.com/emojis/846290690534015018.png" : "https://cdn.discordapp.com/attachments/820695790170275871/869218298833829948/bot.png"
-                    const bg = await Canvas.loadImage(bgIMG)
-                    ctx.drawImage(bg, FlagsX-SizeX/2, FlagsY-SizeY/2, SizeX, SizeY);
+                    const bg = await safeLoadImage(bgIMG)
+                    if (bg) ctx.drawImage(bg, FlagsX-SizeX/2, FlagsY-SizeY/2, SizeX, SizeY);
                 }
                 else{
                     if(rankuser.flags) {
@@ -531,64 +534,64 @@ module.exports = function (client) {
                             const x = 635 + i * Size + i * spaceBetween - (flags.length == 1 ? 0 : flags.length == 2 ? 1.5 * Size/2 : 3 * Size/2);
                             const y = 1850;
                             if (flags[i] === "HOUSE_BALANCE") { 
-                                const bg = await Canvas.loadImage("https://discord.com/assets/9fdc63ef8a3cc1617c7586286c34e4f1.svg")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size); 
+                                const bg = await safeLoadImage("https://discord.com/assets/9fdc63ef8a3cc1617c7586286c34e4f1.svg")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size); 
                             } 
                             if (flags[i]  === "HOUSE_BRILLIANCE") { 
-                                const bg = await Canvas.loadImage("https://discord.com/assets/48cf0556d93901c8cb16317be2436523.svg")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
+                                const bg = await safeLoadImage("https://discord.com/assets/48cf0556d93901c8cb16317be2436523.svg")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
                             } 
                             if (flags[i]  === "HOUSE_BRAVERY") { 
-                                const bg = await Canvas.loadImage("https://discord.com/assets/64ae1208b6aefc0a0c3681e6be36f0ff.svg")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
+                                const bg = await safeLoadImage("https://discord.com/assets/64ae1208b6aefc0a0c3681e6be36f0ff.svg")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
                             } 
                             if (flags[i]  === "VERIFIED_DEVELOPER") { 
-                                const bg = await Canvas.loadImage("https://discord.com/assets/45cd06af582dcd3c6b79370b4e3630de.svg")
-                                ctx.drawImage(bg, 480 + 80 * i, 175, 80, 80 ); 
+                                const bg = await safeLoadImage("https://discord.com/assets/45cd06af582dcd3c6b79370b4e3630de.svg")
+                                if (bg) ctx.drawImage(bg, 480 + 80 * i, 175, 80, 80 ); 
                             } 
                             if (flags[i]  === "EARLY_SUPPORTER") { 
-                                const bg = await Canvas.loadImage("https://discord.com/assets/23e59d799436a73c024819f84ea0b627.svg")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
+                                const bg = await safeLoadImage("https://discord.com/assets/23e59d799436a73c024819f84ea0b627.svg")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
                             } 
                             if(flags[i]  === "NITRO"){
-                                const bg = await Canvas.loadImage("https://cdn.discordapp.com/attachments/820695790170275871/869228654775918662/813372466759598110.png")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size+Size/5, Size);
+                                const bg = await safeLoadImage("https://cdn.discordapp.com/attachments/820695790170275871/869228654775918662/813372466759598110.png")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size+Size/5, Size);
                             }
                             if(flags[i]  === "1_MONTH"){
-                                const bg = await Canvas.loadImage("https://discordapp.com/assets/fbb6f1e160280f0e9aeb5d7c452eefe1.svg")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
+                                const bg = await safeLoadImage("https://discordapp.com/assets/fbb6f1e160280f0e9aeb5d7c452eefe1.svg")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
                             }
                             if(flags[i]  === "2_MONTH"){
-                                const bg = await Canvas.loadImage("https://discordapp.com/assets/b4b741bef6c3de9b29e2e0653e294620.svg")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
+                                const bg = await safeLoadImage("https://discordapp.com/assets/b4b741bef6c3de9b29e2e0653e294620.svg")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
                             }
                             if(flags[i]  === "3_MONTH"){
-                                const bg = await Canvas.loadImage("https://discordapp.com/assets/93f5a393e22796a850931483166d7cb9.svg")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
+                                const bg = await safeLoadImage("https://discordapp.com/assets/93f5a393e22796a850931483166d7cb9.svg")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
                             }
                             if(flags[i]  === "6_MONTH"){
-                                const bg = await Canvas.loadImage("https://discordapp.com/assets/4c380650960c2b1e1584115d5e9ad63b.svg")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
+                                const bg = await safeLoadImage("https://discordapp.com/assets/4c380650960c2b1e1584115d5e9ad63b.svg")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
                             }
                             if(flags[i]  === "9_MONTH"){
-                                const bg = await Canvas.loadImage("https://discordapp.com/assets/438dd7ecbffcf21b6cbf2773ade51a04.svg")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
+                                const bg = await safeLoadImage("https://discordapp.com/assets/438dd7ecbffcf21b6cbf2773ade51a04.svg")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
                             }
                             if(flags[i]  === "12_MONTH"){
-                                const bg = await Canvas.loadImage("https://discordapp.com/assets/7a5f78de816fcecbbd1d5d6e635cc7dd.svg")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
+                                const bg = await safeLoadImage("https://discordapp.com/assets/7a5f78de816fcecbbd1d5d6e635cc7dd.svg")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
                             }
                             if(flags[i]  === "15_MONTH"){
-                                const bg = await Canvas.loadImage("https://discordapp.com/assets/5a24b20b84fb3eafc138916729386e76.svg")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
+                                const bg = await safeLoadImage("https://discordapp.com/assets/5a24b20b84fb3eafc138916729386e76.svg")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
                             }
                             if(flags[i]  === "18_MONTH"){
-                                const bg = await Canvas.loadImage("https://discordapp.com/assets/f31d590e1f3629cd0b614330f4a8ee2a.svg")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
+                                const bg = await safeLoadImage("https://discordapp.com/assets/f31d590e1f3629cd0b614330f4a8ee2a.svg")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
                             }
                             if(flags[i]  === "24_MONTH"){
-                                const bg = await Canvas.loadImage("https://discordapp.com/assets/9ba64f1fa91ccde0eba506c1c33f3d1a.svg")
-                                ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
+                                const bg = await safeLoadImage("https://discordapp.com/assets/9ba64f1fa91ccde0eba506c1c33f3d1a.svg")
+                                if (bg) ctx.drawImage(bg, x-Size/2, y-Size/2, Size, Size);
                             } 
                         }
                    } 
@@ -632,8 +635,8 @@ module.exports = function (client) {
                 ctx.arc(AvatarX + AvatarSize/2, AvatarY + AvatarSize/2, AvatarSize/2, 0, Math.PI * 2, true); 
                 ctx.closePath();
                 ctx.clip();
-                const avatar = await Canvas.loadImage(xp_data.avatar);
-                ctx.drawImage(avatar, AvatarX, AvatarY, AvatarSize, AvatarSize);
+                const avatar = await safeLoadImage(xp_data.avatar);
+                if (avatar) ctx.drawImage(avatar, AvatarX, AvatarY, AvatarSize, AvatarSize);
 
                 //restore ctx
                 ctx.restore();
@@ -977,8 +980,8 @@ module.exports = function (client) {
                         ctx.arc(80/2 + 30, 80/2 + 25 + i * 100, 80/2, 0, Math.PI * 2, true); 
                         ctx.closePath();
                         ctx.clip();
-                        const avatar = await Canvas.loadImage(array_avatar[i]);
-                        ctx.drawImage(avatar, 30, 25 + i * 100, 80, 80);
+                        const avatar = await safeLoadImage(array_avatar[i]);
+                        if (avatar) ctx.drawImage(avatar, 30, 25 + i * 100, 80, 80);
                         ctx.restore();
                         if(i == array_usernames.length - 1) return res(true)
                     }catch (e){
@@ -1102,8 +1105,8 @@ module.exports = function (client) {
                             ctx2.arc(80/2 + 30, 80/2 + 25 + i * 100, 80/2, 0, Math.PI * 2, true); 
                             ctx2.closePath();
                             ctx2.clip();
-                            const avatar = await Canvas.loadImage(array_avatar[i]);
-                            ctx2.drawImage(avatar, 30, 25 + i * 100, 80, 80);
+                            const avatar = await safeLoadImage(array_avatar[i]);
+                            if (avatar) ctx2.drawImage(avatar, 30, 25 + i * 100, 80, 80);
                             ctx2.restore();
                             if(i == array_usernames.length - 1) return res(true)
                         }catch (e){
