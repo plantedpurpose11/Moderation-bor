@@ -47,18 +47,35 @@ function sanitizeBackupData(data) {
 }
 
 // Monkey-patch discord-backup's loadCategory and loadChannel to fix corrupted names
-// This catches corrupted names at the exact point they're used, regardless of data path
 const backupUtil = require("discord-backup/lib/util");
 const _origLoadCategory = backupUtil.loadCategory;
 backupUtil.loadCategory = async function(categoryData, guild) {
+    console.log("[BACKUP-PATCH] loadCategory called, name:", categoryData?.name);
     if (categoryData && categoryData.name) categoryData.name = fixCorruptedName(categoryData.name);
     if (categoryData && categoryData.children) categoryData.children.forEach(c => { if (c && c.name) c.name = fixCorruptedName(c.name); });
     return _origLoadCategory.call(this, categoryData, guild);
 };
 const _origLoadChannel = backupUtil.loadChannel;
 backupUtil.loadChannel = async function(channelData, guild, category, options) {
+    console.log("[BACKUP-PATCH] loadChannel called, name:", channelData?.name, "type:", typeof channelData, "keys:", channelData && typeof channelData === 'object' ? Object.keys(channelData) : 'N/A');
     if (channelData && channelData.name) channelData.name = fixCorruptedName(channelData.name);
     return _origLoadChannel.call(this, channelData, guild, category, options);
+};
+
+// LAST RESORT: Monkey-patch Discord.js GuildChannelManager.prototype.create
+// to fix corrupted names at the absolute last point before the API call
+const { GuildChannelManager } = require("discord.js");
+const _origCreate = GuildChannelManager.prototype.create;
+GuildChannelManager.prototype.create = function(nameOrOptions, options) {
+    // Handle both v13 (name, options) and v14 ({name, ...}) calling conventions
+    if (typeof nameOrOptions === 'string') {
+        nameOrOptions = fixCorruptedName(nameOrOptions);
+        console.log("[BACKUP-PATCH] GuildChannelManager.create (v13 style), name:", nameOrOptions);
+    } else if (nameOrOptions && typeof nameOrOptions === 'object' && nameOrOptions.name) {
+        console.log("[BACKUP-PATCH] GuildChannelManager.create (v14 style), name:", nameOrOptions.name);
+        nameOrOptions.name = fixCorruptedName(nameOrOptions.name);
+    }
+    return _origCreate.call(this, nameOrOptions, options);
 };
 
 module.exports = {
