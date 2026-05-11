@@ -7,38 +7,42 @@ const {
 } = require(`${process.cwd()}/handlers/functions`);
 const backup = require("discord-backup");
 
-function sanitizeChannelData(ch) {
-    if (typeof ch.name === 'string' && ch.name.startsWith('{') && ch.name.includes("'name'")) {
-        try {
-            var match = ch.name.match(/'name':\s*'([^']+)'/);
-            if (match) ch.name = match[1];
-        } catch(e) {}
-    }
-    if (ch.children && Array.isArray(ch.children)) {
-        ch.children = ch.children.map(c => sanitizeChannelData(c));
-    }
-    return ch;
+function fixCorruptedName(name) {
+    if (typeof name !== 'string') return name;
+    if (!name.startsWith('{') && !name.startsWith("{'")) return name;
+    try {
+        var match = name.match(/'name':\s*'([^']+)'/);
+        if (match) {
+            console.log("[BACKUP] Fixed corrupted name:", name, "->", match[1]);
+            return match[1];
+        }
+    } catch(e) {}
+    return name;
+}
+
+function deepSanitize(obj) {
+    if (!obj || typeof obj !== 'object') return obj;
+    if (Array.isArray(obj)) return obj.map(item => deepSanitize(item));
+    if (obj.name !== undefined) obj.name = fixCorruptedName(obj.name);
+    if (obj.children && Array.isArray(obj.children)) obj.children = obj.children.map(c => deepSanitize(c));
+    return obj;
 }
 
 function sanitizeBackupData(data) {
+    if (!data || typeof data !== 'object') return data;
+    if (data.name) data.name = fixCorruptedName(data.name);
     if (data.channels) {
-        if (data.channels.categories && Array.isArray(data.channels.categories)) {
-            data.channels.categories = data.channels.categories.map(c => sanitizeChannelData(c));
+        if (data.channels.categories) {
+            data.channels.categories = (Array.isArray(data.channels.categories) ? data.channels.categories : []).map(c => deepSanitize(c));
         }
-        if (data.channels.others && Array.isArray(data.channels.others)) {
-            data.channels.others = data.channels.others.map(c => sanitizeChannelData(c));
+        if (data.channels.others) {
+            data.channels.others = (Array.isArray(data.channels.others) ? data.channels.others : []).map(c => deepSanitize(c));
         }
     }
     if (data.roles && Array.isArray(data.roles)) {
-        data.roles.forEach(r => {
-            if (typeof r.name === 'string' && r.name.startsWith('{') && r.name.includes("'name'")) {
-                try {
-                    var match = r.name.match(/'name':\s*'([^']+)'/);
-                    if (match) r.name = match[1];
-                } catch(e) {}
-            }
-        });
+        data.roles = data.roles.map(r => deepSanitize(r));
     }
+    console.log("[BACKUP] Sanitized backup data, categories:", data.channels?.categories?.length, "others:", data.channels?.others?.length);
     return data;
 }
 
