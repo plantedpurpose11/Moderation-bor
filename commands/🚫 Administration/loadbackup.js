@@ -6,6 +6,42 @@ const {
     databasing
 } = require(`${process.cwd()}/handlers/functions`);
 const backup = require("discord-backup");
+
+function sanitizeChannelData(ch) {
+    if (typeof ch.name === 'string' && ch.name.startsWith('{') && ch.name.includes("'name'")) {
+        try {
+            var match = ch.name.match(/'name':\s*'([^']+)'/);
+            if (match) ch.name = match[1];
+        } catch(e) {}
+    }
+    if (ch.children && Array.isArray(ch.children)) {
+        ch.children = ch.children.map(c => sanitizeChannelData(c));
+    }
+    return ch;
+}
+
+function sanitizeBackupData(data) {
+    if (data.channels) {
+        if (data.channels.categories && Array.isArray(data.channels.categories)) {
+            data.channels.categories = data.channels.categories.map(c => sanitizeChannelData(c));
+        }
+        if (data.channels.others && Array.isArray(data.channels.others)) {
+            data.channels.others = data.channels.others.map(c => sanitizeChannelData(c));
+        }
+    }
+    if (data.roles && Array.isArray(data.roles)) {
+        data.roles.forEach(r => {
+            if (typeof r.name === 'string' && r.name.startsWith('{') && r.name.includes("'name'")) {
+                try {
+                    var match = r.name.match(/'name':\s*'([^']+)'/);
+                    if (match) r.name = match[1];
+                } catch(e) {}
+            }
+        });
+    }
+    return data;
+}
+
 module.exports = {
     name: "loadbackup",
     aliases: ["load-backup", "lbackup", "backupload"],
@@ -89,7 +125,7 @@ module.exports = {
                     collector.stop();
                     button?.reply({content: `⏳ Now loading the Backup from \`${server.name}\` to \`${message.guild.name}\`!`}).catch(() => {})
                     // Create the backup
-                    backup.load(backupData, message.guild, {
+                    backup.load(sanitizeBackupData(backupData), message.guild, {
                         clearGuildBeforeRestore: true
                     })
                 }
