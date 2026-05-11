@@ -14,6 +14,7 @@
  } = require(`${process.cwd()}/handlers/functions`);
  module.exports = {
    name: `addroletorole`,
+   aliases: [`add-role-to-role`, `role-add-to-role`, `addrole2role`],
    category: `🚫 Administration`,
    cooldown: 60,
    usage: `addroletorole @RoletoHave @RoletoGive`,
