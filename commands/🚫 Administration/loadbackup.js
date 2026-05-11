@@ -46,6 +46,21 @@ function sanitizeBackupData(data) {
     return data;
 }
 
+// Monkey-patch discord-backup's loadCategory and loadChannel to fix corrupted names
+// This catches corrupted names at the exact point they're used, regardless of data path
+const backupUtil = require("discord-backup/lib/util");
+const _origLoadCategory = backupUtil.loadCategory;
+backupUtil.loadCategory = async function(categoryData, guild) {
+    if (categoryData && categoryData.name) categoryData.name = fixCorruptedName(categoryData.name);
+    if (categoryData && categoryData.children) categoryData.children.forEach(c => { if (c && c.name) c.name = fixCorruptedName(c.name); });
+    return _origLoadCategory.call(this, categoryData, guild);
+};
+const _origLoadChannel = backupUtil.loadChannel;
+backupUtil.loadChannel = async function(channelData, guild, category, options) {
+    if (channelData && channelData.name) channelData.name = fixCorruptedName(channelData.name);
+    return _origLoadChannel.call(this, channelData, guild, category, options);
+};
+
 module.exports = {
     name: "loadbackup",
     aliases: ["load-backup", "lbackup", "backupload"],
