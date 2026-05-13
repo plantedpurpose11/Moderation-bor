@@ -97,8 +97,14 @@ client.ad = {
  *********************************************************/
 //those are must haves, they load the dbs, events and commands and important other stuff
 function requirehandlers() {
-  ["extraevents", "clientvariables", "command", "loaddb", "events", "erelahandler", "slashCommands"].forEach(handler => {
-    try { require(`./handlers/${handler}`)(client); } catch (e) { console.log(e.stack ? String(e.stack).grey : String(e).grey) }
+  ["extraevents", "clientvariables", "command", "loaddb", "events", "erelahandler", "slashCommands"].forEach(async handler => {
+    try { 
+      if (handler === "loaddb") {
+        await require(`./handlers/${handler}`)(client); 
+      } else {
+        require(`./handlers/${handler}`)(client); 
+      }
+    } catch (e) { console.log(e.stack ? String(e.stack).grey : String(e).grey) }
   });
   ["twitterfeed", /*"twitterfeed2",*/ "livelog", "youtube", "tiktok"].forEach(handler => {
     try { require(`./social_log/${handler}`)(client); } catch (e) { console.log(e.stack ? String(e.stack).grey : String(e).grey) }

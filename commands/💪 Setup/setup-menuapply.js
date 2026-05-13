@@ -451,7 +451,7 @@ module.exports = {
               //define the embed
               let MenuEmbed = new Discord.MessageEmbed()
                 .setColor(es.color)
-                .setAuthor(client.getAuthor('Menu Apply Setup', 'https://cdn.discordapp.com/emojis/📝.png?size=96', 'https://discord.gg/rone'))
+                .setAuthor(client.getAuthor('Menu Apply Setup', 'https://cdn.discordapp.com/emojis/833101350623117342.gif?size=96', 'https://discord.gg/rone'))
                 .setDescription("Select which Application System should be started with this Option")
               //send the menu msg
               let menumsg = await message.reply({embeds: [MenuEmbed], components: [row1, row2, row3, row4]})

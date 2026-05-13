@@ -159,7 +159,7 @@ module.exports = {
             return message.reply({embeds: [new Discord.MessageEmbed()
               .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-counter"]["variable11"]))
               .setColor(es.color)
-              .setDescription(`**Channel:** ${thesettings == "no" ? "Not Setupped" : `<#${thesettings}> | \`${thesettings}\``}\n\n**Current Number:** \`${client.settings.get(message.guild.id, "counternum")}\`\n**Nest Number:** \`${Number(client.settings.get(message.guild.id, "counternum")) + 1}\``.substring(0, 2048))
+              .setDescription(`**Channel:** ${thesettings == "no" ? "Not Setupped" : `<#${thesettings}> | \`${thesettings}\``}\n\n**Current Number:** \`${client.settings.get(message.guild.id, "counternum")}\`\n**Next Number:** \`${Number(client.settings.get(message.guild.id, "counternum")) + 1}\``.substring(0, 2048))
               .setFooter(client.getFooter(es))
             ]});
           }break;

@@ -2,8 +2,8 @@
 module.exports = client => {
   var { MessageEmbed } = require(`discord.js`);
   let thumbs = {
-    "join": "https://cdn.discordapp.com/emojis/📊.png?size=128",
-    "leave": "https://cdn.discordapp.com/emojis/📋.png?size=128"
+    "join": "https://cdn.discordapp.com/emojis/771804364582420532.gif?size=128",
+    "leave": "https://cdn.discordapp.com/emojis/771804364582420532.gif?size=128"
   } 
   //voice state update event to check joining/leaving channels
   client.on("voiceStateUpdate", async (oldState, newState) => {

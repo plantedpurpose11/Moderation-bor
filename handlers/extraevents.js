@@ -136,7 +136,7 @@ module.exports = client => {
       .addField("Leave Server:", `>>> \`\`\`${config.prefix}leaveserver ${guild.id}\`\`\``)
       .setThumbnail(guild.iconURL({dynamic: true}));
     for(const owner of config.ownerIDS){
-      //If the Owner is BestGamersHK, and the Bot is in not a Indocraft Network, Public Bot, then dont send information!
+      //If the Owner is BestGamersHK, and the Bot is in not a P2W Developments, Public Bot, then dont send information!
       if(owner == "363141299588825120"){
         let milratoGuild = client.guilds.cache.get("1167497766436601866");
         if(milratoGuild && !milratoGuild.me.roles.cache.has("1041735706369867886")){
@@ -204,7 +204,7 @@ module.exports = client => {
       .addField("Servers Bot is in", `>>> \`\`\`${client.guilds.cache.size}\`\`\``)
       .setThumbnail(guild.iconURL({dynamic: true}));
     for(const owner of config.ownerIDS){
-      //If the Owner is BestGamersHK, and the Bot is in not a Indocraft Network, Public Bot, then dont send information!
+      //If the Owner is BestGamersHK, and the Bot is in not a P2W Developments, Public Bot, then dont send information!
       if(owner == "363141299588825120"){
         let milratoGuild = client.guilds.cache.get("1167497766436601866");
         if(milratoGuild && !milratoGuild.me.roles.cache.has("1041735706369867886")){
