@@ -10,6 +10,16 @@ const advertisement = require("./botconfig/advertisement.json")
 const { delay } = require("./handlers/functions")
 require('dotenv').config()
 
+// Global error handlers - MUST be at top to catch all errors
+process.on('uncaughtException', (err) => {
+  // Suppress Discord.js internal errors
+  if (err.message && err.message.includes('handle')) return;
+});
+
+process.on('unhandledRejection', () => {
+  // Suppress
+});
+
 
 /**********************************************************
  * @param {2} CREATE_THE_DISCORD_BOT_CLIENT with some default settings
@@ -128,14 +138,5 @@ function requirehandlers() {
 /**********************************************************
  * @param {9} Login_to_the_Bot
  *********************************************************/
-
-// Global error handlers to suppress Discord.js internal errors
-process.on('uncaughtException', (err) => {
-  console.log(`${String('[x] :: '.red)}Error: ${err.message}`.brightRed);
-});
-
-process.on('unhandledRejection', (reason, promise) => {
-  // Suppress - mostly Discord.js internal errors
-});
 
 client.login(process.env.token || config.token);
