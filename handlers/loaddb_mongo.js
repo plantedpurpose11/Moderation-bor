@@ -92,11 +92,14 @@ class MongoEnmap extends Enmap {
     }
 }
 
-module.exports = async (client) => {
+module.exports = async (client, mongoUri) => {
     let dateNow = Date.now();
     console.log(`${String("[x] :: ".magenta)}Now loading the MongoDB Database...`.brightGreen);
     
-    const mongoUri = config.mongo?.uri || process.env.MONGO_URI;
+    // Use the passed mongoUri if provided
+    if (!mongoUri) {
+        mongoUri = process.env.MONGO_URI;
+    }
     
     if (!mongoUri) {
         console.log(`${String("[x] :: ".red)}MongoDB URI not found! Falling back to Enmap...`.brightRed);

@@ -11,7 +11,7 @@ module.exports = async (client) => {
         try {
             console.log(`${String("[x] :: ".magenta)}Attempting to use MongoDB...`.brightGreen);
             const mongoLoader = require("./loaddb_mongo");
-            return await mongoLoader(client);
+            return await mongoLoader(client, mongoUri);
         } catch (e) {
             console.log(`${String("[x] :: ".red)}MongoDB failed (${e.message}), falling back to Enmap...`.brightRed);
         }
