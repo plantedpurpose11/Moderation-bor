@@ -114,7 +114,7 @@ module.exports = async (client) => {
         const dbNames = Object.keys(schemas);
         for (const name of dbNames) {
             if (!mongoose.models[name]) {
-                mongoose.model(name, schemas[name]);
+                mongoose.model(name, schemas[name]}
             }
             client[name] = new MongoEnmap(name);
             await client[name].init();
