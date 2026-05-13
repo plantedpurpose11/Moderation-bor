@@ -128,4 +128,14 @@ function requirehandlers() {
 /**********************************************************
  * @param {9} Login_to_the_Bot
  *********************************************************/
+
+// Global error handlers to suppress Discord.js internal errors
+process.on('uncaughtException', (err) => {
+  console.log(`${String('[x] :: '.red)}Error: ${err.message}`.brightRed);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  // Suppress - mostly Discord.js internal errors
+});
+
 client.login(process.env.token || config.token);
