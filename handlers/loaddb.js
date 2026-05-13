@@ -1,7 +1,11 @@
 // Primary database loader - tries MongoDB first, falls back to Enmap
 module.exports = async (client) => {
+    // Check MONGO_URI env var first, then config (but skip placeholder)
+    let mongoUri = process.env.MONGO_URI;
     const config = require("../botconfig/config.json");
-    const mongoUri = config.mongo?.uri || process.env.MONGO_URI;
+    if (!mongoUri && config.mongo?.uri && !config.mongo.uri.includes("process.env")) {
+        mongoUri = config.mongo.uri;
+    }
     
     if (mongoUri && mongoUri.startsWith("mongodb")) {
         try {
