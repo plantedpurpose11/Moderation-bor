@@ -101,6 +101,8 @@ module.exports = async (client, mongoUri) => {
         mongoUri = process.env.MONGO_URI;
     }
     
+    console.log(`${String("[x] :: ".magenta)}MongoDB URI: ${mongoUri ? mongoUri.substring(0, 30) + '...' : 'undefined'}`.brightGreen);
+    
     if (!mongoUri) {
         console.log(`${String("[x] :: ".red)}MongoDB URI not found! Falling back to Enmap...`.brightRed);
         return require("./loaddb_enmap")(client);
