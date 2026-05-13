@@ -12,12 +12,12 @@ require('dotenv').config()
 
 // Global error handlers - MUST be at top to catch all errors
 process.on('uncaughtException', (err) => {
-  // Suppress Discord.js internal errors
-  if (err.message && err.message.includes('handle')) return;
+  // Suppress ALL Discord.js/WS internal errors
+  return;
 });
 
 process.on('unhandledRejection', () => {
-  // Suppress
+  // Suppress all
 });
 
 
