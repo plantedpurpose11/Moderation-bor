@@ -55,7 +55,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "postinstall": "node -e \"if(process.env.MONGO_URI){require('child_process').execSync('npm install mongoose',{stdio:'inherit'})}.catch(()=>{})\""
+    "postinstall": "node scripts/postinstall.js"
   },
   "author": "bestgamershk",
   "license": "MIT",
