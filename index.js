@@ -10,6 +10,18 @@ const advertisement = require("./botconfig/advertisement.json")
 const { delay } = require("./handlers/functions")
 require('dotenv').config()
 
+// Global error handlers - catch Discord.js internal errors
+process.on('uncaughtException', (err) => {
+  // Only log if critical
+  if (!err.message?.includes('handle') && !err.message?.includes('_value')) {
+    console.log("Uncaught Exception:", err.message);
+  }
+});
+
+process.on('unhandledRejection', (reason) => {
+  // Ignore Discord.js internal rejections
+});
+
 
 /**********************************************************
  * @param {2} CREATE_THE_DISCORD_BOT_CLIENT with some default settings
