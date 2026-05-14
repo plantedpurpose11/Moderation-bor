@@ -117,7 +117,16 @@ class MongoEnmap extends Enmap {
         await this.model.deleteMany({});
     }
     
-    ensure(key, defaults) {
+    ensure(key, defaults, path = null) {
+        if (path !== null) {
+            if (!this.has(key)) {
+                this.set(key, {});
+            }
+            if (!this.has(key, path)) {
+                this.set(key, defaults, path);
+            }
+            return this.get(key, path);
+        }
         if (!this.has(key)) {
             this.set(key, defaults);
         }

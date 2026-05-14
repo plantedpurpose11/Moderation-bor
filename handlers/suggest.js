@@ -29,6 +29,7 @@ module.exports = (client) => {
         }
     });
     let settings = client.settings.get(message.guild.id, "suggest");
+    if (!settings) return;
     var approveemoji = settings.approveemoji;
     var denyemoji = settings.denyemoji;
     var footertext = settings.footertext;
