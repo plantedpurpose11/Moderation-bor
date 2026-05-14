@@ -12,6 +12,8 @@ require('dotenv').config()
 
 // Global error handlers
 process.on('uncaughtException', (err) => {
+  // Known Discord.js v13 internal error — safe to suppress
+  if (err.message?.includes('handle') && err.stack?.includes('PRESENCE_UPDATE')) return;
   console.log("=== UNCAUGHT EXCEPTION ===");
   console.log("Reason: ", err);
 });
