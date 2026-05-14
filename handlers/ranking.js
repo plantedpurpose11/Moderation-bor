@@ -19,10 +19,15 @@ async function safeLoadImage(url) {
 }
 module.exports = function (client) {
     //log that the module is loaded
-    console.log("[RANK] Handler loaded - waiting for messages...");
+    console.log("[RANK] Handler loaded");
+    
     client.on("messageCreate", async (message) => {
      try{
-        console.log("[RANK] Got message:", message.content);
+        // Check if databases are ready
+        if (!client.settings || !client.setups || !client.points) {
+            console.log("[RANK] Ignoring message - databases not ready");
+            return;
+        }
 
         if (message.author.bot || !message.guild) return;
         
