@@ -54,7 +54,7 @@ module.exports = {
         ]});
       }
       let tempmsg = await message.reply({embeds: [new Discord.MessageEmbed().setColor(es.color)
-        .setAuthor(client.la[ls].cmds.info.youtubeinfo.loading, "https://cdn.discordapp.com/emojis/756773010123522058.gif", "https://discord.gg/rone")]})
+        .setAuthor(client.la[ls].cmds.info.youtubeinfo.loading, "https://cdn.discordapp.com/emojis/756773010123522058.gif", "https://discord.gg/P2WDevelopments")]})
       let Channel = await channelInfo(url)
       let embed = new Discord.MessageEmbed()
         .setTitle(Channel.name)
@@ -154,9 +154,9 @@ module.exports = {
 }
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/rone
+ * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | discord.gg/rone
+ * Work for BestGamersHK | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

@@ -33,14 +33,14 @@ module.exports = client => {
 
     if(!name || name.length < 1) name = `${client.user.username} | By: bestgamershk`;
     if(!iconURL || iconURL.length < 1) iconURL = `${client.user.displayAvatarURL()}`;
-    if(!url || url.length < 1) url = `https://discord.gg/rone`;
+    if(!url || url.length < 1) url = `https://discord.gg/P2WDevelopments`;
 
     //Change the lengths
     iconURL = iconURL.trim();
     name = name.trim().substring(0, 2048);
     
     //verify the iconURL
-    if(!url.startsWith("https://") && !url.startsWith("http://")) url = `https://discord.gg/rone`;
+    if(!url.startsWith("https://") && !url.startsWith("http://")) url = `https://discord.gg/P2WDevelopments`;
     if(!iconURL.startsWith("https://") && !iconURL.startsWith("http://")) iconURL = client.user.displayAvatarURL();
     if(![".png", ".jpg", ".wpeg", ".webm", ".gif"].some(d => iconURL.toLowerCase().endsWith(d))) iconURL = client.user.displayAvatarURL();
     //return the footerobject
@@ -53,11 +53,13 @@ module.exports = client => {
     console.log('=== unhandled Rejection ===\n\n\n\n\n'.toUpperCase().yellow.dim);
   });
   process.on("uncaughtException", (err, origin) => {
+    if (err.message?.includes('handle') && err.stack?.includes('PRESENCE_UPDATE')) return;
     console.log('\n\n\n\n\n\n=== uncaught Exception ==='.toUpperCase().yellow.dim);
     console.log('Exception: ', err.stack ? err.stack : err)
     console.log('=== uncaught Exception ===\n\n\n\n\n'.toUpperCase().yellow.dim);
   })
   process.on('uncaughtExceptionMonitor', (err, origin) => {
+    if (err.message?.includes('handle') && err.stack?.includes('PRESENCE_UPDATE')) return;
     console.log('=== uncaught Exception Monitor ==='.toUpperCase().yellow.dim);
   });
   process.on('multipleResolves', (type, promise, reason) => {

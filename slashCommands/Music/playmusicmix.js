@@ -108,7 +108,7 @@ blues, oldgaming, pop, remixes, rock, strange-fruits-gaming
 };
 /**
  * @INFO
- * Bot Coded by BestGamersHK | https://discord.gg/rone
+ * Bot Coded by BestGamersHK | https://discord.gg/P2WDevelopments
  * @INFO
  * Work for BestGamersHK
  * @INFO

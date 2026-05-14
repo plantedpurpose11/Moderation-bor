@@ -239,7 +239,7 @@ module.exports = song;
  * @INFO
  * Bot Coded by bestgamershk | https://github?.com/BestGamersHK/discord-js-lavalink-Music-Bot-erela-js
  * @INFO
- * Work for BestGamersHK | discord.gg/rone
+ * Work for BestGamersHK | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

@@ -41,7 +41,7 @@ module.exports = client => {
                             "c.tenor.com",
                             "tenor.com/view",
                             "milrato.dev",
-                            "discord.gg/rone",
+                            "discord.gg/P2WDevelopments",
                             "github?.com",
                             "mozilla.org",
                             "w3schools.com",

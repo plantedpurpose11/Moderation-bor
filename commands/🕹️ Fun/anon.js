@@ -57,10 +57,8 @@ module.exports = {
   },
 };
 
-const { Permissions, Collection } = require('discord.js');
 
 // Create a cooldowns Collection to store cooldowns for each command
-const cooldowns = new Collection();
 
 module.exports = {
   name: 'anon',

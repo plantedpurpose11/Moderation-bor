@@ -10,7 +10,7 @@ module.exports = {
     
     try {
       interaction?.reply({ephemeral: true, embeds: [new Discord.MessageEmbed()
-      .setAuthor(handlemsg(client.la[ls].cmds.info.serveravatar.author, { servername: guild.name }), guild.iconURL({dynamic: true}), "https://discord.gg/rone")
+      .setAuthor(handlemsg(client.la[ls].cmds.info.serveravatar.author, { servername: guild.name }), guild.iconURL({dynamic: true}), "https://discord.gg/P2WDevelopments")
       .setColor(es.color).setThumbnail(es.thumb ? es.footericon && (es.footericon.includes("http://") || es.footericon.includes("https://")) ? es.footericon : client.user.displayAvatarURL() : null)
       .addField("➡️ PNG",`[\`LINK\`](${guild.iconURL({format: "png"})})`, true)
       .addField("➡️ JPEG",`[\`LINK\`](${guild.iconURL({format: "jpg"})})`, true)
@@ -30,9 +30,9 @@ module.exports = {
 }
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/rone
+ * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | discord.gg/rone
+ * Work for BestGamersHK | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

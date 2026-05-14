@@ -94,7 +94,7 @@ module.exports = {
           .setColor(es.color)
           .setAuthor("Anti-Links System Setup", 
           "https://cdn.discordapp.com/emojis/858405056238714930.gif?v=1",
-          "https://discord.gg/rone")
+          "https://discord.gg/P2WDevelopments")
           .setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-antilink"]["variable1"]))
         let used1 = false;
         //send the menu msg
@@ -420,9 +420,9 @@ module.exports = {
 };
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/rone
+ * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | discord.gg/rone
+ * Work for BestGamersHK | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

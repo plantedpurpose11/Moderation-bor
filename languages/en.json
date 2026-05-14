@@ -16,7 +16,7 @@
                     {
                         "value": "Creator / Features",
                         "description": "Who is my Creator? / What are my Features?",
-                        "replymsg": "⚡ **__BG Development__ made me!**\n> 👍 **Their Website:** https://axyl.online\n> 💬 **Their Discord:**  https://discord.gg/rone\n``` ```***__You can join their Discord Server and get yourself a Bot like me, for FREE/CHEAP!__***\n``` ```:muscle: **__My Features__**\n>>> **68+ Systems**, like: 🐦 **Twitter-** & 📺 **Youtube-Auto-Poster** \n**Application-**, Ticket-, **Welcome-Images-** and Reaction Role-, ... Systems\n:notes: An advanced 🎵 **Music System** with **Audio Filtering**\n:video_game: Many **Minigames** and :joystick: **Fun** Commands (150+)\n:no_entry_sign: **Administration** and **Auto-Moderation** and way much more!\n\n**The Developer is: `bestgamershk` 🤖, Contact him if you wanna hire him!**",
+                        "replymsg": "⚡ **__BG Development__ made me!**\n> 👍 **Their Website:** https://axyl.online\n> 💬 **Their Discord:**  https://discord.gg/P2WDevelopments\n``` ```***__You can join their Discord Server and get yourself a Bot like me, for FREE/CHEAP!__***\n``` ```:muscle: **__My Features__**\n>>> **68+ Systems**, like: 🐦 **Twitter-** & 📺 **Youtube-Auto-Poster** \n**Application-**, Ticket-, **Welcome-Images-** and Reaction Role-, ... Systems\n:notes: An advanced 🎵 **Music System** with **Audio Filtering**\n:video_game: Many **Minigames** and :joystick: **Fun** Commands (150+)\n:no_entry_sign: **Administration** and **Auto-Moderation** and way much more!\n\n**The Developer is: `bestgamershk` 🤖, Contact him if you wanna hire him!**",
                         "emoji": "840259659163893820"
                     },
                     {
@@ -34,25 +34,25 @@
                     {
                         "value": "Sponsor / Support us",
                         "description": "Thanks for everything, you'll get something back!",
-                        "replymsg": "**__There are several Sponsor Options:__**\n\n> 💳 **Paypal:**\n> https://paypal.me/bestgamershk.\n\n> 💳 **Patreon:**\n> https://www.patreon.com/MilratoDevelopment?fan_landing=true\n\n> 💸 **Donate via Paysafe, Sofort or others: (1/2)**\n> https://bero-host.de/spenden/qgswlxrzgtll\n\n> 💸 **Donate via Paysafe, Sofort or others: (2/2)**\n> https://axyl.online\n\n> **Every donator** gets the **@DONATOR Role** on:\n>  https://discord.gg/rone\n\n\n> **Every Donator** with more then **10€** Gets a **Free Bot** of his **Choice*!",
+                        "replymsg": "**__There are several Sponsor Options:__**\n\n> 💳 **Paypal:**\n> https://paypal.me/bestgamershk.\n\n> 💳 **Patreon:**\n> https://www.patreon.com/MilratoDevelopment?fan_landing=true\n\n> 💸 **Donate via Paysafe, Sofort or others: (1/2)**\n> https://bero-host.de/spenden/qgswlxrzgtll\n\n> 💸 **Donate via Paysafe, Sofort or others: (2/2)**\n> https://axyl.online\n\n> **Every donator** gets the **@DONATOR Role** on:\n>  https://discord.gg/P2WDevelopments\n\n\n> **Every Donator** with more then **10€** Gets a **Free Bot** of his **Choice*!",
                         "emoji": "861207258846330880"
                     },
                     {
                         "value": "Partners / Sponsors",
                         "description": "We are really proud of our Sponsors and Partners!",
-                        "replymsg": "🌐 Our First/Main Sponsor is **Bero-Host.de** 🌐\n> 👍 **Their Website:** https://bero-host.de\n> 💬 **Their Discord:** https://discord.bero-host.de\n> *They provide us several HIGH QUALTIY __Servers__ which we are using for our HOSTING! **CHECK THEM OUT**!*\n``` ```💰 Our Second Sponsor is **Bittmax.de** 💰\n> 👍 **Their Website:** https://bittmax.de\n> 💬 **Their Discord:** https://discord.gg/GgjJZCyYKD\n> *They provide us several __Servers__ which we are using for our PUBLIC BOT HOSTING! **CHECK THEM OUT**!*\n``` ```**__Partners__**\n> ***We currently have `{partnercount} Partners`, which get at least 1 FREE OP BOT***\n``` ```Wanna be a Partner/Sponsor too? Contact us in our 💬 **Discord:**  https://discord.gg/rone and open a Ticket in <#840491251278676008>",
+                        "replymsg": "🌐 Our First/Main Sponsor is **Bero-Host.de** 🌐\n> 👍 **Their Website:** https://bero-host.de\n> 💬 **Their Discord:** https://discord.bero-host.de\n> *They provide us several HIGH QUALTIY __Servers__ which we are using for our HOSTING! **CHECK THEM OUT**!*\n``` ```💰 Our Second Sponsor is **Bittmax.de** 💰\n> 👍 **Their Website:** https://bittmax.de\n> 💬 **Their Discord:** https://discord.gg/GgjJZCyYKD\n> *They provide us several __Servers__ which we are using for our PUBLIC BOT HOSTING! **CHECK THEM OUT**!*\n``` ```**__Partners__**\n> ***We currently have `{partnercount} Partners`, which get at least 1 FREE OP BOT***\n``` ```Wanna be a Partner/Sponsor too? Contact us in our 💬 **Discord:**  https://discord.gg/P2WDevelopments and open a Ticket in <#840491251278676008>",
                         "emoji": "866089513436315698"
                     },
                     {
                         "value": "My Bot doesnt work",
                         "description": "If your Bot is not working do this:",
-                        "replymsg": "Contact us in BG Development 💬 **Discord:**  https://discord.gg/rone and open a Ticket in <#840332764603351101>\n\n***If it still responds with messages but doesn't work right, then you can try to do: `{prefix}reloadbot` / `{prefix}cmdreload [CMDNAME]`***\n\nMake sure that I have enough Permissions, as well as that the highest Role is high enough!",
+                        "replymsg": "Contact us in BG Development 💬 **Discord:**  https://discord.gg/P2WDevelopments and open a Ticket in <#840332764603351101>\n\n***If it still responds with messages but doesn't work right, then you can try to do: `{prefix}reloadbot` / `{prefix}cmdreload [CMDNAME]`***\n\nMake sure that I have enough Permissions, as well as that the highest Role is high enough!",
                         "emoji": "😓"
                     },
                     {
                         "value": "Change the Bot?",
                         "description": "There are several ways to adjust this Bot...",
-                        "replymsg": "If you are one of the OWNERs of **{clientusertag}**, then those Commands are available for you:\n\n>>> `{prefix}changename` --  https://discord.gg/rone To Change the Bot Name\n`{prefix}changeavatar` -- To Change the Bot Avatar\n`{prefix}prefix` -- To Change the Bot Server-Prefix\n`{prefix}changestatus` -- To Change the Bot Status\n`{prefix}setup-owner` -- To Change the Bot Owners\n`{prefix}setup-advertise` -- To Enable/Disable Our ADS\n`{prefix}setup-embed` -- To Change the Embed Design in this SERVER",
+                        "replymsg": "If you are one of the OWNERs of **{clientusertag}**, then those Commands are available for you:\n\n>>> `{prefix}changename` --  https://discord.gg/P2WDevelopments To Change the Bot Name\n`{prefix}changeavatar` -- To Change the Bot Avatar\n`{prefix}prefix` -- To Change the Bot Server-Prefix\n`{prefix}changestatus` -- To Change the Bot Status\n`{prefix}setup-owner` -- To Change the Bot Owners\n`{prefix}setup-advertise` -- To Enable/Disable Our ADS\n`{prefix}setup-embed` -- To Change the Embed Design in this SERVER",
                         "emoji": "⚙️"
                     }
                 ],
@@ -76,7 +76,7 @@
                 },
                 "field5": {
                     "title": "➡️ Important Links",
-                    "value": "**[Invite Link]({invitelink})・[Support Server]( https://discord.gg/rone)・[Website](https://axyl.online)**\n**[Get Free Bots]( https://discord.gg/rone)・[Invite Public Version](https://discord.com/api/oauth2/authorize?client_id=1074184278545547364&permissions=8&scope=bot)**"
+                    "value": "**[Invite Link]({invitelink})・[Support Server]( https://discord.gg/P2WDevelopments)・[Website](https://axyl.online)**\n**[Get Free Bots]( https://discord.gg/P2WDevelopments)・[Invite Public Version](https://discord.com/api/oauth2/authorize?client_id=1074184278545547364&permissions=8&scope=bot)**"
                 },
                 "variable1": "`\\`\\`\\`yml\\nName: ${client.user.tag} [${client.user.id}]\\nBot Latency: ${Math.round(Date.now() - message.createdTimestamp)}ms\\nApi Latency: ${Math.round(client.ws.ping)}ms\\nRuntime: ${duration(client.uptime).join(\"︲\")}\\`\\`\\``",
                 "variable2": "`\\`\\`\\` ${e.message ? e.message : e.stack ? String(e.stack).substr(0, 2000) : String(e).substr(0, 2000)}\\`\\`\\``"
@@ -208,7 +208,7 @@
                 "variable23": "\"🦾 Custom Commands\"",
                 "variable24": "`🦾 **Custom Commands [${cuc[0].includes(\"NO\") ? 0 : items.length}]**`",
                 "variable25": "\"⚡ Bot Creator Company Advertisment\"",
-                "variablex_26": "`⚡ **__Bot Creator Information__**`", "variable26": "`>>> 💯 This Bot has been made by:\\n[**BG Development**](https://axyl.online)・[Discord](https://discord.gg/rone)💬 [Click here to order yourself a own one](https://discord.gg/rone)`",
+                "variablex_26": "`⚡ **__Bot Creator Information__**`", "variable26": "`>>> 💯 This Bot has been made by:\\n[**BG Development**](https://axyl.online)・[Discord](https://discord.gg/P2WDevelopments)💬 [Click here to order yourself a own one](https://discord.gg/P2WDevelopments)`",
                 "variable27": "`\\`\\`\\` ${e.message ? e.message : e.stack ? String(e.stack).substr(0, 2000) : String(e).substr(0, 2000)}\\`\\`\\``"
             },
             "invite": {
@@ -363,7 +363,7 @@
             },
             "support": {
                 "title": ":tickets: You need help? **JOIN OUR SUPPORT SERVER**",
-                "variable1": "`**[Invite Public Bot](https://discord.com/api/oauth2/authorize?client_id=784364932149280778&permissions=8&scope=bot)  •  [WEBSITE](https://axyl.online)  •  [Support Server/Get your Own Bot](https://discord.gg/rone)**`",
+                "variable1": "`**[Invite Public Bot](https://discord.com/api/oauth2/authorize?client_id=784364932149280778&permissions=8&scope=bot)  •  [WEBSITE](https://axyl.online)  •  [Support Server/Get your Own Bot](https://discord.gg/P2WDevelopments)**`",
                 "variable2": "-",
                 "variable3": "`\\`\\`\\` ${e.message ? e.message : e.stack ? String(e.stack).substr(0, 2000) : String(e).substr(0, 2000)}\\`\\`\\``"
             },
@@ -2190,7 +2190,7 @@
                 "variable6": "\"What Custom Command do you wanna add?\"",
                 "variable7": "`Please type the Command name **without** the Prefix:\\nExample if you wanna get a \\`!socials\\` command send \\`socials\\``",
                 "variable8": "\"What Should the Custom Command send?\"",
-                "variable9": "`Please just type the content in the Chat\\nExample: \\`Discord Server:  https://discord.gg/rone\\``",
+                "variable9": "`Please just type the content in the Chat\\nExample: \\`Discord Server:  https://discord.gg/P2WDevelopments\\``",
                 "variable10": "\"Should I send it as an EMBED or as an MESSAGE\"",
                 "variable11": "`React with ✅ to send it as an Embed\\n\\nReact with ❌ to just send it as a normal Message`",
                 "variable12": "`Success ${thecustomcommand.name} has successfully been created!`",
@@ -2791,7 +2791,7 @@
                 "variable63": "`\\`\\`\\` ${e.message ? e.message : e.stack ? String(e.stack).substr(0, 2000) : String(e).substr(0, 2000)}\\`\\`\\``"
             },
             "setup-ticket": {
-                "variable1": "{ name: 'Ticket Setup', iconURL: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/282/incoming-envelope_1f4e8.png', url: ' https://discord.gg/rone'}",
+                "variable1": "{ name: 'Ticket Setup', iconURL: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/282/incoming-envelope_1f4e8.png', url: ' https://discord.gg/P2WDevelopments'}",
                 "variable2": "\"***Select what you need in the `Selection` down Below!***\"",
                 "variable3": "\":x: Cancelled the Setup!\"",
                 "variable4": "\"***Select what you need in the `Selection` down Below!***\"",
@@ -4450,7 +4450,7 @@
                 "variable19": "`\\`\\`\\` ${e.message ? e.message : e.stack ? String(e.stack).substr(0, 2000) : String(e).substr(0, 2000)}\\`\\`\\``"
             },
             "manageinvites": {
-                "variable1": "\"MANAGE INVITES OF \" + user.tag, client.user.displayAvatarURL(), \" https://discord.gg/rone\"",
+                "variable1": "\"MANAGE INVITES OF \" + user.tag, client.user.displayAvatarURL(), \" https://discord.gg/P2WDevelopments\"",
                 "variable2": "`***Select what you want to do in the Selection down Below!***`",
                 "variablex_3": "`💡 **That means he has:**`","variable3":"`> 📥 ${invites} Joins (When the Member Joins the Server)\\n> 📤 ${leaves} Leaves (When the invited Member left the Server)\\n> ❌ ${fake} Fakes (Alt Accounts / Rejoins)`",
                 "variable4": "\":x: Cancelled the Setup!\"",
@@ -4828,7 +4828,7 @@
         "cooldown": "❌ Please wait {time} more second(s) before reusing the `{commandname}` command.",
         "premium": {
             "title": "❌ **This Command is Premium Only!** 💎",
-            "description": "> *This means, you need to **pay** in Order to be able to use this Command!*\n\n> [Website](https://axyl.online) - [Pay through here]( https://discord.gg/rone)"
+            "description": "> *This means, you need to **pay** in Order to be able to use this Command!*\n\n> [Website](https://axyl.online) - [Pay through here]( https://discord.gg/P2WDevelopments)"
         },
         "permissions": {
             "title": "❌ **You are not allowed to run this command!**",

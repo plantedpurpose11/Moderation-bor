@@ -64,7 +64,7 @@ module.exports = {
         //define the embed
         let MenuEmbed = new Discord.MessageEmbed()
           .setColor(es.color)
-          .setAuthor('Auto Delete Setup', 'https://cdn.discordapp.com/emojis/834052497492410388.gif?size=96', 'https://discord.gg/rone')
+          .setAuthor('Auto Delete Setup', 'https://cdn.discordapp.com/emojis/834052497492410388.gif?size=96', 'https://discord.gg/P2WDevelopments')
           .setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-ticket"]["variable2"]))
         let used1 = false;
         //send the menu msg
@@ -295,9 +295,9 @@ function getNumberEmojis() {
 }
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/rone
+ * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | discord.gg/rone
+ * Work for BestGamersHK | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO
