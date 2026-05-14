@@ -47,7 +47,7 @@ class MongoEnmap extends Enmap {
         try {
             const docs = await this.model.find();
             for (const doc of docs) {
-                this.set(doc._id, doc.data);
+                super.set(doc._id, doc.data);
             }
             console.log(`${String("[x] :: ".magenta)}Loaded ${this.name} with ${this.size} entries`.brightGreen);
         } catch (e) {
@@ -55,18 +55,56 @@ class MongoEnmap extends Enmap {
         }
     }
 
-    async save(key, value) {
-        if (value === undefined) {
-            this.delete(key);
-            await this.model.deleteOne({ _id: key });
-        } else {
-            this.set(key, value);
-            await this.model.findOneAndUpdate(
-                { _id: key },
-                { _id: key, data: value },
-                { upsert: true, new: true }
-            );
-        }
+    // Persist to MongoDB in background after any write
+    _persistToMongo(key) {
+        const data = super.get(key);
+        this.model.findOneAndUpdate(
+            { _id: key },
+            { _id: key, data: data },
+            { upsert: true, new: true }
+        ).catch(e => console.error(`[MongoDB] Save error for ${this.name}/${key}:`, e.message));
+    }
+
+    set(key, val, path = null) {
+        const result = super.set(key, val, path);
+        this._persistToMongo(key);
+        return result;
+    }
+
+    push(key, val, path = null, allowDupes = false) {
+        const result = super.push(key, val, path, allowDupes);
+        this._persistToMongo(key);
+        return result;
+    }
+
+    inc(key, path = null) {
+        const result = super.inc(key, path);
+        this._persistToMongo(key);
+        return result;
+    }
+
+    dec(key, path = null) {
+        const result = super.dec(key, path);
+        this._persistToMongo(key);
+        return result;
+    }
+
+    math(key, operation, operand, path = null) {
+        const result = super.math(key, operation, operand, path);
+        this._persistToMongo(key);
+        return result;
+    }
+
+    remove(key, val, path = null) {
+        const result = super.remove(key, val, path);
+        this._persistToMongo(key);
+        return result;
+    }
+
+    update(key, valueOrFunction) {
+        const result = super.update(key, valueOrFunction);
+        this._persistToMongo(key);
+        return result;
     }
 
     async delete(key) {
@@ -82,7 +120,6 @@ class MongoEnmap extends Enmap {
     ensure(key, defaults) {
         if (!this.has(key)) {
             this.set(key, defaults);
-            this.save(key, defaults);
         }
         return this.get(key);
     }
