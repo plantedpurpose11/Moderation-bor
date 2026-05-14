@@ -161,9 +161,9 @@ function GetUser(message, arg){
     }
     /**
      * @INFO
-     * Bot Coded by bestgamershk | https://discord.gg/rone
+     * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
      * @INFO
-     * Work for BestGamersHK | discord.gg/rone
+     * Work for BestGamersHK | P2W Developments
      * @INFO
      * Please mention him, when using this Code!
      * @INFO
@@ -404,9 +404,9 @@ async function edit_Roster_msg(client, guild, the_roster_db, pre) {
         }
         /**
          * @INFO
-         * Bot Coded by bestgamershk | https://discord.gg/rone
+         * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
          * @INFO
-         * Work for BestGamersHK | discord.gg/rone
+         * Work for BestGamersHK | P2W Developments
          * @INFO
          * Please mention him, when using this Code!
          * @INFO
@@ -1376,9 +1376,9 @@ async function swap_pages(client, message, description, TITLE) {
   let cmduser = message.author;
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/rone
+ * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | discord.gg/rone
+ * Work for BestGamersHK | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO
@@ -1663,9 +1663,9 @@ function databasing(client, guildid, userid) {
       })
       /**
        * @INFO
-       * Bot Coded by bestgamershk | https://discord.gg/rone
+       * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
        * @INFO
-       * Work for BestGamersHK | discord.gg/rone
+       * Work for BestGamersHK | P2W Developments
        * @INFO
        * Please mention him, when using this Code!
        * @INFO
@@ -1791,9 +1791,9 @@ function databasing(client, guildid, userid) {
 
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/rone
+ * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | discord.gg/rone
+ * Work for BestGamersHK | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO
@@ -2269,9 +2269,9 @@ async function create_transcript(message, client, msglimit) {
 }
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/rone
+ * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | discord.gg/rone
+ * Work for BestGamersHK | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO
@@ -2633,9 +2633,9 @@ const channelInfo = (url, options = {}) => __awaiter(void 0, void 0, void 0, fun
     }
     /**
      * @INFO
-     * Bot Coded by bestgamershk | https://discord.gg/rone
+     * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
      * @INFO
-     * Work for BestGamersHK | discord.gg/rone
+     * Work for BestGamersHK | P2W Developments
      * @INFO
      * Please mention him, when using this Code!
      * @INFO

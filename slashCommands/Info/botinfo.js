@@ -16,7 +16,7 @@ module.exports = {
     const { guild } = member;    
     try{
       let tempmsg = await interaction?.reply({embeds: [new Discord.MessageEmbed().setColor(es.color)
-      .setAuthor(client.la[ls].cmds.info.botinfo.loading, "https://cdn.discordapp.com/emojis/756773010123522058.gif", "https://discord.gg/rone")], ephemeral: true})
+      .setAuthor(client.la[ls].cmds.info.botinfo.loading, "https://cdn.discordapp.com/emojis/756773010123522058.gif", "https://discord.gg/P2WDevelopments")], ephemeral: true})
       cpuStat.usagePercent(function (e, percent, seconds) {
           if (e) {
               return console.log(e.stack ? String(e.stack).grey : String(e).grey);
@@ -54,9 +54,9 @@ module.exports = {
 };
 /**
   * @INFO
-  * Bot Coded by bestgamershk | https://discord.gg/rone
+  * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
   * @INFO
-  * Work for BestGamersHK | discord.gg/rone
+  * Work for BestGamersHK | P2W Developments
   * @INFO
   * Please mention him, when using this Code!
   * @INFO

@@ -45,7 +45,7 @@ module.exports = {
       let embed = new MessageEmbed()
         .setAuthor(handlemsg(client.la[ls].cmds.info.avatar.author, {
           usertag: user.tag
-        }), customavatar, "https://discord.gg/rone")
+        }), customavatar, "https://discord.gg/P2WDevelopments")
         .setColor(es.color).setThumbnail(es.thumb ? es.footericon && (es.footericon.includes("http://") || es.footericon.includes("https://")) ? es.footericon : client.user.displayAvatarURL() : null)
         .addField("➡️ PNG", `[\`LINK\`](${customavatar})`, true)
         .addField("➡️ JPEG", `[\`LINK\`](${customavatar.replace("png", "jpg").replace("gif", "jpg")})`, true)
@@ -62,7 +62,7 @@ module.exports = {
           usertag: user.tag
         }), user.displayAvatarURL({
           dynamic: true
-        }), "https://discord.gg/rone")
+        }), "https://discord.gg/P2WDevelopments")
         .setColor(es.color).setThumbnail(es.thumb ? es.footericon && (es.footericon.includes("http://") || es.footericon.includes("https://")) ? es.footericon : client.user.displayAvatarURL() : null)
         .addField("➡️ PNG", `[\`LINK\`](${user.displayAvatarURL({format: "png"})})`, true)
         .addField("➡️ JPEG", `[\`LINK\`](${user.displayAvatarURL({format: "jpg"})})`, true)
@@ -84,9 +84,9 @@ module.exports = {
 }
 /*
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/rone
+ * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | discord.gg/rone
+ * Work for BestGamersHK | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

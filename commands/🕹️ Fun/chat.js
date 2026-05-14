@@ -64,9 +64,9 @@ module.exports = {
 }
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/ronee
+ * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopmentse
  * @INFO
- * Work for P2W Developments | https://discord.gg/rone
+ * Work for P2W Developments | https://discord.gg/P2WDevelopments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO
