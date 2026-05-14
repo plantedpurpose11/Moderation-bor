@@ -10,16 +10,6 @@ const advertisement = require("./botconfig/advertisement.json")
 const { delay } = require("./handlers/functions")
 require('dotenv').config()
 
-// Global error handlers - MUST be at top to catch all errors
-process.on('uncaughtException', (err) => {
-  // Suppress ALL Discord.js/WS internal errors
-  return;
-});
-
-process.on('unhandledRejection', () => {
-  // Suppress all
-});
-
 
 /**********************************************************
  * @param {2} CREATE_THE_DISCORD_BOT_CLIENT with some default settings
@@ -117,7 +107,7 @@ function requirehandlers() {
     } catch (e) { console.log(e.stack ? String(e.stack).grey : String(e).grey) }
   });
   ["twitterfeed", /*"twitterfeed2",*/ "livelog", "youtube", "tiktok"].forEach(handler => {
-    try { require(`./social_log/${handler}`)(client); } catch (e) { console.log(e.stack ? String(e.stack).grey.bgRed : String(e).grey.bgRed) }
+    try { require(`./social_log/${handler}`)(client); } catch (e) { console.log(e.stack ? String(e.stack).grey : String(e).grey) }
   });
   ["logger", "anti_nuke", "antidiscord", "antilinks", "anticaps", "antispam", "blacklist", "keyword", "antimention", "autobackup",
 
@@ -130,7 +120,7 @@ function requirehandlers() {
 
     "membercount", "autoembed", "suggest", "validcode", "dailyfact",
     "aichat", "mute", "automeme", "counter"].forEach(handler => {
-      try { require(`./handlers/${handler}`)(client); } catch (e) { console.log("Handler error: " + (e.stack ? String(e.stack).grey.bgRed : String(e).grey.bgRed)); }
+      try { require(`./handlers/${handler}`)(client); } catch (e) { console.log(e.stack ? String(e.stack).grey : String(e).grey) }
     });
 } requirehandlers();
 
@@ -138,5 +128,4 @@ function requirehandlers() {
 /**********************************************************
  * @param {9} Login_to_the_Bot
  *********************************************************/
-
 client.login(process.env.token || config.token);
