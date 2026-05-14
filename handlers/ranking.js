@@ -1,7 +1,9 @@
 const config = require(`${process.cwd()}/botconfig/config.json`)
-const canvacord = require("canvacord");
-const Discord = require("discord.js");
-const Canvas = require("canvas");
+const ee = require(`${process.cwd()}/botconfig/embed.json`)
+let Canvas, canvacord, Discord;
+try { Canvas = require("canvas"); } catch(e) { console.log("[RANK] Canvas not available"); }
+try { canvacord = require("canvacord"); } catch(e) { console.log("[RANK] Canvacord not available"); }
+try { Discord = require("discord.js"); } catch(e) { console.log("[RANK] Discord not available"); }
 const { GetUser, duration, nFormatter } = require(`./functions`)
 //Canvas.registerFont( "./assets/fonts/DMSans-Bold.ttf" , { family: "DM Sans", weight: "bold" } );
 //Canvas.registerFont( "./assets/fonts/DMSans-Regular.ttf" , { family: "DM Sans", weight: "regular" } );
