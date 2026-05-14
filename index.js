@@ -52,6 +52,7 @@ const client = new Discord.Client({
   Discord.Intents.FLAGS.DIRECT_MESSAGES,
   Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
     //Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING
+  Discord.Intents.FLAGS.MESSAGE_CONTENT,
   ],
   presence: {
     activities: [{ name: `${config.status.text}`.replace("{prefix}", config.prefix), type: config.status.type, url: config.status.url }],
