@@ -2,7 +2,7 @@ const { createCanvas, loadImage } = require('canvas');
 const { MessageAttachment, MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs').promises;
 
-const quotesPath = '/home/vboxuser/Multipurpose-Discord-Bot-1/data/quotes.json';
+const quotesPath = `${process.cwd()}/data/quotes.json`;
 let quotes = {};
 
 module.exports = {
