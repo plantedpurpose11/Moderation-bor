@@ -42,7 +42,10 @@ module.exports = client => {
 }
 var state = false;
 function change_status(client){
+  try {
   config = require(`${process.cwd()}/botconfig/config.json`)
+  const usedCommands = client.stats?.has?.("global") ? client.stats.get("global", "commands") : 0;
+  const songsPlayed = client.stats?.has?.("global") ? client.stats.get("global", "songs") : 0;
   if(!state){
     client.user.setActivity(`${config.status.text}`
       .replace("{prefix}", config.prefix)
@@ -53,8 +56,8 @@ function change_status(client){
       .replace("{name}", client.user.username)
       .replace("{tag}", client.user.tag)
       .replace("{commands}", client.commands.size)
-      .replace("{usedcommands}", nFormatter(Math.ceil(client.stats.get("global", "commands") * [...client.guilds.cache.values()].length / 10), 2))
-      .replace("{songsplayed}", nFormatter(Math.ceil(client.stats.get("global", "songs") * [...client.guilds.cache.values()].length / 10), 2))
+      .replace("{usedcommands}", nFormatter(Math.ceil(usedCommands * [...client.guilds.cache.values()].length / 10), 2))
+      .replace("{songsplayed}", nFormatter(Math.ceil(songsPlayed * [...client.guilds.cache.values()].length / 10), 2))
     , {type: config.status.type, url: config.status.url});
   } else {
     client.user.setActivity(`${config.status.text2}`
@@ -66,10 +69,11 @@ function change_status(client){
     .replace("{name}", client.user.username)
     .replace("{tag}", client.user.tag)
     .replace("{commands}", client.commands.size)
-    .replace("{usedcommands}", nFormatter(Math.ceil(client.stats.get("global", "commands") * [...client.guilds.cache.values()].length / 10), 2))
-    .replace("{songsplayed}", nFormatter(Math.ceil(client.stats.get("global", "songs") * [...client.guilds.cache.values()].length / 10), 2))
+    .replace("{usedcommands}", nFormatter(Math.ceil(usedCommands * [...client.guilds.cache.values()].length / 10), 2))
+    .replace("{songsplayed}", nFormatter(Math.ceil(songsPlayed * [...client.guilds.cache.values()].length / 10), 2))
     , {type: config.status.type, url: config.status.url});
   }
+  } catch(e) { console.log("[STATUS] Error updating status:", e.message); }
   state = !state;
   if(client.ad.enabled){
     setTimeout(()=>{

@@ -34,6 +34,7 @@ module.exports = {
     }
   },
 };
+const { Permissions } = require('discord.js');
 
 module.exports = {
   name: 'perms',
