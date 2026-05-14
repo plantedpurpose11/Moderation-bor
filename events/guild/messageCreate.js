@@ -21,6 +21,8 @@ module.exports = async (client, message) => {
   try {
     //if the message is not in a guild (aka in dms), return aka ignore the inputs
     if (!message.guild || message.guild.available === false || !message.channel || message.webhookId) return
+    // DEBUG: Log every guild message received
+    if (!message.author.bot) console.log(`[DEBUG-MSG] content="${message.content}" author=${message.author.tag} guild=${message.guild.id}`);
     //if the channel is on partial fetch it
     if (message.channel?.partial) await message.channel.fetch().catch(() => {});
     if (message.member?.partial) await message.member.fetch().catch(() => {});
@@ -28,6 +30,7 @@ module.exports = async (client, message) => {
     simple_databasing(client, message.guild.id, message.author.id)
     var not_allowed = false;
     const guild_settings = client.settings.get(message.guild.id);
+    console.log(`[DEBUG-MSG] guild_settings type=${typeof guild_settings} keys=${guild_settings ? Object.keys(guild_settings).slice(0,5) : 'null'}`);
     let es = guild_settings.embed;
     let ls = guild_settings.language;
     let { prefix, botchannel, unkowncmdmessage } = guild_settings;
@@ -35,6 +38,7 @@ module.exports = async (client, message) => {
     if (message.author.bot) return 
     //if not in the database for some reason use the default prefix
     if (prefix === null) prefix = config.prefix;
+    console.log(`[DEBUG-MSG] prefix="${prefix}" content="${message.content}" test=${new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`).test(message.content)}`);
     //the prefix can be a Mention of the Bot / The defined Prefix of the Bot
     const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
     //if its not that then return
