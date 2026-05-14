@@ -10,16 +10,15 @@ const advertisement = require("./botconfig/advertisement.json")
 const { delay } = require("./handlers/functions")
 require('dotenv').config()
 
-// Global error handlers - catch Discord.js internal errors
+// Global error handlers
 process.on('uncaughtException', (err) => {
-  // Only log if critical
-  if (!err.message?.includes('handle') && !err.message?.includes('_value')) {
-    console.log("Uncaught Exception:", err.message);
-  }
+  console.log("=== UNCAUGHT EXCEPTION ===");
+  console.log("Reason: ", err);
 });
 
-process.on('unhandledRejection', (reason) => {
-  // Ignore Discord.js internal rejections
+process.on('unhandledRejection', (reason, p) => {
+  console.log("=== UNHANDLED REJECTION ===");
+  console.log("Reason: ", reason);
 });
 
 
@@ -108,16 +107,17 @@ client.ad = {
  * @param {8} LOAD_the_BOT_Functions 
  *********************************************************/
 //those are must haves, they load the dbs, events and commands and important other stuff
-function requirehandlers() {
-  ["extraevents", "clientvariables", "command", "loaddb", "events", "erelahandler", "slashCommands"].forEach(async handler => {
+async function requirehandlers() {
+  for (const handler of ["extraevents", "clientvariables", "command", "loaddb", "events", "erelahandler", "slashCommands"]) {
     try { 
+      const h = require(`./handlers/${handler}`);
       if (handler === "loaddb") {
-        await require(`./handlers/${handler}`)(client); 
+        await h(client); 
       } else {
-        require(`./handlers/${handler}`)(client); 
+        h(client); 
       }
     } catch (e) { console.log(e.stack ? String(e.stack).grey : String(e).grey) }
-  });
+  }
   ["twitterfeed", /*"twitterfeed2",*/ "livelog", "youtube", "tiktok"].forEach(handler => {
     try { require(`./social_log/${handler}`)(client); } catch (e) { console.log(e.stack ? String(e.stack).grey : String(e).grey) }
   });
@@ -134,7 +134,7 @@ function requirehandlers() {
     "aichat", "mute", "automeme", "counter"].forEach(handler => {
       try { require(`./handlers/${handler}`)(client); } catch (e) { console.log(e.stack ? String(e.stack).grey : String(e).grey) }
     });
-} requirehandlers();
+} requirehandlers().catch(e => console.log("Handler loading error:", e));
 
 
 /**********************************************************
