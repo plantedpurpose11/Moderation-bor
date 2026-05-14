@@ -19,8 +19,10 @@ async function safeLoadImage(url) {
 }
 module.exports = function (client) {
     //log that the module is loaded
+    console.log("[RANK] Handler loaded - waiting for messages...");
     client.on("messageCreate", async (message) => {
      try{
+        console.log("[RANK] Got message:", message.content);
 
         if (message.author.bot || !message.guild) return;
         
