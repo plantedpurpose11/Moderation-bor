@@ -111,14 +111,24 @@ module.exports = async (client, mongoUri) => {
         });
         console.log(`${String("[x] :: ".magenta)}Connected to MongoDB!`.brightGreen);
         
+        // Map MongoDB collection names to client property names
+        // Must match the original Enmap loader's property names to avoid
+        // overwriting Discord.js internals (e.g. client.actions is the
+        // Discord.js ActionsManager — using it for a DB collection breaks everything)
+        const clientKeyMap = {
+            actions: 'modActions',
+            InviteData: 'invitesdb',
+        };
+        
         // Load all collections
         const dbNames = Object.keys(schemas);
         for (const name of dbNames) {
             if (!mongoose.models[name]) {
                 mongoose.model(name, schemas[name])
             }
-            client[name] = new MongoEnmap(name);
-            await client[name].init();
+            const clientKey = clientKeyMap[name] || name;
+            client[clientKey] = new MongoEnmap(name);
+            await client[clientKey].init();
         }
         
         console.log(`[x] :: `.magenta + `LOADED THE DATABASES after: `.brightGreen + `${Date.now() - dateNow}ms`.green);
