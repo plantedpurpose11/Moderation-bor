@@ -1697,6 +1697,12 @@ module.exports = function (client) {
 
         }catch(e){console.log("ranking: " + e)}
     })
+    
+    // Wait for database to be ready
+    if (!client.points) {
+        console.log("[RANK] client.points not ready, skipping voice rank init");
+        return;
+    }
     client.points.ensure("Voicerank", {
         voicerank:{}    
     })
