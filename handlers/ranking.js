@@ -1,9 +1,7 @@
 const config = require(`${process.cwd()}/botconfig/config.json`)
-const ee = require(`${process.cwd()}/botconfig/embed.json`)
-let Canvas, canvacord, Discord;
-try { Canvas = require("canvas"); } catch(e) { console.log("[RANK] Canvas not available"); }
-try { canvacord = require("canvacord"); } catch(e) { console.log("[RANK] Canvacord not available"); }
-try { Discord = require("discord.js"); } catch(e) { console.log("[RANK] Discord not available"); }
+const canvacord = require("canvacord");
+const Discord = require("discord.js");
+const Canvas = require("canvas");
 const { GetUser, duration, nFormatter } = require(`./functions`)
 //Canvas.registerFont( "./assets/fonts/DMSans-Bold.ttf" , { family: "DM Sans", weight: "bold" } );
 //Canvas.registerFont( "./assets/fonts/DMSans-Regular.ttf" , { family: "DM Sans", weight: "regular" } );
@@ -19,15 +17,8 @@ async function safeLoadImage(url) {
 }
 module.exports = function (client) {
     //log that the module is loaded
-    console.log("[RANK] Handler loaded");
-    
     client.on("messageCreate", async (message) => {
      try{
-        // Check if databases are ready
-        if (!client.settings || !client.setups || !client.points) {
-            console.log("[RANK] Ignoring message - databases not ready");
-            return;
-        }
 
         if (message.author.bot || !message.guild) return;
         
