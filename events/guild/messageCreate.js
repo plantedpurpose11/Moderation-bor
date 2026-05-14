@@ -157,6 +157,8 @@ module.exports = async (client, message) => {
       timestamps.set(message.author.id, now); //if he is not on cooldown, set it to the cooldown
       setTimeout(() => timestamps.delete(message.author.id), cooldownAmount); //set a timeout function with the cooldown, so it gets deleted later on again
       try {
+        client.stats.ensure(message.guild.id, {commands: 0, songs: 0});
+        client.stats.ensure("global", {commands: 0, songs: 0});
         client.stats.inc(message.guild.id, "commands"); //counting our Database stats for SERVER
         client.stats.inc("global", "commands"); //counting our Database Stats for GLOBA
         //if Command has specific permission return error

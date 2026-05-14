@@ -137,10 +137,9 @@ async function requirehandlers() {
     "aichat", "mute", "automeme", "counter"].forEach(handler => {
       try { require(`./handlers/${handler}`)(client); } catch (e) { console.log(e.stack ? String(e.stack).grey : String(e).grey) }
     });
-} requirehandlers().catch(e => console.log("Handler loading error:", e));
-
-
-/**********************************************************
- * @param {9} Login_to_the_Bot
- *********************************************************/
-client.login(process.env.token || config.token);
+} requirehandlers().then(() => {
+  /**********************************************************
+   * @param {9} Login_to_the_Bot
+   *********************************************************/
+  client.login(process.env.token || config.token);
+}).catch(e => console.log("Handler loading error:", e));
