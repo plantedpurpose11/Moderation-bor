@@ -13,7 +13,7 @@ require('dotenv').config()
 // Global error handlers
 process.on('uncaughtException', (err) => {
   // Known Discord.js v13 internal error — safe to suppress
-  if (err.message?.includes('handle') && err.stack?.includes('PRESENCE_UPDATE')) return;
+  if (err.message?.includes('handle') && (err.stack?.includes('PRESENCE_UPDATE') || err.stack?.includes('GUILD_CREATE') || err.stack?.includes('Guild._patch'))) return;
   console.log("=== UNCAUGHT EXCEPTION ===");
   console.log("Reason: ", err);
 });

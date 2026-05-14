@@ -53,13 +53,13 @@ module.exports = client => {
     console.log('=== unhandled Rejection ===\n\n\n\n\n'.toUpperCase().yellow.dim);
   });
   process.on("uncaughtException", (err, origin) => {
-    if (err.message?.includes('handle') && err.stack?.includes('PRESENCE_UPDATE')) return;
+    if (err.message?.includes('handle') && (err.stack?.includes('PRESENCE_UPDATE') || err.stack?.includes('GUILD_CREATE') || err.stack?.includes('Guild._patch'))) return;
     console.log('\n\n\n\n\n\n=== uncaught Exception ==='.toUpperCase().yellow.dim);
     console.log('Exception: ', err.stack ? err.stack : err)
     console.log('=== uncaught Exception ===\n\n\n\n\n'.toUpperCase().yellow.dim);
   })
   process.on('uncaughtExceptionMonitor', (err, origin) => {
-    if (err.message?.includes('handle') && err.stack?.includes('PRESENCE_UPDATE')) return;
+    if (err.message?.includes('handle') && (err.stack?.includes('PRESENCE_UPDATE') || err.stack?.includes('GUILD_CREATE') || err.stack?.includes('Guild._patch'))) return;
     console.log('=== uncaught Exception Monitor ==='.toUpperCase().yellow.dim);
   });
   process.on('multipleResolves', (type, promise, reason) => {
