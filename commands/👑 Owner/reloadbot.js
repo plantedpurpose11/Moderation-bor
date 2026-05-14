@@ -120,7 +120,7 @@ ${clientapp.description ? clientapp.description : "❌ NO DESCRIPTION YET!"}
       await delay(3000);
       await tempmsg.edit({embeds: [new MessageEmbed()
         .setColor(es.color).setFooter(client.getFooter(es))
-        .setAuthor(`Successfully Reloaded:`, `https://cdn.discordapp.com/emojis/833101995723194437.gif?v=1`, `https://discord.gg/rone`)
+        .setAuthor(`Successfully Reloaded:`, `https://cdn.discordapp.com/emojis/✅.gif?v=1`, `https://discord.gg/rone`)
         .setTitle(eval(client.la[ls]["cmds"]["owner"]["reloadbot"]["variable6"]))
       ]})
     } catch (e) {

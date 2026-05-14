@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 
 // Path to the JSON file
-const quotesPath = `${process.cwd()}/data/quotes.json`;
+const quotesPath = '/home/vboxuser/Multipurpose-Discord-Bot-1/data/quotes.json';
 
 // Load quotes from the JSON file
 let quotes = {};

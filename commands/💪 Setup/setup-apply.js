@@ -128,7 +128,7 @@ module.exports = {
         //define the embed
         let MenuEmbed = new Discord.MessageEmbed()
           .setColor(es.color)
-          .setAuthor(client.getAuthor('Application Setup', 'https://cdn.discordapp.com/emojis/833101350623117342.gif?size=96', 'https://discord.gg/rone'))
+          .setAuthor(client.getAuthor('Application Setup', 'https://cdn.discordapp.com/emojis/📝.png?size=96', 'https://discord.gg/rone'))
           .setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-ticket"]["variable2"]))
         let used1 = false;
         //send the menu msg

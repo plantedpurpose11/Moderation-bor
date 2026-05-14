@@ -66,7 +66,7 @@ module.exports = {
  * @INFO
  * Bot Coded by bestgamershk | https://discord.gg/ronee
  * @INFO
- * Work for P2W Developments | https://discord.gg/rone
+ * Work for Indocraft Network | https://discord.gg/rone
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

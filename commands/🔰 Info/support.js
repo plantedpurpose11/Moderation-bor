@@ -25,7 +25,7 @@ module.exports = {
           .setColor(ee.color)
           .setTitle(client.la[ls].cmds.info.support.title)
           .setDescription(eval(client.la[ls]["cmds"]["info"]["support"]["variable1"]))
-          .setFooter('OxyGen | Powered by: P2W Developments', 'https://imgur.com/jPItIw0.gif')
+          .setFooter('OxyGen | Powered by .gg/rone', 'https://imgur.com/jPItIw0.gif')
           .setURL("https://discord.com/api/oauth2/authorize?client_id=1074184278545547364&permissions=8&scope=bot%20applications.commands")],
         components: allbuttons
       });

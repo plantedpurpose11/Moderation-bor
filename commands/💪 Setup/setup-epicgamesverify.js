@@ -120,7 +120,7 @@ module.exports = {
                 
                 channel.send({
                   embeds: [
-                    new MessageEmbed().setColor(es.color).setFooter(message.guild.name + " | Powered by: P2W Developments", message.guild.iconURL({dynamic: true})).setThumbnail(es.thumb ? message.guild.iconURL({dynamic: true}) : null)
+                    new MessageEmbed().setColor(es.color).setFooter(message.guild.name + " | Powered by: discord.gg/rone", message.guild.iconURL({dynamic: true})).setThumbnail(es.thumb ? message.guild.iconURL({dynamic: true}) : null)
                     .setTitle(`Click the Button to Verify and Link your Epic Games Account`)
                     .setDescription(`If you click the Button you can verify your Epic Games account to this Server!\nYou can click it again to change your Account details!`)
                   ],

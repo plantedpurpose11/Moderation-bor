@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const { createCanvas } = require('canvas');
 const { MessageAttachment } = require('discord.js');
-const config = require(`${process.cwd()}/data/quotes.json`);
+const config = require('/home/vboxuser/Multipurpose-Discord-Bot-1/data/quotes.json');
 
 module.exports = {
   name: 'stock',

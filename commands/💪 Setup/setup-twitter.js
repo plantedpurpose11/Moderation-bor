@@ -82,7 +82,7 @@ module.exports = {
         //define the embed
         let MenuEmbed = new MessageEmbed()
           .setColor(es.color)
-          .setAuthor('Twitter Setup', 'https://cdn.discordapp.com/emojis/756773010123522058.gif?size=96', 'https://discord.gg/rone')
+          .setAuthor('Twitter Setup', 'https://cdn.discordapp.com/emojis/🐦.png?size=96', 'https://discord.gg/rone')
           .setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-ticket"]["variable2"]))
         //send the menu msg
         let menumsg = await message.reply({
