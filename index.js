@@ -119,6 +119,8 @@ function requirehandlers() {
   ["twitterfeed", /*"twitterfeed2",*/ "livelog", "youtube", "tiktok"].forEach(handler => {
     try { require(`./social_log/${handler}`)(client); } catch (e) { console.log(e.stack ? String(e.stack).grey.bgRed : String(e).grey.bgRed) }
   });
+  // Wait for databases to be ready before loading these handlers
+  setTimeout(() => {
   ["logger", "anti_nuke", "antidiscord", "antilinks", "anticaps", "antispam", "blacklist", "keyword", "antimention", "autobackup",
 
     "apply", "ticket", "ticketevent",
@@ -132,6 +134,7 @@ function requirehandlers() {
     "aichat", "mute", "automeme", "counter"].forEach(handler => {
       try { require(`./handlers/${handler}`)(client); } catch (e) { console.log(e.stack ? String(e.stack).grey.bgRed : String(e).grey.bgRed); }
     });
+  }, 1000);
 } requirehandlers();
 
 
