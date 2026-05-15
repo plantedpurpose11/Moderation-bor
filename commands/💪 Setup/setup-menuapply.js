@@ -297,8 +297,9 @@ module.exports = {
                         label: option.value.substring(0, 50),
                         value: option.value.substring(0, 50),
                         description: option.description.substring(0, 50),
-                        emoji: isEmoji(option.emoji) ? option.emoji : NumberEmojiIds[index + 1]
-                      }
+                          }
+                      let emojiVal = isEmoji(option.emoji) ? option.emoji : NumberEmojiIds[index + 1];
+                      if (emojiVal) Obj.emoji = emojiVal;
                       return Obj;
                     }))
                 channel.send({
@@ -317,8 +318,9 @@ module.exports = {
                         label: option.value.substring(0, 50),
                         value: option.value.substring(0, 50),
                         description: option.description.substring(0, 50),
-                        emoji: NumberEmojiIds[index + 1]
                       }
+                      let emojiVal = NumberEmojiIds[index + 1];
+                      if (emojiVal) Obj.emoji = emojiVal;
                       return Obj;
                     }))
                   channel.send({
@@ -576,8 +578,9 @@ module.exports = {
                   label: option.value.substring(0, 50),
                   value: option.value.substring(0, 50),
                   description: option.description.substring(0, 50),
-                  emoji: isEmoji(option.emoji) ? option.emoji : NumberEmojiIds[index + 1]
                 }
+                let emojiVal = isEmoji(option.emoji) ? option.emoji : NumberEmojiIds[index + 1];
+                if (emojiVal) Obj.emoji = emojiVal;
                 return Obj;
               }))
           //send the menu msg
@@ -597,8 +600,9 @@ module.exports = {
                   label: option.value.substring(0, 50),
                   value: option.value.substring(0, 50),
                   description: option.description.substring(0, 50),
-                  emoji: NumberEmojiIds[index + 1]
                 }
+                let emojiVal = NumberEmojiIds[index + 1];
+                if (emojiVal) Obj.emoji = emojiVal;
                 return Obj;
               }))
               menumsg = await message.reply({
@@ -661,22 +665,7 @@ module.exports = {
         "7️⃣",
         "8️⃣",
         "9️⃣",
-        "🔟",
-        "1️⃣1️⃣",
-        "1️⃣2️⃣",
-        "1️⃣3️⃣",
-        "1️⃣4️⃣",
-        "1️⃣5️⃣",
-        "1️⃣6️⃣",
-        "1️⃣7️⃣",
-        "1️⃣8️⃣",
-        "1️⃣9️⃣",
-        "2️⃣0️⃣",
-        "2️⃣1️⃣",
-        "2️⃣2️⃣",
-        "2️⃣3️⃣",
-        "2️⃣4️⃣",
-        "2️⃣5️⃣"
+        "🔟"
       ]
     }
     function isEmoji(emoji) {
