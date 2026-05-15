@@ -4,10 +4,7 @@
  
 
 # Important notes and thank ❤️
-First of all, thanks for using this Source Code, it was and is a ton of work to create and maintain it!
-If you find any errors please create a issue from <a href="https://github.com/BestGamersH/Multipurpose-Discord-Bot/issues">Here</a>
-
-also this bot will run better on replit or any luinix vm
+First of all all credit to original creator of this open sourced code tomato. It is my hope to update this source code into a working version of such a terrific bot for server managment. will be working on updating the entire bot to discordv14 after ensuring the full bot works.
 
 ﻿﻿##Please do not remove credit of our development! 
 
