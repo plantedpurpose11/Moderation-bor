@@ -88,9 +88,7 @@ module.exports = (client, preindex) => {
 
     }
 
-    client.stats.ensure(guild.id, {
-      ticketamount: 0
-    });
+    client.stats.ensure(guild.id, 0, "ticketamount");
     client.stats.inc(guild.id, "ticketamount");
     let ticketamount = client.stats.get(guild.id, "ticketamount");
 
