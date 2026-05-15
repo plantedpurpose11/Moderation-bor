@@ -17,6 +17,23 @@ module.exports = {
   type: "server",
   run: async (client, message, args, cmduser, text, prefix) => {
     
+    // Helper functions for checking attachment types
+    function attachispng(msgAttach) {
+      let url = msgAttach.url;
+      return url.indexOf("png", url.length - "png".length) !== -1;
+    }
+    function attachisjpg(msgAttach) {
+      let url = msgAttach.url;
+      return url.indexOf("jpg", url.length - "jpg".length) !== -1;
+    }
+    function attachisgif(msgAttach) {
+      let url = msgAttach.url;
+      return url.indexOf("gif", url.length - "gif".length) !== -1;
+    }
+    function getAttachmentUrl(msgAttach) {
+      return msgAttach.url;
+    }
+
     let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language")
     try {
       let adminroles = client.settings.get(message.guild.id, "adminroles")
@@ -56,7 +73,9 @@ module.exports = {
       let desc = userargs.slice(1).join(" ")
       let attachment = false;
       let name = false;
+      let url = null;
       if (message.attachments.size > 0) {
+        url = getAttachmentUrl(message.attachments.first());
         if (message.attachments.every(attachispng)) {
           name = "image.png"
           attachment = new MessageAttachment(url, name)
@@ -117,18 +136,6 @@ module.exports = {
         }
       } 
 
-      function attachispng(msgAttach) {
-        url = msgAttach.url;
-        return url.indexOf("png", url.length - "png".length /*or 3*/ ) !== -1;
-      }
-      function attachisjpg(msgAttach) {
-        url = msgAttach.url;
-        return url.indexOf("jpg", url.length - "jpg".length /*or 3*/ ) !== -1;
-      }
-      function attachisgif(msgAttach) {
-        url = msgAttach.url;
-        return url.indexOf("gif", url.length - "gif".length /*or 3*/ ) !== -1;
-      }
     } catch (e) {
       console.log(String(e.stack).grey.bgRed)
       return message.reply({embeds : [new MessageEmbed()
