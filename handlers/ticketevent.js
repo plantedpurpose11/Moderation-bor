@@ -1016,7 +1016,9 @@ module.exports = client => {
                     message: "Hey {user}, thanks for opening an ticket! Someone will help you soon!",
                     adminroles: []
                 }, systempath);
-                if (client.setups.get("TICKETS", ticketspath).includes(user.id)) {
+                client.setups.ensure("TICKETS", [], ticketspath);
+                const ticketsData = client.setups.get("TICKETS", ticketspath);
+                if (Array.isArray(ticketsData) && ticketsData.includes(user.id)) {
                     try {
                       var ticketchannel = guild.channels.cache.get(client.setups.get(user.id, idpath))
                       if (!ticketchannel || ticketchannel == null || !ticketchannel.id || ticketchannel.id == null) throw {
