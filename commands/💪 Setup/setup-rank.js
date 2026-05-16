@@ -198,11 +198,7 @@ module.exports = {
             }
           }break;
           case "Levelup Roles": {
-            client.points.ensure(message.guild.id, {
-              rankroles: {
-                  
-              }
-          })
+            client.points.ensure(message.guild.id, {}, "rankroles");
           var tempmsg = await message.reply({embeds: [new Discord.MessageEmbed()
             .setTitle("What do you want to do now?")
             .setColor(es.color)
@@ -224,34 +220,39 @@ module.exports = {
               if(!arggs[0] || isNaN(arggs[0])) return message.reply("**:x: YOU DID WRONG! Please read what the introduction tells you!**\nCancelled!")
               var Role = message.mentions.roles.filter(ch=>ch.guild.id==message.guild.id).first() || message.guild.roles.cache.get(arggs[1]);
                 try {
-                  let oldRankRoles = client.points.get(message.guild.id, "rankroles");
+                  let oldRankRoles = client.points.get(message.guild.id, "rankroles") || {};
                   if(!arggs[1] && oldRankRoles[parseInt(arggs[0])]){
+                    let removedRoleId = oldRankRoles[parseInt(arggs[0])];
                     delete oldRankRoles[parseInt(arggs[0])]
                     client.points.set(message.guild.id, oldRankRoles, "rankroles");
                     return message.reply({embeds: [new Discord.MessageEmbed()
-                      .setTitle(`**REMOVED** the Levelup-Role: ${Role.name} for the Levelup-Level: ${parseInt(arggs[0])}`)
+                      .setTitle(`**REMOVED** the Levelup-Role for Level: ${parseInt(arggs[0])}`)
                       .setColor(es.color)
-                      .setDescription(`To add it back type: \`${prefix}setup-rank\` --> 4️⃣ -->  \`${parseInt(arggs[0])} @${Role.name}\``)
+                      .setDescription(`Removed <@&${removedRoleId}> from Level ${parseInt(arggs[0])}.\nTo add it back type: \`${prefix}setup-rank\` --> Levelup Roles -->  \`${parseInt(arggs[0])} @Role\``)
                       .setFooter(client.getFooter(es))
                     ]});
+                  } else if(arggs[1] && !Role) {
+                    return message.reply("**:x: Could not find that role!** Please mention a valid role.")
                   } else if(arggs[1] && oldRankRoles[parseInt(arggs[0])]){
                     oldRankRoles[parseInt(arggs[0])] = Role.id;
                     client.points.set(message.guild.id, oldRankRoles, "rankroles");
                     return message.reply({embeds: [new Discord.MessageEmbed()
-                      .setTitle(`**CHANGE** the Levelup-Role: ${Role.name} for the Levelup-Level: ${parseInt(arggs[0])}`)
+                      .setTitle(`**CHANGED** the Levelup-Role: ${Role.name} for the Levelup-Level: ${parseInt(arggs[0])}`)
                       .setColor(es.color)
-                      .setDescription(`To add it back type: \`${prefix}setup-rank\` --> 4️⃣ -->  \`${parseInt(arggs[0])} @${Role.name}\``)
+                      .setDescription(`To remove it type: \`${prefix}setup-rank\` --> Levelup Roles -->  \`${parseInt(arggs[0])}\``)
                       .setFooter(client.getFooter(es))
                     ]});
-                  } else {
+                  } else if(arggs[1] && Role) {
                     oldRankRoles[parseInt(arggs[0])] = Role.id;
                     client.points.set(message.guild.id, oldRankRoles, "rankroles");
                     return message.reply({embeds: [new Discord.MessageEmbed()
                       .setTitle(`**ADDED** the Levelup-Role: ${Role.name} for the Levelup-Level: ${parseInt(arggs[0])}`)
                       .setColor(es.color)
-                      .setDescription(`To remove it type: \`${prefix}setup-rank\` --> 4️⃣ -->  \`${parseInt(arggs[0])}\``)
+                      .setDescription(`To remove it type: \`${prefix}setup-rank\` --> Levelup Roles -->  \`${parseInt(arggs[0])}\``)
                       .setFooter(client.getFooter(es))
                     ]});
+                  } else {
+                    return message.reply("**:x: Please mention a role to add!** Usage: `LEVEL @ROLE`")
                   }
                 } catch (e) {
                   return message.reply({embeds: [new Discord.MessageEmbed()
@@ -274,11 +275,7 @@ module.exports = {
           }break;
           case "Show Settings": {
 
-            client.points.ensure(message.guild.id, {
-              rankroles: {
-                  
-              }
-            })
+            client.points.ensure(message.guild.id, {}, "rankroles");
             let rankroles = [];
             let rolesdata = client.points.get(message.guild.id, "rankroles")
             let channel = client.points.get(message.guild.id, "channel")
