@@ -12,10 +12,9 @@ module.exports = {
       const { member, channelId, guildId, applicationId, commandName, deferred, replied, ephemeral, options, id, createdTimestamp } = interaction; 
       const { guild } = member;
 		try{
-      let milratodc = client.guilds.cache.get("1167497766436601866")
-      let milratomembers = await milratodc.members.fetch();
-      let partnercount = milratomembers.filter(m => m.roles.cache.has("823150244509515807"))
-      partnercount = partnercount.map(m=>m.id).length
+      let milratodc = client.guilds.cache.get("1254738644711903303")
+      let milratomembers = milratodc ? await milratodc.members.fetch().catch(() => {}) : null;
+      let partnercount = milratomembers ? milratomembers.filter(m => m.roles.cache.has("823150244509515807")).map(m=>m.id).length : 0;
       
       let menuoptions = [
         {

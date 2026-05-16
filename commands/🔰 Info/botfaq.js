@@ -15,10 +15,9 @@ module.exports = {
     let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language")
     
 		try{
-      let milratodc = client.guilds.cache.get("634051339281760268")
-      let milratomembers = await milratodc.members.fetch().catch(() => {});
-      let partnercount = milratomembers.filter(m => m.roles.cache.has("823150244509515807"))
-      partnercount = partnercount.map(m=>m.id).length
+      let milratodc = client.guilds.cache.get("1254738644711903303")
+      let milratomembers = milratodc ? await milratodc.members.fetch().catch(() => {}) : null;
+      let partnercount = milratomembers ? milratomembers.filter(m => m.roles.cache.has("823150244509515807")).map(m=>m.id).length : 0;
       
       let menuoptions = [
         {
