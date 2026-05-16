@@ -42,7 +42,7 @@ module.exports = {
             .addField(client.la[ls].cmds.info.botinfo.field1.title, handlemsg(client.la[ls].cmds.info.botinfo.field1.value, {totalGuilds: totalGuilds, totalMembers: totalMembers, connections: connectedchannelsamount, connectedchannelsamount: connectedchannelsamount}), true)
             .addField(client.la[ls].cmds.info.botinfo.field2.title, `\`\`\`yml\nNode.js: ${process.version}\nDiscord.js: v${Discord.version}\nEnmap: v5.8.4\`\`\``, true)
             .addField(client.la[ls].cmds.info.botinfo.field3.title, handlemsg(client.la[ls].cmds.info.botinfo.field3.value, {cpu: percent.toFixed(2), ram: (process.memoryUsage().heapUsed/1024/1024).toFixed(2)}))
-            .addField(client.la[ls].cmds.info.botinfo.field4.title, `\`\`\`yml\nName: bestgamershk\nID: [363141299588825120]\`\`\``, true)
+            .addField(client.la[ls].cmds.info.botinfo.field4.title, `\`\`\`yml\nName: PlantedPurpose\nID: [363141299588825120]\`\`\``, true)
             .addField(client.la[ls].cmds.info.botinfo.field5.title, handlemsg(client.la[ls].cmds.info.botinfo.field5.value, {invitelink: `https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands`}))
             .setFooter(client.getFooter(es));
         interaction?.editReply({embeds: [botinfo], ephemeral: true});
@@ -54,9 +54,9 @@ module.exports = {
 };
 /**
   * @INFO
-  * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
+  * Bot Coded by PlantedPurpose | https://discord.gg/P2WDevelopments
   * @INFO
-  * Work for BestGamersHK | P2W Developments
+  * Work for PlantedPurpose | P2W Developments
   * @INFO
   * Please mention him, when using this Code!
   * @INFO

@@ -39,7 +39,7 @@ module.exports = {
         let menuoptions = [
           {
             value: `${client.ad.enabled? "Disable" : "Enable"} Advertisement`,
-            description: `${client.ad.enabled? "Disables the Ads from BestGamersHK" : "Enables the Ads from BestGamersHK"}`,
+            description: `${client.ad.enabled? "Disables the Ads from PlantedPurpose" : "Enables the Ads from PlantedPurpose"}`,
             emoji: client.ad.enabled? emoji?.react.ERROR : emoji?.react.SUCCESS
           },
           {
@@ -156,9 +156,9 @@ module.exports = {
 };
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
+ * Bot Coded by PlantedPurpose | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | P2W Developments
+ * Work for PlantedPurpose | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

@@ -148,9 +148,9 @@ module.exports = {
 }
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://github?.com/BestGamersHK/Discord-Js-Handler-Template
+ * Bot Coded by PlantedPurpose | https://github?.com/PlantedPurpose/Discord-Js-Handler-Template
  * @INFO
- * Work for BestGamersHK | P2W Developments
+ * Work for PlantedPurpose | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

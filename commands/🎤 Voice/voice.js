@@ -954,9 +954,9 @@ module.exports = {
 }
 /**
   * @INFO
-  * Bot Coded by bestgamershk |  
+  * Bot Coded by PlantedPurpose |  
   * @INFO
-  * Work for BestGamersHK
+  * Work for PlantedPurpose
   * @INFO
   * Please mention Him when using this Code!
   * @INFO

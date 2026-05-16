@@ -11,7 +11,7 @@ module.exports = client => {
 
     let text = embedData.footertext;
     let iconURL = embedData.footericon;
-    if(!text || text.length < 1) text = `${client.user.username} | By: bestgamershk`;
+    if(!text || text.length < 1) text = `${client.user.username} | By: PlantedPurpose`;
     if(!iconURL || iconURL.length < 1) iconURL = `${client.user.displayAvatarURL()}`;
     
     //Change the lengths
@@ -31,7 +31,7 @@ module.exports = client => {
     let iconURL = authoricon;
     let url = authorurl;
 
-    if(!name || name.length < 1) name = `${client.user.username} | By: bestgamershk`;
+    if(!name || name.length < 1) name = `${client.user.username} | By: PlantedPurpose`;
     if(!iconURL || iconURL.length < 1) iconURL = `${client.user.displayAvatarURL()}`;
     if(!url || url.length < 1) url = `https://discord.gg/P2WDevelopments`;
 
@@ -138,7 +138,7 @@ module.exports = client => {
       .addField("Leave Server:", `>>> \`\`\`${config.prefix}leaveserver ${guild.id}\`\`\``)
       .setThumbnail(guild.iconURL({dynamic: true}));
     for(const owner of config.ownerIDS){
-      //If the Owner is BestGamersHK, and the Bot is in not a P2W Developments, Public Bot, then dont send information!
+      //If the Owner is PlantedPurpose, and the Bot is in not a P2W Developments, Public Bot, then dont send information!
       if(owner == "363141299588825120"){
         let milratoGuild = client.guilds.cache.get("1167497766436601866");
         if(milratoGuild && !milratoGuild.me.roles.cache.has("1041735706369867886")){
@@ -206,7 +206,7 @@ module.exports = client => {
       .addField("Servers Bot is in", `>>> \`\`\`${client.guilds.cache.size}\`\`\``)
       .setThumbnail(guild.iconURL({dynamic: true}));
     for(const owner of config.ownerIDS){
-      //If the Owner is BestGamersHK, and the Bot is in not a P2W Developments, Public Bot, then dont send information!
+      //If the Owner is PlantedPurpose, and the Bot is in not a P2W Developments, Public Bot, then dont send information!
       if(owner == "363141299588825120"){
         let milratoGuild = client.guilds.cache.get("1167497766436601866");
         if(milratoGuild && !milratoGuild.me.roles.cache.has("1041735706369867886")){

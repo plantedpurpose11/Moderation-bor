@@ -169,7 +169,7 @@ module.exports = {
               var msg = collected.first();
               if(msg && msg.content ){
                 if((msg.content.length > 0 && msg.content.length < 50) &&!msg.content.toLowerCase().includes("youtube") && (!msg.content.toLowerCase().includes("channel") || !msg.content.toLowerCase().includes("c")))
-                  return message.reply("YOU DID NOT SEND A VALID YOUTUBE CHANNEL\nNote, such links doesn't work: `https://youtube.com/BestGamersHK` / `https://youtube.com/c/BestGamersHK`\nIt must be something like this: `https://www.youtube.com/channel/UC1AgotpFHNhzolUtAjPgZqQ`")
+                  return message.reply("YOU DID NOT SEND A VALID YOUTUBE CHANNEL\nNote, such links doesn't work: `https://youtube.com/PlantedPurpose` / `https://youtube.com/c/PlantedPurpose`\nIt must be something like this: `https://www.youtube.com/channel/UC1AgotpFHNhzolUtAjPgZqQ`")
                 if(client.social_log.get(message.guild.id, "youtube.channels").includes(msg.content))
                   return message.reply({embeds: [new Discord.MessageEmbed()
                     .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-youtube"]["variable11"]))
@@ -390,9 +390,9 @@ module.exports = {
 };
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
+ * Bot Coded by PlantedPurpose | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | P2W Developments
+ * Work for PlantedPurpose | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

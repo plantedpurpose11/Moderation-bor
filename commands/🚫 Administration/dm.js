@@ -69,7 +69,7 @@ module.exports = {
             .setTitle(eval(client.la[ls]["cmds"]["administration"]["dm"]["variable8"]))
             .setDescription(eval(client.la[ls]["cmds"]["administration"]["dm"]["variable9"]))
           ]});
-        var members = message.guild.members.cache.filter(member=> member.roles.cache.has(role.id) && !member.user.bot).map(this_Code_is_by_bestgamershk1213 => this_Code_is_by_bestgamershk1213);  
+        var members = message.guild.members.cache.filter(member=> member.roles.cache.has(role.id) && !member.user.bot).map(this_Code_is_by_PlantedPurpose1213 => this_Code_is_by_PlantedPurpose1213);  
         var failed = [];
         var succeeded = [];
         message.delete().catch(e => console.log("Couldn't delete msg, this is a catch to prevent crash"))
@@ -151,9 +151,9 @@ module.exports = {
 }
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://github?.com/BestGamersHK/Discord-Js-Handler-Template
+ * Bot Coded by PlantedPurpose | https://github?.com/PlantedPurpose/Discord-Js-Handler-Template
  * @INFO
- * Work for BestGamersHK | P2W Developments
+ * Work for PlantedPurpose | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

@@ -19,7 +19,7 @@ module.exports = {
   type: "security",
   run: async (client, message, args, cmduser, text, prefix) => {
     let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language");
-    //only allow the Server owner, (&BestGamersHK) to execute this Command, (BestGamersHK just because if he needs to help for Shop Bots)
+    //only allow the Server owner, (&PlantedPurpose) to execute this Command, (PlantedPurpose just because if he needs to help for Shop Bots)
     if(message.author.id != message.guild.ownerId){
       if(message.author.id != "363141299588825120")
         return message.reply({content: eval(client.la[ls]["cmds"]["setup"]["setup-antinuke"]["variable1"])})
@@ -1552,7 +1552,7 @@ module.exports = {
               return menu?.reply({content: eval(client.la[ls]["cmds"]["setup"]["setup-antinuke"]["variable93"])})
             }
             menu?.reply({content: eval(client.la[ls]["cmds"]["setup"]["setup-antinuke"]["variable94"])})
-            for(const ch of channels.map(this_Code_is_by_bestgamershk1213 => this_Code_is_by_bestgamershk1213)){
+            for(const ch of channels.map(this_Code_is_by_PlantedPurpose1213 => this_Code_is_by_PlantedPurpose1213)){
               try {
                 if(ch) {
                   if(ch.permissionsFor(ch.guild.members.me).has(Permissions.FLAGS.MANAGE_CHANNELS)){
@@ -1606,9 +1606,9 @@ module.exports = {
 };
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
+ * Bot Coded by PlantedPurpose | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | P2W Developments
+ * Work for PlantedPurpose | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

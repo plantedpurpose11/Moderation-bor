@@ -152,7 +152,7 @@ module.exports = {
                       .then(async collected => {
                         var channel = collected.first().mentions.channels.filter(ch=>ch.guild.id==message.guild.id).first();
                         if (channel) {
-                          for (const ch of collected.first().mentions.channels.map(this_Code_is_by_bestgamershk1213 => this_Code_is_by_bestgamershk1213)) {
+                          for (const ch of collected.first().mentions.channels.map(this_Code_is_by_PlantedPurpose1213 => this_Code_is_by_PlantedPurpose1213)) {
                             
                             thekeyword.channels.push(ch.id)
                           }
@@ -409,9 +409,9 @@ module.exports = {
 };
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
+ * Bot Coded by PlantedPurpose | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | P2W Developments
+ * Work for PlantedPurpose | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

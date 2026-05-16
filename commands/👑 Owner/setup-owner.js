@@ -202,7 +202,7 @@ module.exports = {
                     return message.channel.send({embeds: [new MessageEmbed()
                       .setFooter(client.getFooter(es))
                       .setColor(es.wrongcolor)
-                      .setTitle(`You can't remove BestGamersHK!`)
+                      .setTitle(`You can't remove PlantedPurpose!`)
                       .setDescription(`This is a security Option`)
                     ]})
                   }
@@ -288,9 +288,9 @@ module.exports = {
 };
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
+ * Bot Coded by PlantedPurpose | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | P2W Developments
+ * Work for PlantedPurpose | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO
