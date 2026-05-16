@@ -127,7 +127,7 @@ let channel2send = false;
 client.on("interactionCreate", buttonEvent)
 
 let embedEditing = async(button) => {
-    if(!button?.customId.startsWith(`buildEmbed`) && button?.message.id == msg.id) return;
+    if(!button?.customId.startsWith(`buildEmbed`) || button?.message.id != msg.id) return;
     await button?.deferUpdate();
 
     let id = button?.customId.split(`buildEmbed_`)[1]
@@ -162,7 +162,7 @@ let embedEditing = async(button) => {
         if(builderId == "channel") channel2send = finalInput.mentions.channels.first() || false;
         if(builderId == "title") embedToBuild.setTitle(finalInput.content)
         if(builderId == "desc") embedToBuild.setDescription(finalInput.content)
-        if(builderId == "footer") embedToBuild.setFooter(finalInput.content)
+        if(builderId == "footer") embedToBuild.setFooter({text: finalInput.content || "\u200B"})
         
         if(builderId == "color") {
             if(!/^#[0-9A-F]{6}$/i?.test(finalInput.content)) embedToBuild.setColor("RANDOM")
@@ -199,32 +199,34 @@ let embedEditing = async(button) => {
 
         setTimeout(async() => {
             let message = await button?.channel.messages.fetch(button?.message.id).catch(() => {})
-            message.delete();
+            if(message) message.delete().catch(()=>{});
         }, 3000)
 
         await client.removeListener("interactionCreate", buttonEvent);
     }
 
     if(id == `save`) {
-        let messageToDelete = await button?.channel.messages.fetch(button?.message.id).catch(() => {});
-
-        messageToDelete.delete();
-          embedToBuild = Object.keys(embedToBuild).reduce((object, key) => {
-            if(key !== "author") {
-              object[key] = embedToBuild[key]
+        try {
+          let messageToDelete = await button?.channel.messages.fetch(button?.message.id).catch(() => {});
+          if(messageToDelete) messageToDelete.delete().catch(()=>{});
+        } catch(e) {}
+          let embedData = {};
+          for (const key of Object.keys(embedToBuild)) {
+            if(key !== "author" && key !== "type" && embedToBuild[key] !== null) {
+              embedData[key] = embedToBuild[key];
             }
-            return object
-          }, {})
+          }
 
         if(channel2send) 
-        channel2send.send({embeds:[embedToBuild],components:null}) 
+        channel2send.send({embeds:[embedData]}).catch(e => { button?.channel.send(`❌ Failed to send embed: ${e.message}`.substring(0, 2000)); }) 
         else
-        button?.channel.send({embeds:[embedToBuild],components:null}) 
-        await client.removeListener("interactionCreate", buttonEvent);
+        button?.channel.send({embeds:[embedData]}).catch(e => { button?.channel.send(`❌ Failed to send embed: ${e.message}`.substring(0, 2000)); }) 
+        client.removeListener("interactionCreate", buttonEvent);
+        return;
     }
 
     setTimeout(() => {
-        button?.message.edit({embeds:[embedToBuild], components:null})
+        button?.message.edit({embeds:[embedToBuild], components:[]}).catch(()=>{})
         client.removeListener("interactionCreate", buttonEvent);
     }, 300000)
   }

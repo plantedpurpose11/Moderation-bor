@@ -17,21 +17,13 @@ module.exports = {
   type: "server",
   run: async (client, message, args, cmduser, text, prefix) => {
     
-    // Helper functions for checking attachment types
-    function attachispng(msgAttach) {
-      let url = msgAttach.url;
-      return url.indexOf("png", url.length - "png".length) !== -1;
+    // Extract file extension from URL, ignoring query parameters
+    function getExtension(url) {
+      try { return new URL(url).pathname.split('.').pop().toLowerCase(); } catch { return ''; }
     }
-    function attachisjpg(msgAttach) {
-      let url = msgAttach.url;
-      return url.indexOf("jpg", url.length - "jpg".length) !== -1;
-    }
-    function attachisgif(msgAttach) {
-      let url = msgAttach.url;
-      return url.indexOf("gif", url.length - "gif".length) !== -1;
-    }
-    function getAttachmentUrl(msgAttach) {
-      return msgAttach.url;
+    function isImage(msgAttach) {
+      const ext = getExtension(msgAttach.url);
+      return ['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(ext);
     }
 
     let es = client.settings.get(message.guild.id, "embed");let ls = client.settings.get(message.guild.id, "language")
@@ -39,7 +31,7 @@ module.exports = {
       let adminroles = client.settings.get(message.guild.id, "adminroles")
       let cmdroles = client.settings.get(message.guild.id, "cmdadminroles.embed")
       var cmdrole = []
-        if(cmdroles.length > 0){
+        if(cmdroles && cmdroles.length > 0){
           for(const r of cmdroles){
             if(message.guild.roles.cache.get(r)){
               cmdrole.push(` | <@&${r}>`)
@@ -54,7 +46,7 @@ module.exports = {
             }
           }
         }
-      if (([...message.member.roles.cache.values()] && !message.member.roles.cache.some(r => cmdroles.includes(r.id))) && !cmdroles.includes(message.author.id) && ([...message.member.roles.cache.values()] && !message.member.roles.cache.some(r => adminroles.includes(r ? r.id : r))) && !Array(message.guild.ownerId, config.ownerid).includes(message.author.id) && !message.member.permissions.has([Permissions.FLAGS.ADMINISTRATOR]))
+      if (([...message.member.roles.cache.values()] && !message.member.roles.cache.some(r => (cmdroles || []).includes(r.id))) && !(cmdroles || []).includes(message.author.id) && ([...message.member.roles.cache.values()] && !message.member.roles.cache.some(r => adminroles.includes(r ? r.id : r))) && !Array(message.guild.ownerId, config.ownerid).includes(message.author.id) && !message.member.permissions.has([Permissions.FLAGS.ADMINISTRATOR]))
         return message.reply({embeds : [new MessageEmbed()
           .setColor(es.wrongcolor)
           .setFooter(client.getFooter(es))
@@ -75,17 +67,10 @@ module.exports = {
       let name = false;
       let url = null;
       if (message.attachments.size > 0) {
-        url = getAttachmentUrl(message.attachments.first());
-        if (message.attachments.every(attachispng)) {
-          name = "image.png"
-          attachment = new MessageAttachment(url, name)
-        }
-        if (message.attachments.every(attachisjpg)) {
-          name = "image.jpg"
-          attachment = new MessageAttachment(url, name)
-        }
-        if (message.attachments.every(attachisgif)) {
-          name = "image.gif"
+        url = message.attachments.first().url;
+        if (message.attachments.every(isImage)) {
+          const ext = getExtension(url);
+          name = `image.${ext === 'jpeg' ? 'jpg' : ext}`
           attachment = new MessageAttachment(url, name)
         }
       }
