@@ -1,7 +1,7 @@
 {
   "name": "clan_bot",
   "version": "11.0.0",
-  "description": "A Discord Bot made by: bestgamershk",
+  "description": "A Discord Bot made by: PlantedPurpose",
   "main": "index.js",
   "dependencies": {
     "@discordjs/builders": "^0.16.0",
@@ -60,7 +60,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "bestgamershk",
+  "author": "PlantedPurpose",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -89,7 +89,7 @@
   "bugs": {
     "url": "https://github.com/BestGamersH/Multipurpose-discord-bot/issues"
   },
-  "homepage": "https://bestgamershk.rf.gd",
+  "homepage": "https://PlantedPurpose.rf.gd",
   "devDependencies": {
     "eslint": "^8.52.0"
   },

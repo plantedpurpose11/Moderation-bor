@@ -9,7 +9,7 @@ const { handlemsg } = require(`${process.cwd()}/handlers/functions`)
 module.exports = {
 	name: "developer",
 	category: "🔰 Info",
-	aliases: ["dev", "BestGamersHK"],
+	aliases: ["dev", "PlantedPurpose"],
 	description: "Shows Information about the Developer",
 	usage: "developer",	
 	type: "bot",
@@ -28,7 +28,7 @@ module.exports = {
 				.setThumbnail("https://cdn.discordapp.com/avatars/363141299588825120/df7b527a701d9a1ab6d73213576fe295.webp?size=1024")
 				.setTitle(client.la[ls].cmds.info.developer.title)
 				.setURL("https://discord.gg/P2WDevelopments")
-				.addField("🆕 NEW GITHUB", `> There is now an **open Source** Version of this Bot on [\`bestgamershk\`'s Github](https://github.com/BestGamersH)\n> [Link](https://github.com/BestGamersH/Multipurpose-discord-bot) but please make sure to **give __Credits__** if you use it!\n> Make sure to read the [README](https://github.com/BestGamersH/Multipurpose-discord-bot#readme) and the [WIKI / FAQ](https://github.com/BestGamersH/Multipurpose-discord-bot/wiki) carefully before opening an [ISSUE](https://github.com/BestGamersH/Multipurpose-discord-bot/issues/new/choose)`)
+				.addField("🆕 NEW GITHUB", `> There is now an **open Source** Version of this Bot on [\`PlantedPurpose\`'s Github](https://github.com/BestGamersH)\n> [Link](https://github.com/BestGamersH/Multipurpose-discord-bot) but please make sure to **give __Credits__** if you use it!\n> Make sure to read the [README](https://github.com/BestGamersH/Multipurpose-discord-bot#readme) and the [WIKI / FAQ](https://github.com/BestGamersH/Multipurpose-discord-bot/wiki) carefully before opening an [ISSUE](https://github.com/BestGamersH/Multipurpose-discord-bot/issues/new/choose)`)
 					.setDescription(client.la[ls].cmds.info.developer.description)],
 components: allbuttons
 			}).catch(error => console.log(error));
@@ -45,9 +45,9 @@ components: allbuttons
 }
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
+ * Bot Coded by PlantedPurpose | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | P2W Developments
+ * Work for PlantedPurpose | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

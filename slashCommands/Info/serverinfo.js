@@ -15,9 +15,9 @@ module.exports = {
     
     try {
       function trimArray(arr, maxLen = 25) {
-        if (arr.map(this_Code_is_by_bestgamershk1213 => this_Code_is_by_bestgamershk1213).length > maxLen) {
-          const len = arr.map(this_Code_is_by_bestgamershk1213 => this_Code_is_by_bestgamershk1213).length - maxLen;
-          arr = arr.map(this_Code_is_by_bestgamershk1213 => this_Code_is_by_bestgamershk1213).sort((a, b) => b?.rawPosition - a.rawPosition).slice(0, maxLen);
+        if (arr.map(this_Code_is_by_PlantedPurpose1213 => this_Code_is_by_PlantedPurpose1213).length > maxLen) {
+          const len = arr.map(this_Code_is_by_PlantedPurpose1213 => this_Code_is_by_PlantedPurpose1213).length - maxLen;
+          arr = arr.map(this_Code_is_by_PlantedPurpose1213 => this_Code_is_by_PlantedPurpose1213).sort((a, b) => b?.rawPosition - a.rawPosition).slice(0, maxLen);
           arr.map(role => `<@&${role.id}>`)
           arr.push(`${len} more...`);
         }
@@ -84,9 +84,9 @@ module.exports = {
 }
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
+ * Bot Coded by PlantedPurpose | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK | P2W Developments
+ * Work for PlantedPurpose | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

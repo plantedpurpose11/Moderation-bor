@@ -2706,7 +2706,7 @@ module.exports = {
             .setFooter(client.getFooter(es))
 
             .setColor(es.color)
-            .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable174"])) //bestgamershk
+            .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable174"])) //PlantedPurpose
             .setFooter("ADD THE INDEX TO EDIT THE MSG", message.guild.iconURL({
               dynamic: true
             }))
@@ -2877,7 +2877,7 @@ module.exports = {
                     Questions = apply_for_here.get(message.guild.id, pre+".QUESTIONS");
                     var new_embed = new Discord.MessageEmbed().setFooter(client.getFooter(es))
                       .setColor(es.color)
-                      .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable177"])) //bestgamershk
+                      .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable177"])) //PlantedPurpose
                       .setFooter(message.guild.name, message.guild.iconURL({
                         dynamic: true
                       }))
@@ -3133,7 +3133,7 @@ module.exports = {
               Questions = apply_for_here.get(message.guild.id, pre+".QUESTIONS");
               var embed = new Discord.MessageEmbed().setFooter(client.getFooter(es))
                 .setColor(es.color)
-                .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable188"])) //bestgamershk
+                .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable188"])) //PlantedPurpose
                 .setFooter(message.guild.name, message.guild.iconURL({
                   dynamic: true
                 }))
@@ -3169,7 +3169,7 @@ module.exports = {
             .setFooter(client.getFooter(es))
 
             .setColor(es.color)
-            .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable190"])) //bestgamershk
+            .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable190"])) //PlantedPurpose
             .setFooter("ADD THE INDEX TO EDIT THE MSG", message.guild.iconURL({
               dynamic: true
             }))
@@ -3225,7 +3225,7 @@ module.exports = {
                 Questions = apply_for_here.get(message.guild.id, pre+".QUESTIONS");
                 var new_embed = new Discord.MessageEmbed().setFooter(client.getFooter(es))
                   .setColor(es.color)
-                  .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable193"])) //bestgamershk
+                  .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable193"])) //PlantedPurpose
                   .setFooter(message.guild.name, message.guild.iconURL({
                     dynamic: true
                   }))
@@ -3511,8 +3511,8 @@ module.exports = {
           var embed = new Discord.MessageEmbed()
             .setFooter(client.getFooter(es))
             .setColor(es.color)
-            .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable219"])) //bestgamershk
-            .setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable220"])) //bestgamershk
+            .setTitle(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable219"])) //PlantedPurpose
+            .setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-apply"]["variable220"])) //PlantedPurpose
             .setTimestamp()
           message.reply({
             embeds: [embed]
@@ -3535,9 +3535,9 @@ module.exports = {
 }
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://github?.com/BestGamersHK/Discord-Js-Handler-Template
+ * Bot Coded by PlantedPurpose | https://github?.com/PlantedPurpose/Discord-Js-Handler-Template
  * @INFO
- * Work for BestGamersHK | P2W Developments
+ * Work for PlantedPurpose | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO

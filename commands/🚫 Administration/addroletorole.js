@@ -82,7 +82,7 @@
            .setTitle(eval(client.la[ls]["cmds"]["administration"]["addroletoeveryone"]["variable7"]))
          ]});
        await message.guild.members.fetch().catch(() => {});
-       var members = message.guild.members.cache.filter(member => member.roles.cache.has(rolehas.id) && !member.roles.cache.has(role.id)).map(this_Code_is_by_bestgamershk1213 => this_Code_is_by_bestgamershk1213);
+       var members = message.guild.members.cache.filter(member => member.roles.cache.has(rolehas.id) && !member.roles.cache.has(role.id)).map(this_Code_is_by_PlantedPurpose1213 => this_Code_is_by_PlantedPurpose1213);
        if (!members || members.length == 0)
          return message.reply({embeds :[new MessageEmbed()
            .setColor(es.wrongcolor)
@@ -159,9 +159,9 @@
  };
  /**
   * @INFO
-  * Bot Coded by bestgamershk | https://discord.gg/P2WDevelopments
+  * Bot Coded by PlantedPurpose | https://discord.gg/P2WDevelopments
   * @INFO
-  * Work for BestGamersHK | P2W Developments
+  * Work for PlantedPurpose | P2W Developments
   * @INFO
   * Please mention him, when using this Code!
   * @INFO

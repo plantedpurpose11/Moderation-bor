@@ -93,9 +93,9 @@ module.exports = {
 };
 /**
  * @INFO
- * Bot Coded by BestGamersHK | https://discord.gg/P2WDevelopments
+ * Bot Coded by PlantedPurpose | https://discord.gg/P2WDevelopments
  * @INFO
- * Work for BestGamersHK
+ * Work for PlantedPurpose
  * @INFO
  * Please mention Him when using this Code!
  * @INFO

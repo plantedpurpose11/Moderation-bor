@@ -8,9 +8,9 @@ module.exports = (client) => {
 
 /**
  * @INFO
- * Bot Coded by bestgamershk | https://github?.com/BestGamersHK/discord-js-lavalink-Music-Bot-erela-js
+ * Bot Coded by PlantedPurpose | https://github?.com/PlantedPurpose/discord-js-lavalink-Music-Bot-erela-js
  * @INFO
- * Work for BestGamersHK | P2W Developments
+ * Work for PlantedPurpose | P2W Developments
  * @INFO
  * Please mention him, when using this Code!
  * @INFO
