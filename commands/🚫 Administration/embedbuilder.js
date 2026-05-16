@@ -142,7 +142,9 @@ let embedEditing = async(button) => {
         '(\\?[;&a-z\\d%_.~+=-]*)?'+
         '(\\#[-a-z\\d_]*)?$','i');
 
-        button?.message.edit({content : `⏳ **Please send me Your Input now!**`,
+        let promptText = `⏳ **Please send me Your Input now!**`;
+        if(["img", "thumb", "footerimg"].includes(builderId)) promptText += `\n*Send an image URL or upload an image directly.*`;
+        button?.message.edit({content : promptText,
             components: [new MessageActionRow().addComponents([new MessageButton().setLabel("Cancel").setStyle('DANGER').setCustomId(`buildEmbed_cancel`)])]
         })
 
@@ -169,18 +171,21 @@ let embedEditing = async(button) => {
             else embedToBuild.setColor(finalInput.content)
         }
         if(builderId == "footerimg") {
-            if(ifUrl.test(finalInput)) {
-                embedToBuild.setFooter(client.getFooter(`${embedToBuild.footer ? embedToBuild.footer.text : "\u200B"}`, finalInput.content))
+            let imgUrl = (finalInput.attachments && finalInput.attachments.size > 0) ? finalInput.attachments.first().url : finalInput.content;
+            if(imgUrl && ifUrl.test(imgUrl)) {
+                embedToBuild.setFooter(client.getFooter(`${embedToBuild.footer ? embedToBuild.footer.text : "\u200B"}`, imgUrl))
             }
         }
         if(builderId == "img") {
-            if(ifUrl.test(finalInput)) {
-                embedToBuild.setImage(finalInput.content)
+            let imgUrl = (finalInput.attachments && finalInput.attachments.size > 0) ? finalInput.attachments.first().url : finalInput.content;
+            if(imgUrl && ifUrl.test(imgUrl)) {
+                embedToBuild.setImage(imgUrl)
             }
         }
         if(builderId == "thumb") {
-            if(ifUrl.test(finalInput)) {
-                embedToBuild.setThumbnail(finalInput.content)
+            let imgUrl = (finalInput.attachments && finalInput.attachments.size > 0) ? finalInput.attachments.first().url : finalInput.content;
+            if(imgUrl && ifUrl.test(imgUrl)) {
+                embedToBuild.setThumbnail(imgUrl)
             }
         }
 
