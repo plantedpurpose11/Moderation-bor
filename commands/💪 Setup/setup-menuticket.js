@@ -321,7 +321,7 @@ module.exports = {
               //define the embed
               let MenuEmbed = new Discord.MessageEmbed()
                 .setColor(es.color)
-                .setAuthor(SetupNumber + " Ticket Setup", "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/282/incoming-envelope_1f4e8.png", "https://discord.gg/P2WDevelopments")
+                .setAuthor(client.getAuthor(SetupNumber + " Ticket Setup", "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/282/incoming-envelope_1f4e8.png", "https://discord.gg/P2WDevelopments"))
                 .setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-ticket"]["variable4"]))
               //send the menu msg
               let menumsg = await message.reply({
@@ -495,8 +495,9 @@ module.exports = {
                         label: option.value.substring(0, 50),
                         value: option.value.substring(0, 50),
                         description: option.description.substring(0, 50),
-                        emoji: isEmoji(option.emoji) ? option.emoji : NumberEmojiIds[index + 1]
                       }
+                      let resolvedEmoji = isEmoji(option.emoji) ? option.emoji : NumberEmojiIds[index + 1];
+                      if (resolvedEmoji) Obj.emoji = resolvedEmoji;
                       return Obj;
                     }))
                 channel.send({
@@ -515,8 +516,8 @@ module.exports = {
                           label: option.value.substring(0, 50),
                           value: option.value.substring(0, 50),
                           description: option.description.substring(0, 50),
-                          emoji: NumberEmojiIds[index + 1]
                         }
+                        if (NumberEmojiIds[index + 1]) Obj.emoji = NumberEmojiIds[index + 1];
                         return Obj;
                       }))
                   channel.send({
@@ -742,8 +743,9 @@ module.exports = {
                     label: option.value.substring(0, 50),
                     value: option.value.substring(0, 50),
                     description: option.description.substring(0, 50),
-                    emoji: isEmoji(option.emoji) ? option.emoji : NumberEmojiIds[index + 1]
                   }
+                  let resolvedEmoji = isEmoji(option.emoji) ? option.emoji : NumberEmojiIds[index + 1];
+                  if (resolvedEmoji) Obj.emoji = resolvedEmoji;
                   return Obj;
                 }))
             let menumsg;
@@ -765,8 +767,8 @@ module.exports = {
                       label: option.value.substring(0, 50),
                       value: option.value.substring(0, 50),
                       description: option.description.substring(0, 50),
-                      emoji: NumberEmojiIds[index + 1]
                     }
+                    if (NumberEmojiIds[index + 1]) Obj.emoji = NumberEmojiIds[index + 1];
                     return Obj;
                   }))
               menumsg = await message.reply({
@@ -916,7 +918,7 @@ module.exports = {
                         max: 1,
                         time: 90000, errors: ["time"]
                       });
-                      let categoryId = collected ? collected2.first().content : "";
+                      let categoryId = collected ? collected.first().content : "";
                       let category = message.guild.channels.cache.get(categoryId) || null;
                       if (category && category.id) {
                         data[index].category = category.id;
@@ -939,12 +941,12 @@ module.exports = {
                         max: 1,
                         time: 90000, errors: ["time"]
                       });
-                      if (!collected4.first().content || !collected4.first().content.includes("{member}")) {
+                      if (!collected.first().content || !collected.first().content.includes("{member}")) {
                         return message.reply("You need to have {member} somewhere, using the SUGGESTION DEFAULTNAME (you change it via edit)");
-                      } else if (!collected4.first().content || collected4.first().content.length > 32) {
+                      } else if (!collected.first().content || collected.first().content.length > 32) {
                         return message.reply("A Channelname can't be longer then 32 Characters, using the SUGGESTION DEFAULTNAME (you change it via edit)");
                       } else {
-                        data[index].defaultname = collected4.first().content
+                        data[index].defaultname = collected.first().content
                         return finished();
                       }
                     } break;
@@ -1016,7 +1018,7 @@ module.exports = {
                         time: 90000, errors: ["time"]
                       });
                       if (collected && collected.first().content) {
-                        data[index].replyMsg = collected3.first().content;
+                        data[index].replyMsg = collected.first().content;
                         return finished();
                       } else {
                         return message.reply("❌ **You did not enter a Valid Message in Time! CANCELLED!**")
@@ -1092,8 +1094,8 @@ module.exports = {
                     label: option.value.substring(0, 50),
                     value: option.value.substring(0, 50),
                     description: option.description.substring(0, 50),
-                    emoji: NumberEmojiIds[index + 1]
                   }
+                  if (NumberEmojiIds[index + 1]) Obj.emoji = NumberEmojiIds[index + 1];
                   return Obj;
                 }))
             //send the menu msg
@@ -1114,8 +1116,8 @@ module.exports = {
                       label: option.value.substring(0, 50),
                       value: option.value.substring(0, 50),
                       description: option.description.substring(0, 50),
-                      emoji: NumberEmojiIds[index + 1]
                     }
+                    if (NumberEmojiIds[index + 1]) Obj.emoji = NumberEmojiIds[index + 1];
                     return Obj;
                   }))
               menumsg = await message.reply({
@@ -1267,7 +1269,22 @@ module.exports = {
         "7️⃣",
         "8️⃣",
         "9️⃣",
-        "🔟"
+        "🔟",
+        "🔴",
+        "🟠",
+        "🟡",
+        "🟢",
+        "🔵",
+        "🟣",
+        "🟤",
+        "⚫",
+        "⚪",
+        "🟥",
+        "🟧",
+        "🟨",
+        "🟩",
+        "🟦",
+        "🟪"
       ]
     }
     function isEmoji(emoji) {
