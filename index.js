@@ -139,7 +139,25 @@ async function requirehandlers() {
     });
 } requirehandlers().then(() => {
   /**********************************************************
-   * @param {9} Login_to_the_Bot
+   * @param {9} Login_to_the_Bot with retry logic
    *********************************************************/
-  client.login(process.env.token || config.token);
+  const MAX_RETRIES = 5;
+  const BASE_DELAY = 5000;
+
+  async function loginWithRetry(attempt) {
+    try {
+      await client.login(process.env.token || config.token);
+    } catch (err) {
+      if (attempt >= MAX_RETRIES) {
+        console.log(`Login failed after ${MAX_RETRIES} attempts. Exiting.`.red);
+        process.exit(1);
+      }
+      const waitTime = BASE_DELAY * Math.pow(2, attempt);
+      console.log(`Login attempt ${attempt + 1} failed: ${err.message}. Retrying in ${waitTime / 1000}s...`.yellow);
+      await new Promise(r => setTimeout(r, waitTime));
+      return loginWithRetry(attempt + 1);
+    }
+  }
+
+  loginWithRetry(0);
 }).catch(e => console.log("Handler loading error:", e));
