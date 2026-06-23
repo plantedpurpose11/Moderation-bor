@@ -2,7 +2,7 @@
 # Provides system libraries needed by native Node modules
 # (canvas, skia-canvas, better-sqlite3, @discordjs/opus)
 
-FROM node:22-bookworm-slim
+FROM node:18-bookworm-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
