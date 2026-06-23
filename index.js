@@ -30,6 +30,8 @@ process.on('unhandledRejection', (reason, p) => {
 const client = new Discord.Client({
   fetchAllMembers: false,
   restTimeOffset: 0,
+  restRequestTimeout: 30000,
+  retryLimit: 3,
   failIfNotExists: false,
   shards: "auto",
   allowedMentions: {
