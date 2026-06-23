@@ -24,6 +24,7 @@ const schemas = {
     jtcsettings: new mongoose.Schema({ _id: String, data: mongoose.Schema.Types.Mixed }, { _id: false }),
     roster: new mongoose.Schema({ _id: String, data: mongoose.Schema.Types.Mixed }, { _id: false }),
     autosupport: new mongoose.Schema({ _id: String, data: mongoose.Schema.Types.Mixed }, { _id: false }),
+    menuticket: new mongoose.Schema({ _id: String, data: mongoose.Schema.Types.Mixed }, { _id: false }),
     menuapply: new mongoose.Schema({ _id: String, data: mongoose.Schema.Types.Mixed }, { _id: false }),
     apply: new mongoose.Schema({ _id: String, data: mongoose.Schema.Types.Mixed }, { _id: false }),
     points: new mongoose.Schema({ _id: String, data: mongoose.Schema.Types.Mixed }, { _id: false }),
@@ -177,6 +178,20 @@ module.exports = async (client, mongoUri) => {
             await client[clientKey].init();
         }
         
+        // Alias: client.tiktok shares the youtube_log collection (same as Enmap loader)
+        client.tiktok = client.youtube_log;
+
+        // Run ensure defaults (same as Enmap loader)
+        client.premium.ensure("premiumlist", { list: [] });
+        client.stats.ensure("global", { commands: 0, songs: 0, setups: 0 });
+        client.mutes.ensure("MUTES", { MUTES: [] });
+        client.afkDB.ensure("REMIND", { REMIND: [] });
+        let ensureObject = {};
+        for (let i = -1; i <= 100; i++) ensureObject[`tickets${i != -1 ? i : ""}`] = [];
+        for (let i = -1; i <= 100; i++) ensureObject[`applytickets${i != -1 ? i : ""}`] = [];
+        for (let i = -1; i <= 100; i++) ensureObject[`menutickets${i != -1 ? i : ""}`] = [];
+        client.setups.ensure("TICKETS", ensureObject);
+
         console.log(`[x] :: `.magenta + `LOADED THE DATABASES after: `.brightGreen + `${Date.now() - dateNow}ms`.green);
         
     } catch (error) {
