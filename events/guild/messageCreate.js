@@ -189,7 +189,7 @@ module.exports = async (client, message) => {
         ///////////////////////////////
         ///////////////////////////////
 
-        const player = client.manager.players.get(message.guild.id);
+        const player = client.manager?.players?.get(message.guild.id);
         
         if(player && player.node && !player.node.connected) player.node.connect();
         
